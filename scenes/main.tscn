@@ -2,6 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://d1a8hf7r5vcp2" path="res://scenes/player.tscn" id="1_o5qli"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
+size = Vector2(592, 27)
+
 [node name="Main" type="Node2D" unique_id=1347739713]
 
 [node name="Player" parent="." unique_id=1459157320 instance=ExtResource("1_o5qli")]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=575710655]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1898714272]
+position = Vector2(0, 194.5)
+shape = SubResource("RectangleShape2D_o5qli")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295]

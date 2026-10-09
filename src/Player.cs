@@ -1,4 +1,34 @@
+using System;
 using Godot;
 
 public partial class Player : CharacterBody2D {
+    [Export] public float Speed = 100f;
+    [Export] public float Acceleration = 16f;
+    [Export] public float Deceleration = 18f;
+    
+    public float GravityForce = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+    public Vector2 GravityVector = ProjectSettings.GetSetting("physics/2d/default_gravity_vector").AsVector2();
+    public Vector2 Gravity { get => GravityForce * GravityVector; }
+    
+    public override void _PhysicsProcess(double delta)
+    {
+        float horizontalInput = Input.GetAxis("move_left", "move_right");
+        float targetHorizontalVelocity = horizontalInput * Speed;
+        float lerpWeight = Deceleration;
+        if (targetHorizontalVelocity != 0) {
+            lerpWeight = Acceleration;
+            // when slowing down, use the deceleration weight instead
+            if (Math.Abs(targetHorizontalVelocity) < Math.Abs(Velocity.X)) {
+                lerpWeight = Mathf.Max(Deceleration, Acceleration);
+            }
+        }
+        // lerp horizontal velocity
+        Velocity = Velocity with {
+            X = Velocity.X * (1 - lerpWeight * (float)delta) + targetHorizontalVelocity * lerpWeight * (float)delta
+        };
+        if (!IsOnFloor()) {
+            Velocity += GetGravity() * (float)delta;
+        }
+        MoveAndSlide();
+    }
 }
