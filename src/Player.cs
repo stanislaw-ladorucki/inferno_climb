@@ -2,12 +2,12 @@ using System;
 using Godot;
 
 public partial class Player : CharacterBody2D {
-    [Export] public float Speed = 100f;
+    [Export] public float Speed = 200.0f;
     [Export] public float Acceleration = 16f;
-    [Export] public float Deceleration = 18f;
+    [Export] public float Deceleration = 11f;
     
-    [Export] public float JumpForce = 400f;
-    [Export] public float JumpReleaseDampen = 0.35f;
+    [Export] public float JumpForce = 450f;
+    [Export] public float JumpReleaseDampen = 0.45f;
     
     public float GravityForce = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
     public Vector2 GravityVector = ProjectSettings.GetSetting("physics/2d/default_gravity_vector").AsVector2();
