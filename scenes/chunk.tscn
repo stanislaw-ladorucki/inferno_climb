@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bnxnbx8ns4da3"]
+
+[ext_resource type="Script" uid="uid://cmmo51js4hby3" path="res://src/Chunk.cs" id="1_jas4a"]
+
+[node name="Chunk" type="Node2D" unique_id=2033196129]
+script = ExtResource("1_jas4a")
