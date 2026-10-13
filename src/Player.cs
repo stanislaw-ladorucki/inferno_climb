@@ -9,12 +9,7 @@ public partial class Player : CharacterBody2D {
     [Export] public float JumpForce = 450f;
     [Export] public float JumpReleaseDampen = 0.45f;
     
-    public float GravityForce = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-    public Vector2 GravityVector = ProjectSettings.GetSetting("physics/2d/default_gravity_vector").AsVector2();
-    public Vector2 Gravity { get => GravityForce * GravityVector; }
-    
-    public override void _PhysicsProcess(double delta)
-    {
+    public override void _PhysicsProcess(double delta)  {
         // handle horizontal movement
         float horizontalInput = Input.GetAxis("move_left", "move_right");
         float targetHorizontalVelocity = horizontalInput * Speed;
@@ -49,6 +44,7 @@ public partial class Player : CharacterBody2D {
     }
     
     public bool CanJump() {
+        // TODO: add coyote time
         return IsOnFloor();
     }
 }
