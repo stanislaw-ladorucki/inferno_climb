@@ -1,6 +1,8 @@
 using System;
 using Godot;
 
+namespace InfernoClimb;
+
 public partial class Player : CharacterBody2D {
     [Export] public float Speed = 200.0f;
     [Export] public float Acceleration = 16f;
@@ -44,7 +46,7 @@ public partial class Player : CharacterBody2D {
     }
     
     public bool CanJump() {
-        // TODO: add coyote time
+        // TDE: add coyote time
         return IsOnFloor();
     }
 }

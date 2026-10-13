@@ -1,29 +1,11 @@
 [gd_scene format=3 uid="uid://ddpgwqt4p0dyw"]
 
 [ext_resource type="PackedScene" uid="uid://d1a8hf7r5vcp2" path="res://scenes/player.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/VerticalScrollingCamera.cs" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://bnxnbx8ns4da3" path="res://scenes/chunk.tscn" id="3_sugp2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
-size = Vector2(592, 27)
-
-[sub_resource type="QuadMesh" id="QuadMesh_o5qli"]
+[ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/VerticallyScrollingCamera.cs" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dx5m7mkwfim18" path="res://scenes/platform.tscn" id="3_jyhfs"]
+[ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/PlatformingChunkManager.cs" id="4_tbgi4"]
 
 [node name="Main" type="Node2D" unique_id=1347739713]
-
-[node name="StartingChunk" parent="." unique_id=2033196129 instance=ExtResource("3_sugp2")]
-position = Vector2(1, 128)
-
-[node name="Ground" type="StaticBody2D" parent="." unique_id=575710655]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1898714272]
-position = Vector2(0, 194.5)
-shape = SubResource("RectangleShape2D_o5qli")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Ground/CollisionShape2D" unique_id=230101979]
-position = Vector2(0, -8.46386e-06)
-scale = Vector2(592, 26.999987)
-mesh = SubResource("QuadMesh_o5qli")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 script = ExtResource("2_sugp2")
@@ -31,3 +13,11 @@ Follow = NodePath("../Player")
 FollowMargin = -100.0
 
 [node name="Player" parent="." unique_id=1459157320 instance=ExtResource("1_o5qli")]
+
+[node name="Platform" parent="." unique_id=1989971277 instance=ExtResource("3_jyhfs")]
+position = Vector2(2, 46)
+
+[node name="PlatformingChunkManager" type="Node2D" parent="." unique_id=1814566028]
+position = Vector2(0, 47)
+script = ExtResource("4_tbgi4")
+ChunkGenerateMargin = 0.0
