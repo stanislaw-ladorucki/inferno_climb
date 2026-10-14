@@ -25,6 +25,9 @@ public partial class PlatformingChunk : Node2D {
 			rng.RandfRange(PlatformMinDistance.X, PlatformMaxDistance.X) * (rng.Randf() > 0.5 ? -1 : 1),
 			- rng.RandfRange(PlatformMinDistance.Y, PlatformMaxDistance.Y)
 		);
+		
+		// make sure the platform does not exit the horizontal boundaries
+		// TDE: include platform width in this calculation
 		if ((currentPlatfomPosition + offset).X < -Size.X / 2 || (currentPlatfomPosition + offset).X > Size.X / 2) {
 			offset.X *= -1;
 		} 
