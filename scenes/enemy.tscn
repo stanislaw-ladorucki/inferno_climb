@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bp8j33gsgt4q1"]
+
+[ext_resource type="Script" uid="uid://csmh53t3w3c76" path="res://src/enemies/Enemy.cs" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_4ra3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(24, 24)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1459157320]
+script = ExtResource("1_md0e3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
+rotation = -3.1415925
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_4ra3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
+shape = SubResource("RectangleShape2D_qhqgy")
+debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
+
+[connection signal="Died" from="." to="." method="_OnDied"]

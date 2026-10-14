@@ -2,15 +2,31 @@
 
 [ext_resource type="Script" uid="uid://7unpoydrc25p" path="res://src/Player.cs" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_g2els"]
+[ext_resource type="Script" uid="uid://dbn07c35m2sas" path="res://src/attacks/Attack.cs" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(22, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=1459157320]
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
-shape = SubResource("RectangleShape2D_qhqgy")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="JumpAttackHitbox" type="Area2D" parent="." unique_id=35716317]
+monitoring = false
+script = ExtResource("3_qhqgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpAttackHitbox" unique_id=2107815232]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_dqkch")
+
+[connection signal="Hit" from="JumpAttackHitbox" to="." method="_OnJumpAttackHitboxHit"]
+[connection signal="body_entered" from="JumpAttackHitbox" to="JumpAttackHitbox" method="_OnBodyEntered"]

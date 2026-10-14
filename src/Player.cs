@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using InfernoClimb.attacks;
 
 namespace InfernoClimb;
 
@@ -10,7 +11,16 @@ public partial class Player : CharacterBody2D {
     
     [Export] public float JumpForce = 450f;
     [Export] public float JumpReleaseDampen = 0.45f;
+
+    [Export] public float EnemyJumpBounceForce = 550f; // when jump button is held, bounce higher
+    [Export] public float EnemyBounceForce = 200f;
+
+    public Attack JumpAttackHitbox; 
     
+    public override void _Ready() {
+        JumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
+    }
+
     public override void _PhysicsProcess(double delta)  {
         // handle horizontal movement
         float horizontalInput = Input.GetAxis("move_left", "move_right");
@@ -42,7 +52,15 @@ public partial class Player : CharacterBody2D {
         if (!IsOnFloor()) {
             Velocity += GetGravity() * (float)delta;
         }
+
+        // update attack hitbox
+        JumpAttackHitbox.Monitoring = Velocity.Y > 0; // hitbox collision disabled when not falling
+        
         MoveAndSlide();
+    }
+
+    public void _OnJumpAttackHitboxHit(Node2D body) {
+        Velocity = Velocity with { Y = Input.IsActionPressed("jump") ? -EnemyJumpBounceForce : -EnemyBounceForce };
     }
     
     public bool CanJump() {
