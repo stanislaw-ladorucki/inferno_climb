@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 namespace InfernoClimb.level;
@@ -7,6 +8,11 @@ public partial class LevelChunk : Node2D {
 	[Export] public Vector2 PlatformMinDistance = new (50, 30); // horizontal and vertical components
 	[Export] public Vector2 PlatformMaxDistance = new (200, 100); // horizontal and vertical components
 
+	public List<PackedScene> EnemyPool = new() {
+		GD.Load<PackedScene>("res://scenes/enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemy.tscn"),
+	};
+
 	private static readonly PackedScene PlatformScene = GD.Load<PackedScene>("res://scenes/platform.tscn");
 	
 	public Vector2 Populate(Vector2 platformPosition) {
@@ -14,10 +20,22 @@ public partial class LevelChunk : Node2D {
 		while (true) {
 			Node2D platform = CreatePlatform(GetNewPlatformPosition(platformPosition, rng));
 			platformPosition = platform.GlobalPosition;
+
+			// the chance increases the more enemies remain in the pool,
+			// and the closer we are to the end of the chunk
+			if (EnemyPool.Count > 0 && rng.Randf() < EnemyPool.Count * (platform.Position.Y / -Size.Y)) {
+				int enemyIndex = rng.RandiRange(0, EnemyPool.Count - 1);
+				Node2D enemy = EnemyPool[enemyIndex].Instantiate<Node2D>();
+				AddChild(enemy);
+				// TDE: add a separate system for randomizing enemy placement
+				enemy.GlobalPosition = GetNewPlatformPosition(platformPosition, rng);
+				EnemyPool.RemoveAt(enemyIndex);
+			}
+
 			if (platform.Position.Y <= -Size.Y) {
 				return platformPosition;
 			}
-		}				
+		}
 	}
 
 	private Vector2 GetNewPlatformPosition(Vector2 currentPlatfomPosition, RandomNumberGenerator rng) {
