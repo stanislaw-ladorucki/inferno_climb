@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://sfw1iif2khit"]
+
+[ext_resource type="Script" uid="uid://bfk8mimvh0iom" path="res://src/entities/enemies/FloatingEnemy.cs" id="1_0gwgf"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_eq8eu"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_jewn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(28, 18)
+
+[node name="FloatingEnemy" type="CharacterBody2D" unique_id=1459157320]
+collision_layer = 4
+script = ExtResource("1_0gwgf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
+modulate = Color(1, 0.21568628, 0.23529412, 1)
+rotation = -3.1415925
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_eq8eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
+visible = false
+shape = SubResource("RectangleShape2D_qhqgy")
+debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
+
+[node name="CollisionAttackHitbox" parent="." unique_id=1679916697 instance=ExtResource("3_jewn2")]
+visible = false
+collision_layer = 0
+collision_mask = 2
+KnockbackStrength = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttackHitbox" unique_id=342842665]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_5uy6h")
+debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
+
+[connection signal="Died" from="." to="." method="_OnDied"]

@@ -9,8 +9,17 @@ public partial class LevelChunk : Node2D {
 	[Export] public Vector2 PlatformMaxDistance = new (200, 100); // horizontal and vertical components
 
 	public List<PackedScene> EnemyPool = new() {
-		GD.Load<PackedScene>("res://scenes/enemy.tscn"),
-		GD.Load<PackedScene>("res://scenes/enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
+		GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
 	};
 
 	private static readonly PackedScene PlatformScene = GD.Load<PackedScene>("res://scenes/platform.tscn");

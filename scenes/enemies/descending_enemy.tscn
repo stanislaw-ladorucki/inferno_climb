@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bp8j33gsgt4q1"]
+[gd_scene format=3 uid="uid://crqjv3j3m1kd0"]
 
-[ext_resource type="Script" uid="uid://csmh53t3w3c76" path="res://src/entities/enemies/Enemy.cs" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_4ra3w"]
-[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://wg5t5by76gjw" path="res://src/entities/enemies/DescendingEnemy.cs" id="1_alg1b"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_o4gok"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_dvym7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 24)
@@ -10,21 +10,22 @@ size = Vector2(24, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
 size = Vector2(28, 18)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1459157320]
+[node name="DescendingEnemy" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
-script = ExtResource("1_md0e3")
-Health = 5.0
+collision_mask = 0
+script = ExtResource("1_alg1b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
+modulate = Color(0.17254902, 1, 0.47058824, 1)
 rotation = -3.1415925
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_4ra3w")
+texture = ExtResource("2_o4gok")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
 shape = SubResource("RectangleShape2D_qhqgy")
 debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
 
-[node name="CollisionAttackHitbox" parent="." unique_id=1679916697 instance=ExtResource("3_4ra3w")]
+[node name="CollisionAttackHitbox" parent="." unique_id=1679916697 instance=ExtResource("3_dvym7")]
 collision_layer = 0
 collision_mask = 2
 KnockbackStrength = 200.0
