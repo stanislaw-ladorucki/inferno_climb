@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bs8x43ecuwupf"]
-
-[ext_resource type="Script" uid="uid://cmmo51js4hby3" path="res://src/level/PlatformingChunk.cs" id="1_mufjo"]
-
-[node name="PlatformingChunk" type="Node2D" unique_id=2033196129]
-script = ExtResource("1_mufjo")

@@ -1,19 +1,19 @@
 using System.Diagnostics;
 using Godot;
 
-namespace InfernoClimb;
+namespace InfernoClimb.level;
 
-public partial class PlatformingChunkManager : Node2D {
+public partial class LevelChunkManager : Node2D {
 	[Export] public Vector2 ChunkSize = new(600, 800);
 	[Export] public float ChunkGenerateMargin = 200;
 
 	private Vector2 _lastPlatformPosition;
-	private PlatformingChunk _lastChunk;
+	private LevelChunk _lastChunk;
 
-	private static readonly PackedScene ChunkScene = GD.Load<PackedScene>("res://scenes/platforming_chunk.tscn");
+	private static readonly PackedScene ChunkScene = GD.Load<PackedScene>("res://scenes/level_chunk.tscn");
 
-	public PlatformingChunk AddChunk() {
-		PlatformingChunk chunk = ChunkScene.Instantiate<PlatformingChunk>();
+	public LevelChunk AddChunk() {
+		LevelChunk chunk = ChunkScene.Instantiate<LevelChunk>();
 		AddChild(chunk);
 		
 		chunk.Size = ChunkSize;
@@ -29,7 +29,7 @@ public partial class PlatformingChunkManager : Node2D {
 	}
 	
 	public override void _Ready() {
-		PlatformingChunk chunk = AddChunk();
+		LevelChunk chunk = AddChunk();
 		// first platform is generated at the origin of the manager node
 		_lastPlatformPosition = chunk.Populate(GlobalPosition);
 	}
@@ -41,7 +41,7 @@ public partial class PlatformingChunkManager : Node2D {
 		// when the top of the chunk is about to be in-view,
 		// generate the next chunk offscreen
 		if (cameraTop - ChunkGenerateMargin <= _lastChunk.GlobalPosition.Y - ChunkSize.Y) {
-			PlatformingChunk chunk = AddChunk();
+			LevelChunk chunk = AddChunk();
 			_lastPlatformPosition = chunk.Populate(_lastPlatformPosition);
 		}
 		

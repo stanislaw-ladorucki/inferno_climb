@@ -1,8 +1,8 @@
 using Godot;
 
-namespace InfernoClimb;
+namespace InfernoClimb.level;
 
-public partial class PlatformingChunk : Node2D {
+public partial class LevelChunk : Node2D {
 	[Export] public Vector2 Size = new(600, 800);
 	[Export] public Vector2 PlatformMinDistance = new (50, 30); // horizontal and vertical components
 	[Export] public Vector2 PlatformMaxDistance = new (200, 100); // horizontal and vertical components
