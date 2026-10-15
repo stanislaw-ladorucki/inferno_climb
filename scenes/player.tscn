@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d1a8hf7r5vcp2"]
 
-[ext_resource type="Script" uid="uid://7unpoydrc25p" path="res://src/Player.cs" id="1_g2els"]
+[ext_resource type="Script" uid="uid://7unpoydrc25p" path="res://src/entities/Player.cs" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_g2els"]
-[ext_resource type="Script" uid="uid://dbn07c35m2sas" path="res://src/attacks/Attack.cs" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(22, 22)
@@ -11,6 +11,7 @@ size = Vector2(22, 22)
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=1459157320]
+collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
@@ -20,13 +21,14 @@ texture = ExtResource("2_g2els")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
 shape = SubResource("RectangleShape2D_qhqgy")
 
-[node name="JumpAttackHitbox" type="Area2D" parent="." unique_id=35716317]
-monitoring = false
-script = ExtResource("3_qhqgy")
+[node name="JumpAttackHitbox" parent="." unique_id=2088546204 instance=ExtResource("3_qhqgy")]
+collision_layer = 0
+collision_mask = 4
+KnockbackAngle = 1
+KnockbackVector = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpAttackHitbox" unique_id=2107815232]
-position = Vector2(0, 13)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_dqkch")
 
 [connection signal="Hit" from="JumpAttackHitbox" to="." method="_OnJumpAttackHitboxHit"]
-[connection signal="body_entered" from="JumpAttackHitbox" to="JumpAttackHitbox" method="_OnBodyEntered"]

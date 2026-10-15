@@ -1,10 +1,10 @@
 using System;
 using Godot;
-using InfernoClimb.attacks;
+using InfernoClimb.entities.attacks;
 
-namespace InfernoClimb;
+namespace InfernoClimb.entities;
 
-public partial class Player : CharacterBody2D {
+public partial class Player : Entity {
     [Export] public float Speed = 200.0f;
     [Export] public float Acceleration = 16f;
     [Export] public float Deceleration = 11f;

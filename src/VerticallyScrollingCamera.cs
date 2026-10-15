@@ -12,8 +12,9 @@ public partial class VerticallyScrollingCamera : Camera2D {
 	public override void _Process(double delta) {
 		Position += ScrollingSpeed * Vector2.Up * (float)delta;
 
-		if (Follow != null && Follow.Position.Y <= GetScreenCenterPosition().Y + FollowMargin) {
+		if (IsInstanceValid(Follow) && Follow.Position.Y <= GetScreenCenterPosition().Y + FollowMargin) {
 			Position = Position with {
+				// lerp camera posiotion to the position of the followed object, while not going downwards
 				Y = Math.Min(Position.Y * (1 - FollowLerp * (float)delta) + (Follow.Position.Y - FollowMargin) * FollowLerp * (float)delta, Position.Y)
 			};
 		}

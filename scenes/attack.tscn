@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dpvggqrygtbnu"]
+
+[ext_resource type="Script" uid="uid://dbn07c35m2sas" path="res://src/entities/attacks/Attack.cs" id="1_nursx"]
+
+[node name="Attack" type="Area2D" unique_id=2088546204]
+script = ExtResource("1_nursx")
+
+[connection signal="body_entered" from="." to="." method="_OnBodyEntered"]
