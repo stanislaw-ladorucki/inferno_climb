@@ -61,7 +61,6 @@ public partial class Player : Entity {
         MoveAndSlide();
 
         Score = (int)Math.Max(Score, -Position.Y);
-        Console.WriteLine(Score);
     }
 
     public void _OnJumpAttackHitboxHit(Node2D body) {
