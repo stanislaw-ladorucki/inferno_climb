@@ -14,8 +14,10 @@ public partial class Player : Entity {
 
     [Export] public float EnemyJumpBounceForce = 550f; // when jump button is held, bounce higher
     [Export] public float EnemyBounceForce = 200f;
+    
+    public Attack JumpAttackHitbox;
 
-    public Attack JumpAttackHitbox; 
+    public int Score = 0;  
     
     public override void _Ready() {
         JumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
@@ -57,6 +59,9 @@ public partial class Player : Entity {
         JumpAttackHitbox.Monitoring = Velocity.Y > 0; // hitbox collision disabled when not falling
         
         MoveAndSlide();
+
+        Score = (int)Math.Max(Score, -Position.Y);
+        Console.WriteLine(Score);
     }
 
     public void _OnJumpAttackHitboxHit(Node2D body) {

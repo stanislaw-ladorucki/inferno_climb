@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/VerticallyScrollingCamera.cs" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dx5m7mkwfim18" path="res://scenes/platform.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelChunkManager.cs" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
@@ -33,6 +34,13 @@ position = Vector2(0, -46)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
+
+[node name="ScoreDisplay" parent="Camera2D" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+offset_left = -285.0
+offset_top = -314.0
+offset_right = -228.0
+offset_bottom = -291.0
+Player = NodePath("../../Player")
 
 [node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
 

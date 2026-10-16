@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bqq2n4ff2fxl5"]
+
+[ext_resource type="FontFile" uid="uid://bk42ji8ockjo0" path="res://assets/fonts/upheavtt.ttf" id="1_ad7uf"]
+[ext_resource type="Script" uid="uid://k1g1u6gwcawh" path="res://src/ui/ScoreDisplay.cs" id="2_urhan"]
+
+[sub_resource type="Theme" id="Theme_hb4xq"]
+default_font = ExtResource("1_ad7uf")
+
+[node name="ScoreDisplay" type="Label" unique_id=1783430945]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = SubResource("Theme_hb4xq")
+text = "Score: "
+script = ExtResource("2_urhan")
