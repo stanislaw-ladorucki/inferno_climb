@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dx5m7mkwfim18" path="res://scenes/platform.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelChunkManager.cs" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/bg bs2.png" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/bg bs1.png" id="7_o6xl0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
@@ -57,3 +59,21 @@ shape = SubResource("WorldBoundaryShape2D_tbgi4")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/RightWall" unique_id=453308308]
 position = Vector2(450, 0)
 mesh = SubResource("QuadMesh_tbgi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=528979892]
+z_index = -9
+position = Vector2(3.0517578e-05, -146)
+scale = Vector2(0.33605614, 0.33605614)
+texture = ExtResource("7_o6xl0")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1783364739]
+z_index = -10
+texture_repeat = 2
+repeat_size = Vector2(0, 1850)
+autoscroll = Vector2(0, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=827360041]
+texture_repeat = 2
+position = Vector2(0, 310)
+scale = Vector2(0.34894273, 0.34894273)
+texture = ExtResource("6_tefeu")
