@@ -5,15 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://dx5m7mkwfim18" path="res://scenes/platform.tscn" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelChunkManager.cs" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
-[ext_resource type="Shader" uid="uid://bmj64yttdw7e6" path="res://scenes/vignette.gdshader" id="6_tefeu"]
+[ext_resource type="Shader" uid="uid://bmj64yttdw7e6" path="res://shaders/vignette.gdshader" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/bg bs1.png" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/bg bs2.png" id="8_tipki"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cwkq6"]
 shader = ExtResource("6_tefeu")
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
-[ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/bg bs2.png" id="6_tefeu"]
-[ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/bg bs1.png" id="7_o6xl0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
@@ -51,15 +51,15 @@ offset_right = -228.0
 offset_bottom = -291.0
 Player = NodePath("../../Player")
 
-[node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Walls" unique_id=1307600119]
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1307600119]
 material = SubResource("ShaderMaterial_cwkq6")
 offset_left = -301.0
 offset_top = -400.0
 offset_right = 300.0
 offset_bottom = 401.0
 color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
 
 [node name="LeftWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=2062775036]
 shape = SubResource("WorldBoundaryShape2D_jyhfs")
@@ -91,4 +91,4 @@ autoscroll = Vector2(0, 7)
 texture_repeat = 2
 position = Vector2(0, 310)
 scale = Vector2(0.34894273, 0.34894273)
-texture = ExtResource("6_tefeu")
+texture = ExtResource("8_tipki")
