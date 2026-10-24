@@ -23,6 +23,7 @@ public partial class LevelChunk : Node2D {
 	};
 
 	private static readonly PackedScene PlatformScene = GD.Load<PackedScene>("res://scenes/platform.tscn");
+	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item.tscn");
 	
 	public Vector2 Populate(Vector2 platformPosition) {
 		RandomNumberGenerator rng = new RandomNumberGenerator();
@@ -39,6 +40,13 @@ public partial class LevelChunk : Node2D {
 				// TDE: add a separate system for randomizing enemy placement
 				enemy.GlobalPosition = GetNewPlatformPosition(platformPosition, rng);
 				EnemyPool.RemoveAt(enemyIndex);
+			}
+			
+			// TDE: very, very rough implementation - only temporarily
+			if (rng.Randf() < 0.25) {
+				Node2D item = (Node2D)ItemScene.Instantiate();
+				AddChild(item);
+				item.GlobalPosition = platformPosition + Vector2.Up * 20;
 			}
 
 			if (platform.Position.Y <= -Size.Y) {

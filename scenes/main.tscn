@@ -9,12 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/bg bs1.png" id="7_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/bg bs2.png" id="8_tipki"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwkq6"]
-shader = ExtResource("6_tefeu")
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
 distance = -300.0
@@ -29,6 +23,12 @@ distance = -300.0
 [sub_resource type="QuadMesh" id="QuadMesh_tbgi4"]
 size = Vector2(300, 800)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwkq6"]
+shader = ExtResource("6_tefeu")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D" unique_id=1347739713]
 
 [node name="Platform" parent="." unique_id=1989971277 instance=ExtResource("3_jyhfs")]
@@ -39,41 +39,6 @@ ChunkGenerateMargin = 0.0
 
 [node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
 position = Vector2(0, -46)
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
-script = ExtResource("2_sugp2")
-Follow = NodePath("../Player")
-
-[node name="ScoreDisplay" parent="Camera2D" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
-offset_left = -285.0
-offset_top = -314.0
-offset_right = -228.0
-offset_bottom = -291.0
-Player = NodePath("../../Player")
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1307600119]
-material = SubResource("ShaderMaterial_cwkq6")
-offset_left = -301.0
-offset_top = -400.0
-offset_right = 300.0
-offset_bottom = 401.0
-color = Color(0, 0, 0, 1)
-
-[node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
-
-[node name="LeftWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=2062775036]
-shape = SubResource("WorldBoundaryShape2D_jyhfs")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/LeftWall" unique_id=2900875]
-position = Vector2(-450, 0)
-mesh = SubResource("QuadMesh_jyhfs")
-
-[node name="RightWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=664599751]
-shape = SubResource("WorldBoundaryShape2D_tbgi4")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/RightWall" unique_id=453308308]
-position = Vector2(450, 0)
-mesh = SubResource("QuadMesh_tbgi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=528979892]
 z_index = -9
@@ -92,3 +57,38 @@ texture_repeat = 2
 position = Vector2(0, 310)
 scale = Vector2(0.34894273, 0.34894273)
 texture = ExtResource("8_tipki")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
+script = ExtResource("2_sugp2")
+Follow = NodePath("../Player")
+
+[node name="ScoreDisplay" parent="Camera2D" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+offset_left = -285.0
+offset_top = -314.0
+offset_right = -228.0
+offset_bottom = -291.0
+Player = NodePath("../../Player")
+
+[node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
+
+[node name="LeftWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=2062775036]
+shape = SubResource("WorldBoundaryShape2D_jyhfs")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/LeftWall" unique_id=2900875]
+position = Vector2(-450, 0)
+mesh = SubResource("QuadMesh_jyhfs")
+
+[node name="RightWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=664599751]
+shape = SubResource("WorldBoundaryShape2D_tbgi4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/RightWall" unique_id=453308308]
+position = Vector2(450, 0)
+mesh = SubResource("QuadMesh_tbgi4")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1307600119]
+material = SubResource("ShaderMaterial_cwkq6")
+offset_left = -301.0
+offset_top = -400.0
+offset_right = 300.0
+offset_bottom = 401.0
+color = Color(0, 0, 0, 1)

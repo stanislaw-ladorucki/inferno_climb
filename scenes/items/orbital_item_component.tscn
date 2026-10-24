@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cthal21ro66tp"]
+
+[ext_resource type="Script" uid="uid://hwvpks2xdkat" path="res://src/items/components/OrbitalItemComponent.cs" id="1_rink5"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="2_rr0fx"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="3_hb4gi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hb4xq"]
+radius = 9.055386
+
+[node name="OrbitalItemComponent" type="Node2D" unique_id=1875687718]
+script = ExtResource("1_rink5")
+
+[node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("2_rr0fx")]
+position = Vector2(157, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Attack" unique_id=2090745003]
+scale = Vector2(0.1471973, 0.1471973)
+texture = ExtResource("3_hb4gi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=281200254]
+shape = SubResource("CircleShape2D_hb4xq")
