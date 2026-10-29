@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using Godot;
 
 namespace InfernoClimb.level;
@@ -16,9 +15,8 @@ public partial class LevelChunk : Node2D {
 	public List<PackedScene> EnemyPool = [];
 
 	private static readonly PackedScene PlatformScene = GD.Load<PackedScene>("res://scenes/platform.tscn");
-	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item.tscn");
 	
-	public Vector2 Populate(Vector2 startPosition) {
+	public Node2D[] Populate(Vector2 startPosition) {
 		using RandomNumberGenerator rng = new RandomNumberGenerator();
 		Node2D[] platforms = PopulateMainPlatformRoute(startPosition);
 
@@ -45,7 +43,7 @@ public partial class LevelChunk : Node2D {
 			platformIndex++;
 		}
 
-		return platforms[^1].GlobalPosition;
+		return platforms;
 	}
 
 	private Node2D[] PopulateMainPlatformRoute(Vector2 startPosition) {

@@ -15,6 +15,7 @@ public partial class LevelChunkManager : Node2D {
 	[Export] public Vector2 FinalPlatformMaxDistance = new (210, 100); // horizontal and vertical components
 	[Export] public float StartingRedundantPlatformRouteChance = 0.1f;
 	[Export] public float FinalRedundantPlatformRouteChance = 0.05f;
+	[Export] public float ItemsOccurrenceInterval = 500;
 
 	public List<PackedScene> EnemyPool = new();
 	public Stack<KeyValuePair<int, PackedScene[]>> EnemyPoolUpdateThresholds = new([
@@ -41,7 +42,9 @@ public partial class LevelChunkManager : Node2D {
 
 	private Vector2 _lastPlatformPosition;
 	private LevelChunk _lastChunk;
+	private float _nextItemHeight;
 
+	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item.tscn");
 	private static readonly PackedScene ChunkScene = GD.Load<PackedScene>("res://scenes/level_chunk.tscn");
 
 	public LevelChunk AddChunk() {
@@ -77,14 +80,28 @@ public partial class LevelChunkManager : Node2D {
 			Mathf.Lerp(StartingRedundantPlatformRouteChance, FinalRedundantPlatformRouteChance, difficulty);
 		
 		_lastChunk = chunk;
-		return _lastChunk;
+		return chunk;
+	}
+
+	public void PopulateItems(Node2D chunk, Node2D[] platforms) {
+		foreach (Node2D platform in platforms) {
+			if (-platform.GlobalPosition.Y >= _nextItemHeight) {
+				Node2D item = (Node2D)ItemScene.Instantiate();
+				chunk.AddChild(item);
+				item.GlobalPosition = platform.GlobalPosition;
+				_nextItemHeight += ItemsOccurrenceInterval;
+			}
+		}
 	}
 	
 	
 	public override void _Ready() {
 		LevelChunk chunk = AddChunk();
+		_nextItemHeight = ItemsOccurrenceInterval;
 		// first platform is generated at the origin of the manager node
-		_lastPlatformPosition = chunk.Populate(GlobalPosition);
+		Node2D[] platforms = chunk.Populate(GlobalPosition);
+		_lastPlatformPosition = platforms[^1].GlobalPosition;
+		PopulateItems(chunk, platforms);
 	}
 	
 	public override void _Process(double delta) {
@@ -95,7 +112,9 @@ public partial class LevelChunkManager : Node2D {
 		// generate the next chunk offscreen
 		if (cameraTop - ChunkGenerateMargin <= _lastChunk.GlobalPosition.Y - ChunkSize.Y) {
 			LevelChunk chunk = AddChunk();
-			_lastPlatformPosition = chunk.Populate(_lastPlatformPosition);
+			Node2D[] platforms = chunk.Populate(_lastPlatformPosition);
+			_lastPlatformPosition = platforms[^1].GlobalPosition;
+			PopulateItems(chunk, platforms);
 		}
 	}
 }
