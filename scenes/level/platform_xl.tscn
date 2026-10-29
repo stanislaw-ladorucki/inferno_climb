@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dptu1c6yfita0"]
+
+[ext_resource type="Script" uid="uid://bs1fti66psfw8" path="res://src/level/Platform.cs" id="1_4pb4j"]
+[ext_resource type="Texture2D" uid="uid://7pktb2kah5ht" path="res://assets/platform_md.png" id="1_p4mcn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4t87"]
+size = Vector2(203.05542, 20)
+
+[node name="Platform" type="StaticBody2D" unique_id=1989971277]
+scale = Vector2(0.9948024, 0.9631889)
+script = ExtResource("1_4pb4j")
+Size = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1691166240]
+scale = Vector2(0.9999999, 1.0000002)
+shape = SubResource("RectangleShape2D_v4t87")
+one_way_collision = true
+debug_color = Color(0, 0.6, 0.69803923, 0.53333336)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1135492073]
+offset_left = -101.43744
+offset_top = -10.0
+offset_right = 99.31683
+offset_bottom = 9.0
+scale = Vector2(1.0110129, 1.4405766)
+texture = ExtResource("1_p4mcn")

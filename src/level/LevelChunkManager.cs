@@ -8,6 +8,8 @@ public partial class LevelChunkManager : Node2D {
 	[Export] public Vector2 ChunkSize = new(600, 1000);
 	[Export] public float ChunkGenerateMargin = 200;
 	
+	[Export] public float ItemsOccurrenceInterval = 500;
+	
 	[Export] public float FinalPlatformDifficultyHeight = 14_000;
 	[Export] public Vector2 StartingPlatformMinDistance = new (10, 50); // horizontal and vertical components
 	[Export] public Vector2 StartingPlatformMaxDistance = new (120, 70); // horizontal and vertical components
@@ -15,7 +17,10 @@ public partial class LevelChunkManager : Node2D {
 	[Export] public Vector2 FinalPlatformMaxDistance = new (210, 100); // horizontal and vertical components
 	[Export] public float StartingRedundantPlatformRouteChance = 0.1f;
 	[Export] public float FinalRedundantPlatformRouteChance = 0.05f;
-	[Export] public float ItemsOccurrenceInterval = 500;
+	
+	[Export] public float[] StartingPlatformSpawnWeights = [0.25f, 2f, 0.5f, 0.25f]; // sm, md, lg, xl
+	[Export] public float[] FinalPlatformSpawnWeights = [2.5f, 1.5f, 0.25f, 0.125f]; // sm, md, lg, xl
+	
 
 	public List<PackedScene> EnemyPool = new();
 	public Stack<KeyValuePair<int, PackedScene[]>> EnemyPoolUpdateThresholds = new([
@@ -45,7 +50,7 @@ public partial class LevelChunkManager : Node2D {
 	private float _nextItemHeight;
 
 	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item.tscn");
-	private static readonly PackedScene ChunkScene = GD.Load<PackedScene>("res://scenes/level_chunk.tscn");
+	private static readonly PackedScene ChunkScene = GD.Load<PackedScene>("res://scenes/level/chunk.tscn");
 
 	public LevelChunk AddChunk() {
 		LevelChunk chunk = ChunkScene.Instantiate<LevelChunk>();
@@ -75,6 +80,12 @@ public partial class LevelChunkManager : Node2D {
 			Mathf.Lerp(StartingPlatformMaxDistance.X, FinalPlatformMaxDistance.X, difficulty),
 			Mathf.Lerp(StartingPlatformMaxDistance.Y, FinalPlatformMaxDistance.Y, difficulty)
 		);
+		chunk.PlatformSpawnWeights = [
+			Mathf.Lerp(StartingPlatformSpawnWeights[0], FinalPlatformSpawnWeights[0], difficulty),
+			Mathf.Lerp(StartingPlatformSpawnWeights[1], FinalPlatformSpawnWeights[1], difficulty),
+			Mathf.Lerp(StartingPlatformSpawnWeights[2], FinalPlatformSpawnWeights[2], difficulty),
+			Mathf.Lerp(StartingPlatformSpawnWeights[3], FinalPlatformSpawnWeights[3], difficulty),
+		];
 
 		chunk.RedundantPlatformRouteChance =
 			Mathf.Lerp(StartingRedundantPlatformRouteChance, FinalRedundantPlatformRouteChance, difficulty);
@@ -83,10 +94,10 @@ public partial class LevelChunkManager : Node2D {
 		return chunk;
 	}
 
-	public void PopulateItems(Node2D chunk, Node2D[] platforms) {
-		foreach (Node2D platform in platforms) {
+	public void PopulateItems(Node2D chunk, Platform[] platforms) {
+		foreach (Platform platform in platforms) {
 			if (-platform.GlobalPosition.Y >= _nextItemHeight) {
-				Node2D item = (Node2D)ItemScene.Instantiate();
+				Node2D item = ItemScene.Instantiate<Node2D>();
 				chunk.AddChild(item);
 				item.GlobalPosition = platform.GlobalPosition;
 				_nextItemHeight += ItemsOccurrenceInterval;
@@ -99,7 +110,7 @@ public partial class LevelChunkManager : Node2D {
 		LevelChunk chunk = AddChunk();
 		_nextItemHeight = ItemsOccurrenceInterval;
 		// first platform is generated at the origin of the manager node
-		Node2D[] platforms = chunk.Populate(GlobalPosition);
+		Platform[] platforms = chunk.Populate(GlobalPosition);
 		_lastPlatformPosition = platforms[^1].GlobalPosition;
 		PopulateItems(chunk, platforms);
 	}
@@ -112,7 +123,7 @@ public partial class LevelChunkManager : Node2D {
 		// generate the next chunk offscreen
 		if (cameraTop - ChunkGenerateMargin <= _lastChunk.GlobalPosition.Y - ChunkSize.Y) {
 			LevelChunk chunk = AddChunk();
-			Node2D[] platforms = chunk.Populate(_lastPlatformPosition);
+			Platform[] platforms = chunk.Populate(_lastPlatformPosition);
 			_lastPlatformPosition = platforms[^1].GlobalPosition;
 			PopulateItems(chunk, platforms);
 		}

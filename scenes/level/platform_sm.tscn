@@ -1,30 +1,26 @@
-[gd_scene format=3 uid="uid://dx5m7mkwfim18"]
+[gd_scene format=3 uid="uid://b8dehxjy78w7k"]
 
-[ext_resource type="Texture2D" uid="uid://gq1ihcv6ij2u" path="res://assets/platform bs1.png" id="1_ba0x2"]
+[ext_resource type="Texture2D" uid="uid://dblnh8yujl8io" path="res://assets/platform_sm.png" id="1_0n2yi"]
+[ext_resource type="Script" uid="uid://bs1fti66psfw8" path="res://src/level/Platform.cs" id="1_uk71a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4t87"]
-size = Vector2(100, 20)
-
-[sub_resource type="QuadMesh" id="QuadMesh_ba0x2"]
+size = Vector2(50.261246, 20)
 
 [node name="Platform" type="StaticBody2D" unique_id=1989971277]
 scale = Vector2(0.9948024, 0.9631889)
+script = ExtResource("1_uk71a")
+Size = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1691166240]
+scale = Vector2(0.99999976, 1.0000005)
 shape = SubResource("RectangleShape2D_v4t87")
 one_way_collision = true
 debug_color = Color(0, 0.6, 0.69803923, 0.53333336)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=646828202]
-visible = false
-position = Vector2(0, 4.7683716e-07)
-scale = Vector2(100, 19.999998)
-mesh = SubResource("QuadMesh_ba0x2")
-
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1135492073]
-offset_left = -50.0
+offset_left = -25.13063
 offset_top = -10.0
-offset_right = 49.0
+offset_right = 24.58313
 offset_bottom = 9.0
 scale = Vector2(1.0110129, 1.4405766)
-texture = ExtResource("1_ba0x2")
+texture = ExtResource("1_0n2yi")

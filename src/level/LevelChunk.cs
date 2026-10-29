@@ -11,19 +11,25 @@ public partial class LevelChunk : Node2D {
 	[Export] public int MinRedundantPlatformRouteLenght = 3;
 	[Export] public int MaxRedundantPlatformRouteLenght = 7;
 	[Export] public Vector2 CleanupClusterDistance = new (90, 50);
+	[Export] public float[] PlatformSpawnWeights = [1f, 1f, 1f, 1f];
 	
 	public List<PackedScene> EnemyPool = [];
 
-	private static readonly PackedScene PlatformScene = GD.Load<PackedScene>("res://scenes/platform.tscn");
+	private static readonly PackedScene[] PlatformScenes = [
+		GD.Load<PackedScene>("res://scenes/level/platform_sm.tscn"),
+		GD.Load<PackedScene>("res://scenes/level/platform_md.tscn"),
+		GD.Load<PackedScene>("res://scenes/level/platform_lg.tscn"),
+		GD.Load<PackedScene>("res://scenes/level/platform_xl.tscn"),
+	];
 	
-	public Node2D[] Populate(Vector2 startPosition) {
+	public Platform[] Populate(Vector2 startPosition) {
 		using RandomNumberGenerator rng = new RandomNumberGenerator();
-		Node2D[] platforms = PopulateMainPlatformRoute(startPosition);
+		Platform[] platforms = PopulateMainPlatformRoute(startPosition);
 
 		int platformIndex = 0;
-		foreach (Node2D platform in platforms) {
+		foreach (Platform platform in platforms) {
 			if (rng.Randf() < RedundantPlatformRouteChance) {
-				Node2D[] route = SpawnPlatformRoute(
+				Platform[] route = SpawnPlatformRoute(
 					startPosition: platform.GlobalPosition, maxHeight: Size.Y - platform.Position.Y,
 					maxPlatforms: rng.RandiRange(MinRedundantPlatformRouteLenght, MaxRedundantPlatformRouteLenght)
 				);
@@ -37,7 +43,7 @@ public partial class LevelChunk : Node2D {
 				Node2D enemy = EnemyPool[enemyIndex].Instantiate<Node2D>();
 				AddChild(enemy);
 				// TDE: add a separate system for randomizing enemy placement
-				enemy.GlobalPosition = GetNewPlatformPosition(platform.GlobalPosition, rng);
+				enemy.GlobalPosition = GetNewPlatformPosition(platform, rng);
 				EnemyPool.RemoveAt(enemyIndex);								
 			}
 			platformIndex++;
@@ -46,17 +52,15 @@ public partial class LevelChunk : Node2D {
 		return platforms;
 	}
 
-	private Node2D[] PopulateMainPlatformRoute(Vector2 startPosition) {
+	private Platform[] PopulateMainPlatformRoute(Vector2 startPosition) {
 		return SpawnPlatformRoute(startPosition, Size.Y);
 	}
 
-	private Node2D[] SpawnPlatformRoute(Vector2 startPosition, float maxHeight = 0, int maxPlatforms = 0) {
+	private Platform[] SpawnPlatformRoute(Vector2 startPosition, float maxHeight = 0, int maxPlatforms = 0) {
 		using RandomNumberGenerator rng = new RandomNumberGenerator();
-		List<Node2D> platforms = new();
-		Vector2 platformPosition = startPosition;
+		List<Platform> platforms = [CreatePlatform(startPosition)];
 		while (maxPlatforms == 0 || platforms.Count < maxPlatforms) {
-			Node2D platform = CreatePlatform(GetNewPlatformPosition(platformPosition, rng));
-			platformPosition = platform.GlobalPosition;
+			Platform platform = CreatePlatform(GetNewPlatformPosition(platforms[^1], rng));
 			platforms.Add(platform);
 			
 			if (maxHeight != 0 && platform.Position.Y <= startPosition.Y - maxHeight) {
@@ -66,11 +70,11 @@ public partial class LevelChunk : Node2D {
 		return platforms.ToArray();
 	}
 
-	private void CleanupClusteredPlatforms(Node2D[] toCleanup, Node2D[] mainPlatforms) {
-		foreach (Node2D platformA in toCleanup) {
-			foreach (Node2D platformB in mainPlatforms) {
+	private void CleanupClusteredPlatforms(Platform[] toCleanup, Platform[] mainPlatforms) {
+		foreach (Platform platformA in toCleanup) {
+			foreach (Platform platformB in mainPlatforms) {
 				Vector2 dist = (platformA.GlobalPosition - platformB.GlobalPosition).Abs();
-				if (dist.X <= CleanupClusterDistance.X && dist.Y <= CleanupClusterDistance.Y) {
+				if (dist.X <= CleanupClusterDistance.X + platformA.Size / 2 + platformB.Size / 2 && dist.Y <= CleanupClusterDistance.Y) {
 					platformA.QueueFree();
 					break;
 				} 
@@ -78,22 +82,23 @@ public partial class LevelChunk : Node2D {
 		}
 	}
 
-	private Vector2 GetNewPlatformPosition(Vector2 currentPlatformPosition, RandomNumberGenerator rng) {
+	private Vector2 GetNewPlatformPosition(Platform fromPlatform, RandomNumberGenerator rng) {
 		Vector2 offset = new(
-			rng.RandfRange(PlatformMinDistance.X, PlatformMaxDistance.X) * (rng.Randf() > 0.5 ? -1 : 1),
+			rng.RandfRange(PlatformMinDistance.X, PlatformMaxDistance.X) + fromPlatform.Size / 2 * (rng.Randf() > 0.5 ? -1 : 1),
 			- rng.RandfRange(PlatformMinDistance.Y, PlatformMaxDistance.Y)
 		);
 		
 		// make sure the platform does not exit the horizontal boundaries
 		// TDE: include platform width in this calculation
-		if ((currentPlatformPosition + offset).X < -Size.X / 2 || (currentPlatformPosition + offset).X > Size.X / 2) {
+		if ((fromPlatform.GlobalPosition + offset).X < -Size.X / 2 || (fromPlatform.GlobalPosition + offset).X > Size.X / 2) {
 			offset.X *= -1;
 		} 
-		return currentPlatformPosition + offset;
+		return fromPlatform.GlobalPosition + offset;
 	}
 
-	private Node2D CreatePlatform(Vector2 position) {
-		Node2D platform = PlatformScene.Instantiate<Node2D>();
+	private Platform CreatePlatform(Vector2 position) {
+		using RandomNumberGenerator rng = new RandomNumberGenerator();
+		Platform platform = PlatformScenes[rng.RandWeighted(PlatformSpawnWeights)].Instantiate<Platform>();
 		AddChild(platform);
 		platform.GlobalPosition = position;
 		return platform;
