@@ -33,6 +33,9 @@ public partial class LevelChunk : Node2D {
 					startPosition: platform.GlobalPosition, maxHeight: Size.Y - platform.Position.Y,
 					maxPlatforms: rng.RandiRange(MinRedundantPlatformRouteLenght, MaxRedundantPlatformRouteLenght)
 				);
+				foreach (Platform routePlatform in route) {
+					routePlatform.IsMainRoute = false;
+				}
 				CleanupClusteredPlatforms(route, platforms);
 			}
 			
@@ -84,7 +87,7 @@ public partial class LevelChunk : Node2D {
 
 	private Vector2 GetNewPlatformPosition(Platform fromPlatform, RandomNumberGenerator rng) {
 		Vector2 offset = new(
-			rng.RandfRange(PlatformMinDistance.X, PlatformMaxDistance.X) + fromPlatform.Size / 2 * (rng.Randf() > 0.5 ? -1 : 1),
+			(rng.RandfRange(PlatformMinDistance.X, PlatformMaxDistance.X) + fromPlatform.Size) / 2 * (rng.Randf() > 0.5 ? -1 : 1),
 			- rng.RandfRange(PlatformMinDistance.Y, PlatformMaxDistance.Y)
 		);
 		
