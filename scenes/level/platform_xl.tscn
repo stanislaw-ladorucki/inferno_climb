@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bs1fti66psfw8" path="res://src/level/Platform.cs" id="1_4pb4j"]
 [ext_resource type="Texture2D" uid="uid://7pktb2kah5ht" path="res://assets/platform_md.png" id="1_p4mcn"]
+[ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="2_ompn2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4t87"]
 size = Vector2(203.05542, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ompn2"]
+shader = ExtResource("2_ompn2")
 
 [node name="Platform" type="StaticBody2D" unique_id=1989971277]
 scale = Vector2(0.9948024, 0.9631889)
@@ -18,6 +22,7 @@ one_way_collision = true
 debug_color = Color(0, 0.6, 0.69803923, 0.53333336)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1135492073]
+material = SubResource("ShaderMaterial_ompn2")
 offset_left = -101.43744
 offset_top = -10.0
 offset_right = 99.31683

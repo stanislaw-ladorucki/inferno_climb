@@ -7,11 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 [ext_resource type="Shader" uid="uid://bmj64yttdw7e6" path="res://shaders/vignette.gdshader" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/bg bs1.png" id="7_o6xl0"]
+[ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/bg bs2.png" id="8_tipki"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
 distance = -300.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+shader = ExtResource("8_85g3d")
 
 [sub_resource type="QuadMesh" id="QuadMesh_jyhfs"]
 size = Vector2(300, 800)
@@ -19,6 +23,9 @@ size = Vector2(300, 800)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tbgi4"]
 normal = Vector2(-1, 0)
 distance = -300.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4ey"]
+shader = ExtResource("8_85g3d")
 
 [sub_resource type="QuadMesh" id="QuadMesh_tbgi4"]
 size = Vector2(300, 800)
@@ -75,14 +82,18 @@ Player = NodePath("../../Player")
 shape = SubResource("WorldBoundaryShape2D_jyhfs")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/LeftWall" unique_id=2900875]
-position = Vector2(-450, 0)
+material = SubResource("ShaderMaterial_choun")
+position = Vector2(-696.99994, 0)
+scale = Vector2(2.6466663, 1.67)
 mesh = SubResource("QuadMesh_jyhfs")
 
 [node name="RightWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=664599751]
 shape = SubResource("WorldBoundaryShape2D_tbgi4")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/RightWall" unique_id=453308308]
-position = Vector2(450, 0)
+material = SubResource("ShaderMaterial_ya4ey")
+position = Vector2(696.99994, 0)
+scale = Vector2(2.646667, 1.67)
 mesh = SubResource("QuadMesh_tbgi4")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1307600119]
