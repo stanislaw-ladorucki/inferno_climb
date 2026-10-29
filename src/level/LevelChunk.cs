@@ -15,11 +15,11 @@ public partial class LevelChunk : Node2D {
 	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item.tscn");
 	
 	public Vector2 Populate(Vector2 platformPosition) {
-		RandomNumberGenerator rng = new RandomNumberGenerator();
+		using RandomNumberGenerator rng = new RandomNumberGenerator();
 		while (true) {
 			Node2D platform = CreatePlatform(GetNewPlatformPosition(platformPosition, rng));
 			platformPosition = platform.GlobalPosition;
-			
+				
 			// chance for an additional platform that does not in itself lead to another platform
 			if (rng.Randf() <= RedundantPlatformChance) {
 				CreatePlatform(GetNewPlatformPosition(platformPosition + Vector2.Down * 100, rng));
@@ -35,7 +35,7 @@ public partial class LevelChunk : Node2D {
 				enemy.GlobalPosition = GetNewPlatformPosition(platformPosition, rng);
 				EnemyPool.RemoveAt(enemyIndex);
 			}
-			
+				
 			// TDE: very, very rough implementation - only temporarily
 			if (rng.Randf() < 0.25) {
 				Node2D item = (Node2D)ItemScene.Instantiate();

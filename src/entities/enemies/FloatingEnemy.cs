@@ -10,7 +10,7 @@ public partial class FloatingEnemy : BaseEnemy {
     
     public override void _PhysicsProcess(double delta) {
         if (GetTree().Root.GetCamera2D().IsInBounds(GlobalPosition, new Vector2(0, 200))) {
-            RandomNumberGenerator rng = new RandomNumberGenerator();
+            using RandomNumberGenerator rng = new RandomNumberGenerator();
             if (rng.Randf() < MoveChance) {
                 Velocity = Vector2.Right.Rotated(rng.Randf() * Mathf.Pi * 2) * Speed;
             }

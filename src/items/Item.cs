@@ -14,7 +14,7 @@ public partial class Item : Node2D {
 
     public void _OnBodyEntered(Node2D body) {
         if (body is Player player) {
-            RandomNumberGenerator rng = new();
+            using RandomNumberGenerator rng = new();
             ItemPool[(int)(rng.Randi() % ItemPool.Count)].Invoke(player);
             QueueFree();
         }

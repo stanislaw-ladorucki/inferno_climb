@@ -7,7 +7,7 @@ public partial class BouncingEnemy : BaseEnemy {
     [Export] public float Speed = 150;
     
     public override void _Ready() {
-        RandomNumberGenerator rng = new RandomNumberGenerator();
+        using RandomNumberGenerator rng = new RandomNumberGenerator();
         Velocity = new Vector2(
             rng.Randf() < 0.5 ? -1 : 1,
             rng.Randf() < 0.5 ? -1 : 1
