@@ -1,12 +1,11 @@
 using System;
-using System.Diagnostics;
 using Godot;
 
 namespace InfernoClimb.ui;
 
 public partial class VerticallyScrollingCamera : Camera2D {
 	[Export] public float ScrollingSpeed = 50;
-	[Export] public float MaxScrollingSpeed = 130;
+	[Export] public float MaxScrollingSpeed = 100;
 	[Export] public float ScrollingAcceleration = 0.5f;
 	
 	[Export] public Node2D Follow;
@@ -16,7 +15,6 @@ public partial class VerticallyScrollingCamera : Camera2D {
 	public override void _Process(double delta) {
 		ScrollingSpeed = Math.Min(MaxScrollingSpeed, ScrollingSpeed + ScrollingAcceleration * (float)delta);
 		Position += ScrollingSpeed * Vector2.Up * (float)delta;
-		Debug.WriteLine(ScrollingSpeed);
 
 		if (IsInstanceValid(Follow) && Follow.Position.Y <= GetScreenCenterPosition().Y + FollowMargin) {
 			Position = Position with {

@@ -9,12 +9,12 @@ public partial class LevelChunkManager : Node2D {
 	[Export] public float ChunkGenerateMargin = 200;
 	
 	[Export] public float FinalPlatformDifficultyHeight = 14_000;
-	[Export] public Vector2 StartingPlatformMinDistance = new (10, 20); // horizontal and vertical components
+	[Export] public Vector2 StartingPlatformMinDistance = new (10, 50); // horizontal and vertical components
 	[Export] public Vector2 StartingPlatformMaxDistance = new (120, 70); // horizontal and vertical components
-	[Export] public Vector2 FinalPlatformMinDistance = new (50, 30); // horizontal and vertical components
+	[Export] public Vector2 FinalPlatformMinDistance = new (50, 50); // horizontal and vertical components
 	[Export] public Vector2 FinalPlatformMaxDistance = new (210, 100); // horizontal and vertical components
-	[Export] public float StartingRedundantPlatformChange = 0.20f;
-	[Export] public float FinalRedundantPlatformChange = 0.01f;
+	[Export] public float StartingRedundantPlatformRouteChance = 0.1f;
+	[Export] public float FinalRedundantPlatformRouteChance = 0.05f;
 
 	public List<PackedScene> EnemyPool = new();
 	public Stack<KeyValuePair<int, PackedScene[]>> EnemyPoolUpdateThresholds = new([
@@ -73,8 +73,8 @@ public partial class LevelChunkManager : Node2D {
 			Mathf.Lerp(StartingPlatformMaxDistance.Y, FinalPlatformMaxDistance.Y, difficulty)
 		);
 
-		chunk.RedundantPlatformChance =
-			Mathf.Lerp(StartingRedundantPlatformChange, FinalRedundantPlatformChange, difficulty);
+		chunk.RedundantPlatformRouteChance =
+			Mathf.Lerp(StartingRedundantPlatformRouteChance, FinalRedundantPlatformRouteChance, difficulty);
 		
 		_lastChunk = chunk;
 		return _lastChunk;
@@ -97,7 +97,5 @@ public partial class LevelChunkManager : Node2D {
 			LevelChunk chunk = AddChunk();
 			_lastPlatformPosition = chunk.Populate(_lastPlatformPosition);
 		}
-		
-		// TDE: delete the chunks off the bottom of the screen  
 	}
 }
