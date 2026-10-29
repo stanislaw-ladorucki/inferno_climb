@@ -14,13 +14,13 @@ public partial class Player : Entity {
 
     [Export] public float EnemyJumpBounceForce = 550f; // when jump button is held, bounce higher
     [Export] public float EnemyBounceForce = 200f;
-    
-    public Attack JumpAttackHitbox;
 
-    public int Score = 0;  
+    private Attack _jumpAttackHitbox;
+
+    public int Score;  
     
     public override void _Ready() {
-        JumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
+        _jumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
     }
 
     public override void _PhysicsProcess(double delta)  {
@@ -56,18 +56,23 @@ public partial class Player : Entity {
         }
 
         // update attack hitbox
-        JumpAttackHitbox.Monitoring = Velocity.Y > 0; // hitbox collision disabled when not falling
+        _jumpAttackHitbox.Monitoring = Velocity.Y > 0; // hitbox collision disabled when not falling
         
         MoveAndSlide();
 
         Score = (int)Math.Max(Score, -Position.Y);
+
+        // quick-restart the game
+        if (Input.IsActionJustPressed("restart")) {
+            GetTree().ReloadCurrentScene();
+        }
     }
 
-    public void _OnJumpAttackHitboxHit(Node2D body) {
+    private void _OnJumpAttackHitboxHit(Node2D body) {
         Velocity = Velocity with { Y = Input.IsActionPressed("jump") ? -EnemyJumpBounceForce : -EnemyBounceForce };
     }
     
-    public bool CanJump() {
+    private bool CanJump() {
         // TDE: add coyote time
         return IsOnFloor();
     }
