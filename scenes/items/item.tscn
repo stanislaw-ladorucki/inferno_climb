@@ -9,11 +9,25 @@ radius = 4.1231055
 [node name="Item" type="Node2D" unique_id=1272907088]
 script = ExtResource("1_jgeia")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=101074005]
+position = Vector2(0.11999893, -18.880001)
+amount = 12
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 14.0
+initial_velocity_max = 21.0
+orbit_velocity_min = 0.3
+orbit_velocity_max = 0.3
+damping_min = 9.0
+damping_max = 9.0
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=318015760]
+position = Vector2(0.119998924, -18.88)
 scale = Vector2(0.07999998, 0.07999998)
 texture = ExtResource("2_fat2f")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1803524713]
+position = Vector2(0.11999893, -18.880001)
 collision_layer = 0
 collision_mask = 2
 
