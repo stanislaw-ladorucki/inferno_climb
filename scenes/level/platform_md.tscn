@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dx5m7mkwfim18"]
 
 [ext_resource type="Script" uid="uid://bs1fti66psfw8" path="res://src/level/Platform.cs" id="1_0nucr"]
-[ext_resource type="Texture2D" uid="uid://7pktb2kah5ht" path="res://assets/platform_md.png" id="1_ni2lk"]
+[ext_resource type="Texture2D" uid="uid://7pktb2kah5ht" path="res://assets/level/platform_md.png" id="1_ni2lk"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="2_268rf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4t87"]

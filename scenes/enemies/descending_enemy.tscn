@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crqjv3j3m1kd0"]
 
 [ext_resource type="Script" uid="uid://wg5t5by76gjw" path="res://src/entities/enemies/DescendingEnemy.cs" id="1_alg1b"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_dvym7"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_o4gok"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_dvym7"]
 
@@ -35,4 +36,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5uy6h")
 debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 
+[node name="Blood" parent="." unique_id=674090606 instance=ExtResource("2_dvym7")]
+
 [connection signal="Died" from="." to="." method="_OnDied"]
+[connection signal="Died" from="." to="Blood" method="_OnParentDied"]
