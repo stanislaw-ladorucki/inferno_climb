@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyastwow7n4gq"
-path="res://.godot/imported/krew.png-dc46be776f096d897905fbb8aa8078f5.ctex"
+uid="uid://c3vipuhdtrhjs"
+path="res://.godot/imported/BG BNW WIP.png-9e7b89b4b21f47538c3c3b37ec85d0c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/krew.png"
-dest_files=["res://.godot/imported/krew.png-dc46be776f096d897905fbb8aa8078f5.ctex"]
+source_file="res://assets/level/BG BNW WIP.png"
+dest_files=["res://.godot/imported/BG BNW WIP.png-9e7b89b4b21f47538c3c3b37ec85d0c2.ctex"]
 
 [params]
 

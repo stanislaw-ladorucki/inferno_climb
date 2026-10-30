@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bveh6tlkn8uga"
-path="res://.godot/imported/bg BNW ENTRY1.png-bb320b22433675d6e4dc87ddd032b17e.ctex"
+path="res://.godot/imported/bg BNW ENTRY1.png-0eb2d96f6b1971934f5701c1ef83e26a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg BNW ENTRY1.png"
-dest_files=["res://.godot/imported/bg BNW ENTRY1.png-bb320b22433675d6e4dc87ddd032b17e.ctex"]
+source_file="res://assets/level/bg BNW ENTRY1.png"
+dest_files=["res://.godot/imported/bg BNW ENTRY1.png-0eb2d96f6b1971934f5701c1ef83e26a.ctex"]
 
 [params]
 

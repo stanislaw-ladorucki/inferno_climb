@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bp8j33gsgt4q1"]
 
 [ext_resource type="Script" uid="uid://xfg7mqmb3po1" path="res://src/entities/enemies/BouncingEnemy.cs" id="1_kf7d8"]
-[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/blood.tscn" id="2_76c8y"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_76c8y"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_a3jrg"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_76c8y"]
 
