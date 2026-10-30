@@ -1,4 +1,3 @@
-
 using Godot;
 using InfernoClimb.entities.attacks;
 
@@ -8,7 +7,7 @@ public partial class Entity : CharacterBody2D {
 	[Export] public float Health = 1;
 	[Export] public float KnockbackMultiplier = 1;
 	[Export] public PackedScene BloodScene;
-
+	
 	public bool IsDead {
 		get => Health <= 0;
 		set => Health = value ? 0 : Health;
@@ -16,7 +15,7 @@ public partial class Entity : CharacterBody2D {
 
 	[Signal]
 	public delegate void HitEventHandler(Node2D attack, float totalIncomingDamage);
-
+	
 	[Signal]
 	public delegate void DiedEventHandler();
 
@@ -24,7 +23,6 @@ public partial class Entity : CharacterBody2D {
 		Health -= damage;
 		ApplyKnockback(knockback, knockbackMode);
 		EmitSignalHit(attack, damage);
-
 		if (IsDead) {
 			Die();
 		}
@@ -32,8 +30,10 @@ public partial class Entity : CharacterBody2D {
 
 	public void ApplyKnockback(Vector2 knockback, KnockbackMode knockbackMode) {
 		if (KnockbackMultiplier == 0)
+			// When knockback multiplier is set to zero, the entity should be immune.
+			// Make sure that the entity won't become staggered by a `Set` mode knockback, with a zero strength.
 			return;
-
+		
 		switch (knockbackMode) {
 			case KnockbackMode.Set:
 				Velocity = knockback * KnockbackMultiplier;
@@ -46,13 +46,13 @@ public partial class Entity : CharacterBody2D {
 
 	public void Die() {
 		if (BloodScene != null) {
-			CpuParticles2D blood = BloodScene.Instantiate<CpuParticles2D>();
-			GetTree().CurrentScene.AddChild(blood);
-			blood.GlobalPosition = GlobalPosition;
-			blood.Emitting = true;
-		}
+		CpuParticles2D blood = BloodScene.Instantiate<CpuParticles2D>();
+		GetTree().CurrentScene.AddChild(blood);
+		blood.GlobalPosition = GlobalPosition;
+		blood.Emitting = true;
+	}
 
-		EmitSignalDied();
-		QueueFree();
+	EmitSignalDied();
+	QueueFree();
 	}
 }

@@ -9,8 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/bg bs1.png" id="7_o6xl0"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/bg bs2.png" id="8_tipki"]
-[ext_resource type="Texture2D" uid="uid://cyastwow7n4gq" path="res://assets/krew.png" id="10_ya4ey"]
-[ext_resource type="Script" uid="uid://xhyfw6nojr4o" path="res://scenes/blood.gd" id="11_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="10_choun"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
@@ -106,27 +105,6 @@ offset_right = 300.0
 offset_bottom = 401.0
 color = Color(0, 0, 0, 1)
 
-[node name="Blood" type="CPUParticles2D" parent="." unique_id=1931139969]
-position = Vector2(0.9999962, -46)
-scale = Vector2(0.3, 0.3)
-amount = 32
-texture = ExtResource("10_ya4ey")
-lifetime = 0.2
-explosiveness = 1.0
-randomness = 1.0
-local_coords = true
-spread = 25.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 1000.0
-scale_amount_min = 0.0
-scale_amount_max = 0.1
-color = Color(0.61, 0, 0, 1)
-script = ExtResource("11_eb6dy")
-
-[node name="Timer" type="Timer" parent="Blood" unique_id=977098737]
-wait_time = 0.15
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Blood/Timer" to="Blood" method="_on_timer_timeout"]
+[node name="Blood" parent="." unique_id=1533735629 instance=ExtResource("10_choun")]
+position = Vector2(-1180, 137)
+script = null
