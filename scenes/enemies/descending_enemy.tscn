@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crqjv3j3m1kd0"]
 
 [ext_resource type="Script" uid="uid://wg5t5by76gjw" path="res://src/entities/enemies/DescendingEnemy.cs" id="1_alg1b"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/blood.tscn" id="2_dvym7"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_o4gok"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_dvym7"]
 
@@ -14,6 +15,7 @@ size = Vector2(28, 18)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_alg1b")
+BloodScene = ExtResource("2_dvym7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
 modulate = Color(0.17254902, 1, 0.47058824, 1)
