@@ -6,7 +6,6 @@ namespace InfernoClimb.entities;
 public partial class Entity : CharacterBody2D {
 	[Export] public float Health = 1;
 	[Export] public float KnockbackMultiplier = 1;
-	[Export] public PackedScene BloodScene;
 	
 	public bool IsDead {
 		get => Health <= 0;
@@ -45,14 +44,7 @@ public partial class Entity : CharacterBody2D {
 	}
 
 	public void Die() {
-		if (BloodScene != null) {
-		CpuParticles2D blood = BloodScene.Instantiate<CpuParticles2D>();
-		GetTree().CurrentScene.AddChild(blood);
-		blood.GlobalPosition = GlobalPosition;
-		blood.Emitting = true;
-	}
-
-	EmitSignalDied();
-	QueueFree();
+		EmitSignalDied();
+		QueueFree();
 	}
 }

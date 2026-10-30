@@ -14,7 +14,6 @@ size = Vector2(28, 18)
 [node name="BouncingEnemy" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
 script = ExtResource("1_kf7d8")
-BloodScene = ExtResource("2_76c8y")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
 modulate = Color(1, 0.28235295, 0.49803922, 1)
@@ -35,4 +34,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5uy6h")
 debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 
+[node name="Blood" parent="." unique_id=674090606 instance=ExtResource("2_76c8y")]
+
 [connection signal="Died" from="." to="." method="_OnDied"]
+[connection signal="Died" from="." to="Blood" method="_OnParentDied"]

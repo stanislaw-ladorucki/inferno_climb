@@ -15,7 +15,6 @@ size = Vector2(28, 18)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_alg1b")
-BloodScene = ExtResource("2_dvym7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
 modulate = Color(0.17254902, 1, 0.47058824, 1)
@@ -37,4 +36,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5uy6h")
 debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 
+[node name="Blood" parent="." unique_id=674090606 instance=ExtResource("2_dvym7")]
+
 [connection signal="Died" from="." to="." method="_OnDied"]
+[connection signal="Died" from="." to="Blood" method="_OnParentDied"]

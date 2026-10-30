@@ -1,28 +1,25 @@
 [gd_scene format=3 uid="uid://cco3pk2qcpb4l"]
 
-[ext_resource type="Texture2D" uid="uid://cyastwow7n4gq" path="res://assets/krew.png" id="1_egguc"]
-[ext_resource type="Script" uid="uid://xhyfw6nojr4o" path="res://src/effects/blood.gd" id="2_44b8w"]
+[ext_resource type="Texture2D" uid="uid://cyastwow7n4gq" path="res://assets/effects/blood.png" id="1_egguc"]
+[ext_resource type="Script" uid="uid://lnbdu8kg82ro" path="res://src/effects/Blood.cs" id="2_egguc"]
 
 [node name="Blood" type="CPUParticles2D" unique_id=674090606]
 scale = Vector2(0.3, 0.3)
+emitting = false
 amount = 32
 texture = ExtResource("1_egguc")
 lifetime = 0.2
+one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
-spread = 25.0
+spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 1.0
 initial_velocity_max = 1000.0
 scale_amount_min = 0.0
 scale_amount_max = 0.1
 color = Color(0.61, 0, 0, 1)
-script = ExtResource("2_44b8w")
+script = ExtResource("2_egguc")
 
-[node name="Timer" type="Timer" parent="." unique_id=489638887]
-wait_time = 0.15
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="." to="." method="_OnFinished"]
