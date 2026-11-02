@@ -16,11 +16,13 @@ public partial class Player : Entity {
 	[Export] public float EnemyBounceForce = 200f;
 
 	private Attack _jumpAttackHitbox;
-
+	private AnimatedSprite2D _sprite;
+	
 	public int Score;  
 	
 	public override void _Ready() {
 		_jumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
+		_sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 
 	public override void _PhysicsProcess(double delta)  {
@@ -58,6 +60,8 @@ public partial class Player : Entity {
 		// update attack hitbox
 		_jumpAttackHitbox.Monitoring = Velocity.Y > 0; // hitbox collision disabled when not falling
 		
+		UpdateSprite(horizontalInput);
+		
 		MoveAndSlide();
 
 		Score = (int)Math.Max(Score, -Position.Y);
@@ -65,6 +69,29 @@ public partial class Player : Entity {
 		// quick-restart the game
 		if (Input.IsActionJustPressed("restart")) {
 			GetTree().ReloadCurrentScene();
+		}
+	}
+	
+	private void UpdateSprite(float horizontalInput) {
+		if (IsOnFloor()) {
+			if (Math.Abs(horizontalInput) > 0) {
+				_sprite.Play("walk");
+			}
+			else {
+				_sprite.Play("idle");
+			}
+		}
+		else {
+			if (Velocity.Y < 0) {
+				_sprite.Play("jump");
+			} else {
+				_sprite.Play("fall");
+			}
+		}
+		
+		// update player facing direction
+		if (horizontalInput != 0) {
+			_sprite.FlipH = horizontalInput < 0;
 		}
 	}
 

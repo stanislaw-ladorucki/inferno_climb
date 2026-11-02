@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://d1a8hf7r5vcp2"]
 
 [ext_resource type="Script" uid="uid://7unpoydrc25p" path="res://src/entities/Player.cs" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_g2els"]
+[ext_resource type="SpriteFrames" uid="uid://c6b3ifujq1mdw" path="res://assets/sprites/player.tres" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(22, 22)
+size = Vector2(22, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(16, 16)
@@ -14,9 +14,12 @@ size = Vector2(16, 16)
 collision_layer = 2
 script = ExtResource("1_g2els")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_g2els")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2063675855]
+scale = Vector2(0.14627062, 0.14627062)
+sprite_frames = ExtResource("2_qhqgy")
+animation = &"fall"
+autoplay = "idle"
+frame_progress = 0.041727033
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
 shape = SubResource("RectangleShape2D_qhqgy")
@@ -28,7 +31,7 @@ KnockbackAngle = 1
 KnockbackVector = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpAttackHitbox" unique_id=2107815232]
-position = Vector2(0, 12)
+position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_dqkch")
 
 [connection signal="Hit" from="JumpAttackHitbox" to="." method="_OnJumpAttackHitboxHit"]
