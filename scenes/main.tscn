@@ -110,13 +110,6 @@ texture = ExtResource("5_85g3d")
 script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
 
-[node name="ScoreDisplay" parent="Camera2D" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
-offset_left = -285.0
-offset_top = -314.0
-offset_right = -228.0
-offset_bottom = -291.0
-Player = NodePath("../../Player")
-
 [node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
 
 [node name="LeftWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=2062775036]
@@ -157,3 +150,11 @@ offset_right = 302.0
 offset_bottom = 326.0
 rotation = 6.2831855
 texture = SubResource("GradientTexture2D_xf4jf")
+
+[node name="ScoreDisplay" parent="Camera2D" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+offset_left = -285.0
+offset_top = -314.0
+offset_right = -228.0
+offset_bottom = -291.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+Player = NodePath("../../Player")

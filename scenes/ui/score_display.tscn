@@ -7,5 +7,6 @@
 offset_right = 40.0
 offset_bottom = 23.0
 theme = ExtResource("1_ad7uf")
+theme_override_constants/outline_size = 7
 text = "Score: "
 script = ExtResource("2_urhan")
