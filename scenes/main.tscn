@@ -109,6 +109,7 @@ texture = ExtResource("5_85g3d")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
+FollowLerp = 0.4
 
 [node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
 
