@@ -3,12 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://d1a8hf7r5vcp2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyScrollingCamera.cs" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dx5m7mkwfim18" path="res://scenes/level/platform_md.tscn" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://bveh6tlkn8uga" path="res://assets/level/bg BNW ENTRY1.png" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelChunkManager.cs" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 [ext_resource type="Shader" uid="uid://bmj64yttdw7e6" path="res://shaders/vignette.gdshader" id="6_tefeu"]
-[ext_resource type="Texture2D" uid="uid://n78ry88i8mvv" path="res://assets/level/bg bs1.png" id="7_o6xl0"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
-[ext_resource type="Texture2D" uid="uid://bp0phqma8lqkx" path="res://assets/level/bg bs2.png" id="8_tipki"]
+[ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
+shader = ExtResource("8_85g3d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xf4jf"]
+shader = ExtResource("8_85g3d")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
 normal = Vector2(1, 0)
@@ -36,6 +44,21 @@ shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fl36j"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_choun"]
+offsets = PackedFloat32Array(0, 0.44581282, 0.8497537, 1)
+colors = PackedColorArray(0.2045311, 2.3872852e-05, 0.796204, 1, 0.42000002, 0.9516666, 1, 1, 1, 0.34367234, 0.6155142, 1, 1, 0.23000002, 0.31983346, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xf4jf"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_choun")
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+repeat = 2
+metadata/_snap_count = 6
+
 [node name="Main" type="Node2D" unique_id=1347739713]
 
 [node name="Platform" parent="." unique_id=1989971277 instance=ExtResource("3_jyhfs")]
@@ -51,7 +74,25 @@ position = Vector2(0, -46)
 z_index = -9
 position = Vector2(3.0517578e-05, -146)
 scale = Vector2(0.33605614, 0.33605614)
-texture = ExtResource("7_o6xl0")
+texture = ExtResource("4_85g3d")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1657615070]
+repeat_size = Vector2(0, 1590)
+autoscroll = Vector2(0, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2012383381]
+z_index = 1
+material = SubResource("ShaderMaterial_eb6dy")
+position = Vector2(-491, 123)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("9_choun")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=27230040]
+z_index = 1
+material = SubResource("ShaderMaterial_xf4jf")
+position = Vector2(491, 125)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("10_ya4ey")
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1783364739]
 z_index = -10
@@ -63,7 +104,7 @@ autoscroll = Vector2(0, 7)
 texture_repeat = 2
 position = Vector2(0, 310)
 scale = Vector2(0.34894273, 0.34894273)
-texture = ExtResource("8_tipki")
+texture = ExtResource("5_85g3d")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 script = ExtResource("2_sugp2")
@@ -82,18 +123,21 @@ Player = NodePath("../../Player")
 shape = SubResource("WorldBoundaryShape2D_jyhfs")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/LeftWall" unique_id=2900875]
+visible = false
+z_index = 1
 material = SubResource("ShaderMaterial_choun")
-position = Vector2(-696.99994, 0)
-scale = Vector2(2.6466663, 1.67)
+position = Vector2(-477, 0)
+scale = Vector2(1.22, 1.67)
 mesh = SubResource("QuadMesh_jyhfs")
 
 [node name="RightWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=664599751]
 shape = SubResource("WorldBoundaryShape2D_tbgi4")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/RightWall" unique_id=453308308]
+visible = false
 material = SubResource("ShaderMaterial_ya4ey")
-position = Vector2(696.99994, 0)
-scale = Vector2(2.646667, 1.67)
+position = Vector2(478.5, 0)
+scale = Vector2(1.2633333, 1.67)
 mesh = SubResource("QuadMesh_tbgi4")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1307600119]
@@ -103,3 +147,13 @@ offset_top = -400.0
 offset_right = 300.0
 offset_bottom = 401.0
 color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D" unique_id=1113447187]
+z_index = -9
+material = SubResource("CanvasItemMaterial_fl36j")
+offset_left = -300.0
+offset_top = -323.0
+offset_right = 302.0
+offset_bottom = 326.0
+rotation = 6.2831855
+texture = SubResource("GradientTexture2D_xf4jf")
