@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://x8v0ub2nj8k8"]
+
+[ext_resource type="Script" uid="uid://rg45qlqgbaxt" path="res://src/items/components/CaesarsSalad.cs" id="1_m01cu"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="1_w40j5"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_jgo8e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb4xq"]
+size = Vector2(20, 6)
+
+[sub_resource type="Animation" id="Animation_m01cu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftDaggerAttack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDaggerAttack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftDaggerAttack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8i1iq"]
+resource_name = "showhide"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDaggerAttack:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(25, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightDaggerAttack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.125, 0.25),
+"transitions": PackedFloat32Array(1, 0.26794344),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftDaggerAttack/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftDaggerAttack:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-25, 0), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LeftDaggerAttack:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.125, 0.25),
+"transitions": PackedFloat32Array(1, 0.26794344),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywi3m"]
+_data = {
+&"RESET": SubResource("Animation_m01cu"),
+&"showhide": SubResource("Animation_8i1iq")
+}
+
+[node name="CaesarsSalad" type="Node2D" unique_id=1542670670]
+script = ExtResource("1_m01cu")
+
+[node name="LeftDaggerAttack" parent="." unique_id=2088546204 instance=ExtResource("1_w40j5")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDaggerAttack" unique_id=1911951317]
+position = Vector2(-1.1368684e-13, 0)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_hb4xq")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftDaggerAttack" unique_id=956673769]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(0.15999985, 0.039999843)
+texture = ExtResource("2_jgo8e")
+
+[node name="RightDaggerAttack" parent="." unique_id=971470508 instance=ExtResource("1_w40j5")]
+position = Vector2(25, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDaggerAttack" unique_id=1625512186]
+position = Vector2(-1.1368684e-13, 0)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_hb4xq")
+
+[node name="Sprite2D" type="Sprite2D" parent="RightDaggerAttack" unique_id=1117524026]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(0.15999985, 0.039999843)
+texture = ExtResource("2_jgo8e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=292854484]
+libraries/ = SubResource("AnimationLibrary_ywi3m")
+autoplay = &"showhide"

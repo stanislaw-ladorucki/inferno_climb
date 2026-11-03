@@ -49,7 +49,7 @@ public partial class LevelChunkManager : Node2D {
 	private LevelChunk _lastChunk;
 	private float _nextItemHeight;
 
-	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item.tscn");
+	private static readonly PackedScene ItemScene = GD.Load<PackedScene>("res://scenes/items/item_pickup.tscn");
 	private static readonly PackedScene ChunkScene = GD.Load<PackedScene>("res://scenes/level/chunk.tscn");
 
 	public LevelChunk AddChunk() {

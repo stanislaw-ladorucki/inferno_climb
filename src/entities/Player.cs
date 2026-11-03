@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using InfernoClimb.entities.attacks;
+using InfernoClimb.items;
 
 namespace InfernoClimb.entities;
 
@@ -18,7 +20,7 @@ public partial class Player : Entity {
 	private Attack _jumpAttackHitbox;
 	private AnimatedSprite2D _sprite;
 	
-	public int Score;  
+	public int Score;
 	
 	public override void _Ready() {
 		_jumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
@@ -102,5 +104,20 @@ public partial class Player : Entity {
 	private bool CanJump() {
 		// TDE: add coyote time
 		return IsOnFloor();
+	}
+
+	public ItemComponent GetItem(ItemDefinition itemDefinition) {
+		foreach (Node child in GetChildren()) {
+			if (child is ItemComponent item) {
+				if (item.Definition == itemDefinition) {
+					return item;
+				}
+			}
+		}
+		return null;
+	}
+
+	public bool HasItem(ItemDefinition itemDefinition) {
+		return GetItem(itemDefinition) != null;
 	}
 }
