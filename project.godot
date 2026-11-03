@@ -61,3 +61,14 @@ restart={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+background_gradient={
+"type": "sampler2D",
+"value": "res://assets/background_gradient.tres"
+}
+foreground_gradient={
+"type": "sampler2D",
+"value": "res://assets/foreground_gradient.tres"
+}

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ddpgwqt4p0dyw"]
 
 [ext_resource type="PackedScene" uid="uid://d1a8hf7r5vcp2" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Shader" uid="uid://di77l3k1jdnfa" path="res://shaders/level_bg.gdshader" id="1_ya4ey"]
 [ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyScrollingCamera.cs" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://dx5m7mkwfim18" path="res://scenes/level/platform_md.tscn" id="3_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://bveh6tlkn8uga" path="res://assets/level/bg BNW ENTRY1.png" id="4_85g3d"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelChunkManager.cs" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
@@ -12,150 +12,110 @@
 [ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+shader = ExtResource("1_ya4ey")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4ey"]
+shader = ExtResource("1_ya4ey")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
+normal = Vector2(1, 0)
+distance = -300.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tbgi4"]
+normal = Vector2(-1, 0)
+distance = -300.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hb4xq"]
+distance = -60.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
 shader = ExtResource("8_85g3d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xf4jf"]
 shader = ExtResource("8_85g3d")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
-normal = Vector2(1, 0)
-distance = -300.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
-shader = ExtResource("8_85g3d")
-
-[sub_resource type="QuadMesh" id="QuadMesh_jyhfs"]
-size = Vector2(300, 800)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tbgi4"]
-normal = Vector2(-1, 0)
-distance = -300.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4ey"]
-shader = ExtResource("8_85g3d")
-
-[sub_resource type="QuadMesh" id="QuadMesh_tbgi4"]
-size = Vector2(300, 800)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwkq6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
 shader = ExtResource("6_tefeu")
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fl36j"]
-blend_mode = 3
-
-[sub_resource type="Gradient" id="Gradient_choun"]
-offsets = PackedFloat32Array(0, 0.44581282, 0.8497537, 1)
-colors = PackedColorArray(0.2045311, 2.3872852e-05, 0.796204, 1, 0.42000002, 0.9516666, 1, 1, 1, 0.34367234, 0.6155142, 1, 1, 0.23000002, 0.31983346, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xf4jf"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_choun")
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-repeat = 2
-metadata/_snap_count = 6
-
 [node name="Main" type="Node2D" unique_id=1347739713]
 
-[node name="Platform" parent="." unique_id=1989971277 instance=ExtResource("3_jyhfs")]
+[node name="StaticEnvironment" type="Node2D" parent="." unique_id=1493180632]
 
-[node name="PlatformingChunkManager" type="Node2D" parent="." unique_id=1814566028]
-script = ExtResource("4_tbgi4")
-ChunkGenerateMargin = 0.0
+[node name="BackgroundParalax" type="Parallax2D" parent="StaticEnvironment" unique_id=1783364739]
+z_index = -10
+texture_repeat = 2
+scroll_scale = Vector2(1, 0.7)
+repeat_size = Vector2(0, 1850)
 
-[node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
-position = Vector2(0, -46)
+[node name="BackgroundSprite" type="Sprite2D" parent="StaticEnvironment/BackgroundParalax" unique_id=827360041]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_choun")
+position = Vector2(0, 310)
+scale = Vector2(0.34894273, 0.34894273)
+texture = ExtResource("5_85g3d")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=528979892]
+[node name="FloorSprite" type="Sprite2D" parent="StaticEnvironment" unique_id=528979892]
 z_index = -9
-position = Vector2(3.0517578e-05, -146)
+material = SubResource("ShaderMaterial_ya4ey")
+position = Vector2(0, -360)
 scale = Vector2(0.33605614, 0.33605614)
 texture = ExtResource("4_85g3d")
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1657615070]
-repeat_size = Vector2(0, 1590)
-autoscroll = Vector2(0, 4)
+[node name="Walls" type="StaticBody2D" parent="StaticEnvironment" unique_id=763485334]
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=2012383381]
+[node name="LeftWallCollisionShape" type="CollisionShape2D" parent="StaticEnvironment/Walls" unique_id=2062775036]
+shape = SubResource("WorldBoundaryShape2D_jyhfs")
+
+[node name="RightWallCollisionShape" type="CollisionShape2D" parent="StaticEnvironment/Walls" unique_id=664599751]
+shape = SubResource("WorldBoundaryShape2D_tbgi4")
+
+[node name="FloorCollisionShape" type="CollisionShape2D" parent="StaticEnvironment/Walls" unique_id=1644488206]
+shape = SubResource("WorldBoundaryShape2D_hb4xq")
+
+[node name="WallsParalax" type="Parallax2D" parent="StaticEnvironment/Walls" unique_id=1657615070]
+repeat_size = Vector2(0, 1590)
+
+[node name="LeftWallSprite" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=2012383381]
 z_index = 1
 material = SubResource("ShaderMaterial_eb6dy")
 position = Vector2(-491, 123)
 scale = Vector2(0.17, 0.17)
 texture = ExtResource("9_choun")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=27230040]
+[node name="RightWallSprite" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=27230040]
 z_index = 1
 material = SubResource("ShaderMaterial_xf4jf")
 position = Vector2(491, 125)
 scale = Vector2(0.17, 0.17)
 texture = ExtResource("10_ya4ey")
 
-[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1783364739]
-z_index = -10
-texture_repeat = 2
-repeat_size = Vector2(0, 1850)
-autoscroll = Vector2(0, 7)
+[node name="PlatformingChunkManager" type="Node2D" parent="." unique_id=1814566028]
+script = ExtResource("4_tbgi4")
+ChunkGenerateMargin = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=827360041]
-texture_repeat = 2
-position = Vector2(0, 310)
-scale = Vector2(0.34894273, 0.34894273)
-texture = ExtResource("5_85g3d")
+[node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
 FollowLerp = 0.4
 
-[node name="Walls" type="StaticBody2D" parent="Camera2D" unique_id=763485334]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=648844377]
 
-[node name="LeftWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=2062775036]
-shape = SubResource("WorldBoundaryShape2D_jyhfs")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/LeftWall" unique_id=2900875]
-visible = false
-z_index = 1
-material = SubResource("ShaderMaterial_choun")
-position = Vector2(-477, 0)
-scale = Vector2(1.22, 1.67)
-mesh = SubResource("QuadMesh_jyhfs")
-
-[node name="RightWall" type="CollisionShape2D" parent="Camera2D/Walls" unique_id=664599751]
-shape = SubResource("WorldBoundaryShape2D_tbgi4")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera2D/Walls/RightWall" unique_id=453308308]
-visible = false
-material = SubResource("ShaderMaterial_ya4ey")
-position = Vector2(478.5, 0)
-scale = Vector2(1.2633333, 1.67)
-mesh = SubResource("QuadMesh_tbgi4")
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=1307600119]
-material = SubResource("ShaderMaterial_cwkq6")
-offset_left = -301.0
-offset_top = -400.0
-offset_right = 300.0
-offset_bottom = 401.0
-color = Color(0, 0, 0, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Camera2D" unique_id=1113447187]
-z_index = -9
-material = SubResource("CanvasItemMaterial_fl36j")
-offset_left = -300.0
-offset_top = -323.0
-offset_right = 302.0
-offset_bottom = 326.0
-rotation = 6.2831855
-texture = SubResource("GradientTexture2D_xf4jf")
-
-[node name="ScoreDisplay" parent="Camera2D" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
-offset_left = -285.0
-offset_top = -314.0
-offset_right = -228.0
-offset_bottom = -291.0
+[node name="ScoreDisplay" parent="HUD" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+offset_right = 57.0
+offset_bottom = 15.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 Player = NodePath("../../Player")
+
+[node name="Vignette" type="CenterContainer" parent="HUD" unique_id=1707153655]
+material = SubResource("ShaderMaterial_trceg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
