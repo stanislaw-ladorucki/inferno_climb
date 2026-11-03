@@ -93,7 +93,10 @@ public partial class LevelChunk : Node2D {
 		
 		// make sure the platform does not exit the horizontal boundaries
 		// TDE: include platform width in this calculation
-		if ((fromPlatform.GlobalPosition + offset).X < -Size.X / 2 || (fromPlatform.GlobalPosition + offset).X > Size.X / 2) {
+		if (
+			(fromPlatform.GlobalPosition + offset).X - fromPlatform.Size / 2 < -Size.X / 2 ||
+			(fromPlatform.GlobalPosition + offset).X + fromPlatform.Size / 2 > Size.X / 2
+		) {
 			offset.X *= -1;
 		} 
 		return fromPlatform.GlobalPosition + offset;
