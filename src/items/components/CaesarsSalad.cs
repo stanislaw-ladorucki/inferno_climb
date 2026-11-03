@@ -18,6 +18,9 @@ public partial class CaesarsSalad : ItemComponent {
     }
 
     public override void AddStack() {
-        Scale += Vector2.One * 0.5f;
+        base.AddStack();
+        if (Stack > 1) {
+            Scale += Vector2.One * 0.5f;
+        }
     }
 }

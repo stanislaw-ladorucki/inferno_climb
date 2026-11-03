@@ -18,6 +18,7 @@ public partial class ItemPickup : Node2D {
 
     public static readonly List<ItemDefinition> ItemPool = [
         GD.Load<ItemDefinition>("res://resources/items/caesar_salad.tres"),
+        GD.Load<ItemDefinition>("res://resources/items/apple_of_eden.tres"),
     ];
 
     public void _OnBodyEntered(Node2D body) {
@@ -28,7 +29,7 @@ public partial class ItemPickup : Node2D {
 
     public void Pickup(Player player) {
         FloatingText text = (FloatingText)FloatingTextEffectScene.Instantiate();
-        text.Text = Definition.Name; 
+        text.Text = Definition.Description; 
         player.AddSibling(text);
         text.GlobalPosition = player.GlobalPosition;
         ItemComponent component = player.GetItem(Definition);
@@ -38,9 +39,7 @@ public partial class ItemPickup : Node2D {
             component.Definition = Definition;
             player.AddChild(component);
         }
-        else {
-            component.AddStack();
-        }
+        component.AddStack();
         QueueFree();
     }
 }

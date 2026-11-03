@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bhcdfdbuwne13"]
+
+[ext_resource type="Script" uid="uid://ds0rb2rmh4quh" path="res://src/items/components/AppleOfEden.cs" id="1_gpdic"]
+
+[node name="AppleOfEden" type="Node2D" unique_id=715368678]
+script = ExtResource("1_gpdic")

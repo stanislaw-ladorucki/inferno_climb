@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://p451mc0embiw"]
+
+[ext_resource type="PackedScene" uid="uid://bhcdfdbuwne13" path="res://scenes/items/apple_of_eden.tscn" id="1_4f3m5"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="2_tmlyx"]
+
+[sub_resource type="Gradient" id="Gradient_6sctd"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wmkk6"]
+gradient = SubResource("Gradient_6sctd")
+fill_from = Vector2(0, 1)
+
+[resource]
+script = ExtResource("2_tmlyx")
+Name = "Apple of Eden"
+Description = "Jump Height Up!"
+Icon = SubResource("GradientTexture2D_wmkk6")
+Scene = ExtResource("1_4f3m5")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"
