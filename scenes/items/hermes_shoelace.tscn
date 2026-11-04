@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cedjbllq8nbqv"]
+
+[ext_resource type="Script" uid="uid://b4xardwvkswss" path="res://src/items/components/HermesShoelace.cs" id="1_0h8sw"]
+
+[node name="HermesShoelace" type="Node2D" unique_id=2061061422]
+script = ExtResource("1_0h8sw")

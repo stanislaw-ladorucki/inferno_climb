@@ -20,6 +20,8 @@ public partial class ItemPickup : Node2D {
         GD.Load<ItemDefinition>("res://resources/items/caesar_salad.tres"),
         GD.Load<ItemDefinition>("res://resources/items/apple_of_eden.tres"),
         GD.Load<ItemDefinition>("res://resources/items/rosary.tres"),
+        GD.Load<ItemDefinition>("res://resources/items/hermes_shoelace.tres"),
+        GD.Load<ItemDefinition>("res://resources/items/hermes_shoelace.tres"),
     ];
 
     public void _OnBodyEntered(Node2D body) {

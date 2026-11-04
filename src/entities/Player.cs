@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Godot;
 using InfernoClimb.entities.attacks;
 using InfernoClimb.items;
@@ -14,6 +12,8 @@ public partial class Player : Entity {
 	
 	[Export] public float JumpForce = 450f;
 	[Export] public float JumpReleaseDampen = 0.45f;
+	[Export] public float SubsequentJumpsMultiplier = 0.75f;
+	[Export] public int AdditionalJumps;
 
 	[Export] public float EnemyJumpBounceForce = 550f; // when jump button is held, bounce higher
 	[Export] public float EnemyBounceForce = 200f;
@@ -24,6 +24,7 @@ public partial class Player : Entity {
 	private AnimatedSprite2D _sprite;
 	
 	public int Score;
+	public int AdditionalJumpsRemaining = 1;
 	
 	public override void _Ready() {
 		_jumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");
@@ -49,7 +50,10 @@ public partial class Player : Entity {
 		
 		// handle juping
 		if (Input.IsActionJustPressed("jump") && CanJump()) {
-			Velocity = Velocity with { Y = -JumpForce };
+			Velocity = Velocity with { Y = -JumpForce * (float)Math.Pow(SubsequentJumpsMultiplier, AdditionalJumps - AdditionalJumpsRemaining) };
+			if (!IsOnFloor()) {
+				AdditionalJumpsRemaining--;
+			}
 		}
 		
 		// hold jump for a longer jump - release for a short one
@@ -60,6 +64,10 @@ public partial class Player : Entity {
 		// apply gravity
 		if (!IsOnFloor()) {
 			Velocity += GetGravity() * (float)delta;
+		}
+		else {
+			// reset jumps
+			AdditionalJumpsRemaining = AdditionalJumps;
 		}
 
 		// update attack hitbox
@@ -118,7 +126,7 @@ public partial class Player : Entity {
 	
 	private bool CanJump() {
 		// TDE: add coyote time
-		return IsOnFloor();
+		return IsOnFloor() || AdditionalJumpsRemaining > 0;
 	}
 
 	public ItemComponent GetItem(ItemDefinition itemDefinition) {

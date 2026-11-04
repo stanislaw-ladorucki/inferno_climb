@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b4w5bbnqo1j58"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_sv16g"]
+[ext_resource type="PackedScene" uid="uid://cedjbllq8nbqv" path="res://scenes/items/hermes_shoelace.tscn" id="1_xutli"]
+
+[sub_resource type="Gradient" id="Gradient_3tcsq"]
+colors = PackedColorArray(0, 0, 0, 1, 0.67665565, 0.48848975, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3tcsq"]
+gradient = SubResource("Gradient_3tcsq")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.525641, 0.30769232)
+
+[resource]
+script = ExtResource("1_sv16g")
+Name = "Hermes' Shoelace"
+Description = "Jumps Up!"
+Icon = SubResource("GradientTexture2D_3tcsq")
+Scene = ExtResource("1_xutli")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"
