@@ -7,7 +7,7 @@ using InfernoClimb.entities;
 namespace InfernoClimb.items;
 
 public partial class ItemPickup : Node2D {
-    public static PackedScene FloatingTextEffectScene = GD.Load<PackedScene>("res://scenes/effects/floating_text.tscn");
+    public static readonly PackedScene FloatingTextEffectScene = GD.Load<PackedScene>("res://scenes/effects/floating_text.tscn");
     public ItemDefinition Definition;
 
     public override void _Ready() {
