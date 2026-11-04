@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://di77l3k1jdnfa" path="res://shaders/level_bg.gdshader" id="1_ya4ey"]
 [ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyScrollingCamera.cs" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://bveh6tlkn8uga" path="res://assets/level/bg BNW ENTRY1.png" id="4_85g3d"]
-[ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelChunkManager.cs" id="4_tbgi4"]
+[ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelManager.cs" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 [ext_resource type="Shader" uid="uid://bmj64yttdw7e6" path="res://shaders/vignette.gdshader" id="6_tefeu"]
@@ -93,7 +93,7 @@ position = Vector2(491, 125)
 scale = Vector2(0.17, 0.17)
 texture = ExtResource("10_ya4ey")
 
-[node name="PlatformingChunkManager" type="Node2D" parent="." unique_id=1814566028]
+[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028]
 script = ExtResource("4_tbgi4")
 ChunkGenerateMargin = 0.0
 

@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using Godot;
 
 namespace InfernoClimb.level;
 
-public partial class LevelChunkManager : Node2D {
+public partial class LevelManager : Node2D {
 	[Export] public Vector2 ChunkSize = new(600, 1000);
 	[Export] public float ChunkGenerateMargin = 200;
 	
