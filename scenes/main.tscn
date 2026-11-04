@@ -97,12 +97,12 @@ texture = ExtResource("10_ya4ey")
 script = ExtResource("4_tbgi4")
 ChunkGenerateMargin = 0.0
 
-[node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
 FollowLerp = 0.4
+
+[node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=648844377]
 

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://v3fkyavxf5mb"]
+
+[ext_resource type="Script" uid="uid://t8umo2p0muwn" path="res://src/items/components/KuiperBelt.cs" id="1_uccml"]
+
+[node name="KuiperBelt" type="Node2D" unique_id=1875687718]
+script = ExtResource("1_uccml")

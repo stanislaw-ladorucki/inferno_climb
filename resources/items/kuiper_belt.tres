@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cryvruss8ne4t"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_pau2l"]
+[ext_resource type="PackedScene" uid="uid://v3fkyavxf5mb" path="res://scenes/items/kuiper_belt.tscn" id="1_s63au"]
+
+[sub_resource type="Gradient" id="Gradient_jqcqo"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s63au"]
+gradient = SubResource("Gradient_jqcqo")
+
+[resource]
+script = ExtResource("1_pau2l")
+Name = "Kuiper Belt"
+Description = "Pants up!"
+Icon = SubResource("GradientTexture2D_s63au")
+Scene = ExtResource("1_s63au")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"
