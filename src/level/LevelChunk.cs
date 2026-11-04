@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using InfernoClimb.entities.enemies;
 
 namespace InfernoClimb.level;
 
@@ -13,8 +14,9 @@ public partial class LevelChunk : Node2D {
 	[Export] public Vector2 CleanupClusterDistance = new (90, 50);
 	[Export] public float[] PlatformSpawnWeights = [1f, 1f, 1f, 1f];
 	
-	public List<PackedScene> EnemyPool = [];
-
+	[Signal]
+	public delegate void EnemySpawnedEventHandler(BaseEnemy enemy, Platform platform);
+	
 	private static readonly PackedScene[] PlatformScenes = [
 		GD.Load<PackedScene>("res://scenes/level/platform_sm.tscn"),
 		GD.Load<PackedScene>("res://scenes/level/platform_md.tscn"),
@@ -37,17 +39,6 @@ public partial class LevelChunk : Node2D {
 					routePlatform.IsMainRoute = false;
 				}
 				CleanupClusteredPlatforms(route, platforms);
-			}
-			
-			// the chance increases the more enemies remain in the pool,
-			// and the closer we are to the end of the chunk
-			if (EnemyPool.Count > 0 && rng.Randf() < EnemyPool.Count * ((float)platformIndex / platforms.Length)) {
-				int enemyIndex = rng.RandiRange(0, EnemyPool.Count - 1);
-				Node2D enemy = EnemyPool[enemyIndex].Instantiate<Node2D>();
-				AddChild(enemy);
-				// TDE: add a separate system for randomizing enemy placement
-				enemy.GlobalPosition = GetNewPlatformPosition(platform, rng);
-				EnemyPool.RemoveAt(enemyIndex);								
 			}
 			platformIndex++;
 		}

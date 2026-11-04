@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Godot;
+using InfernoClimb.entities;
 
 namespace InfernoClimb.level;
 
@@ -19,29 +21,39 @@ public partial class LevelManager : Node2D {
 	
 	[Export] public float[] StartingPlatformSpawnWeights = [0.25f, 2f, 0.5f, 0.25f]; // sm, md, lg, xl
 	[Export] public float[] FinalPlatformSpawnWeights = [2.5f, 1.5f, 0.25f, 0.125f]; // sm, md, lg, xl
-	
 
-	public List<PackedScene> EnemyPool = new();
-	public Stack<KeyValuePair<int, PackedScene[]>> EnemyPoolUpdateThresholds = new([
-		new (10_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn")]),
-		new (9_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn")]),
-		new (7_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn")]),		
-		new (6_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn")]),
-		new (5_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn")]),
-		new (4_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn")]),
-		new (3_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn")]),
-		new (2_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn")]),
-		new (1_000, [
-			GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
-			GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn")]),
+	[Export] public float FinalEnemyDifficultyHeight = 20_000; 
+	[Export] public int StartingEnemySpawnsPerChunk = 0;
+	[Export] public int FinalEnemySpawnsPerChunk = 100;
+
+	[Signal]
+	public delegate void EnemySpawnedEventHandler(Entity enemy);
+	
+	public struct EnemySpawner {
+		public delegate Entity[] SpawnHandler(LevelChunk chunk, Platform platform); // the platform that the enemy will be spawned relative to
+		public SpawnHandler Spawn;
+		public float Weight = 1.0f;
+
+		public EnemySpawner(SpawnHandler spawn, float weight) {
+			Spawn = spawn;
+			Weight = weight;
+		}
+	}
+
+	public static EnemySpawner SimpleEnemySpawner(PackedScene enemyScene, float weight=1.0f) {
+		return new((chunk, platform) => {
+			Entity enemy = enemyScene.Instantiate<Entity>();
+			chunk.AddChild(enemy);
+			enemy.GlobalPosition = platform.GlobalPosition;
+			return [enemy];
+		}, weight);
+	}
+	
+	public List<EnemySpawner> EnemySpawnerPool = new();
+	public Stack<KeyValuePair<int, EnemySpawner>> EnemyPoolUpdateThresholds = new([
+		new (5_000, SimpleEnemySpawner(GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"), 0.25f)),
+		new (2_000, SimpleEnemySpawner(GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"), 0.5f)),
+		new (1_000, SimpleEnemySpawner(GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"), 1.0f)),
 	]);
 
 	private Vector2 _lastPlatformPosition;
@@ -65,9 +77,8 @@ public partial class LevelManager : Node2D {
 
 		// update enemy pool after reaching a threshold
 		if (EnemyPoolUpdateThresholds.Count > 0 && EnemyPoolUpdateThresholds.Peek().Key <= -chunk.Position.Y) {
-			EnemyPool.AddRange(EnemyPoolUpdateThresholds.Pop().Value);
+			EnemySpawnerPool.Add(EnemyPoolUpdateThresholds.Pop().Value);
 		}
-		chunk.EnemyPool.AddRange(EnemyPool); // copy enumerable
 
 		// make the distance between platforms increase with progress
 		float difficulty = chunk.Position.Y == 0 ? 0 : Mathf.Min(chunk.Position.Y / -FinalPlatformDifficultyHeight, 1.0f);
@@ -93,7 +104,7 @@ public partial class LevelManager : Node2D {
 		return chunk;
 	}
 
-	public void PopulateItems(Node2D chunk, Platform[] platforms) {
+	public void PopulateItems(LevelChunk chunk, Platform[] platforms) {
 		foreach (Platform platform in platforms) {
 			if (-platform.GlobalPosition.Y >= _nextItemHeight) {
 				Node2D item = ItemScene.Instantiate<Node2D>();
@@ -103,7 +114,22 @@ public partial class LevelManager : Node2D {
 			}
 		}
 	}
-	
+
+	public void PopulateEnemies(LevelChunk chunk, Platform[] platforms) {
+		using RandomNumberGenerator rng = new RandomNumberGenerator();
+		float difficulty = chunk.Position.Y == 0 ? 0 : Mathf.Min(chunk.Position.Y / -FinalEnemyDifficultyHeight, 1.0f);
+		float[] spawnerWeights = Array.ConvertAll(EnemySpawnerPool.ToArray(), spawner => spawner.Weight);
+		EnemySpawner.SpawnHandler[] spawnerHandlers = Array.ConvertAll(EnemySpawnerPool.ToArray(), spawner => spawner.Spawn);
+		if (EnemySpawnerPool.Count > 0) {
+			for (int i = 0; i < Mathf.Lerp(StartingEnemySpawnsPerChunk, FinalEnemySpawnsPerChunk, difficulty); i++) {
+				Platform platform = platforms[rng.RandiRange(0, platforms.Length - 1)];
+				Entity[] enemies = spawnerHandlers[rng.RandWeighted(spawnerWeights)].Invoke(chunk, platform);
+				foreach (Entity enemy in enemies) {
+					EmitSignalEnemySpawned(enemy);
+				}
+			}
+		}
+	}
 	
 	public override void _Ready() {
 		LevelChunk chunk = AddChunk();
@@ -125,6 +151,7 @@ public partial class LevelManager : Node2D {
 			Platform[] platforms = chunk.Populate(_lastPlatformPosition);
 			_lastPlatformPosition = platforms[^1].GlobalPosition;
 			PopulateItems(chunk, platforms);
+			PopulateEnemies(chunk, platforms);
 		}
 	}
 }
