@@ -6,6 +6,7 @@ namespace InfernoClimb.entities;
 public partial class Entity : CharacterBody2D {
 	[Export] public float Health = 1;
 	[Export] public float KnockbackMultiplier = 1;
+	[Export] public bool IsInvulnerable;
 	
 	public bool IsDead {
 		get => Health <= 0;
@@ -18,12 +19,14 @@ public partial class Entity : CharacterBody2D {
 	[Signal]
 	public delegate void DiedEventHandler();
 
-	public void ApplyAttack(Node2D attack, float damage, Vector2 knockback, KnockbackMode knockbackMode) {
-		Health -= damage;
-		ApplyKnockback(knockback, knockbackMode);
-		EmitSignalHit(attack, damage);
-		if (IsDead) {
-			Die();
+	public virtual void ApplyAttack(Node2D attack, float damage, Vector2 knockback, KnockbackMode knockbackMode) {
+		if (!IsInvulnerable) {
+			Health -= damage;
+			ApplyKnockback(knockback, knockbackMode);
+			EmitSignalHit(attack, damage);
+			if (IsDead) {
+				Die();
+			}
 		}
 	}
 

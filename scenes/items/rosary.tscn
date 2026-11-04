@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://qh72y56qg1l6"]
+
+[ext_resource type="Script" uid="uid://dpq4xm67bvki" path="res://src/items/components/Rosary.cs" id="1_77pi2"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="2_53u4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb4xq"]
+size = Vector2(30, 38)
+
+[node name="Rosary" type="Node2D" unique_id=518881236]
+script = ExtResource("1_77pi2")
+
+[node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("2_53u4s")]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=595844088]
+shape = SubResource("RectangleShape2D_hb4xq")

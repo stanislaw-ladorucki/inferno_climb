@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Godot;
 using InfernoClimb.entities.attacks;
 using InfernoClimb.items;
@@ -16,6 +17,8 @@ public partial class Player : Entity {
 
 	[Export] public float EnemyJumpBounceForce = 550f; // when jump button is held, bounce higher
 	[Export] public float EnemyBounceForce = 200f;
+
+	[Export] public float InvulnerabilityTime;
 
 	private Attack _jumpAttackHitbox;
 	private AnimatedSprite2D _sprite;
@@ -66,15 +69,27 @@ public partial class Player : Entity {
 		
 		MoveAndSlide();
 
+		if (InvulnerabilityTime > 0) {
+			InvulnerabilityTime = Math.Max(InvulnerabilityTime - (float)delta, 0.0f);
+			IsInvulnerable = true;
+		}
+		else {
+			IsInvulnerable = false;
+		}
+
 		Score = (int)Math.Max(Score, -Position.Y);
 
 		// quick-restart the game
+		// FIXME: restart does not work when the player is killed - stupid oversight
 		if (Input.IsActionJustPressed("restart")) {
 			GetTree().ReloadCurrentScene();
 		}
 	}
 	
 	private void UpdateSprite(float horizontalInput) {
+		// handle sprite flashing to signify invulnerability
+		_sprite.Visible = !IsInvulnerable || Math.Floor(Time.GetUnixTimeFromSystem() * 10) % 2 == 0;
+		
 		if (IsOnFloor()) {
 			if (Math.Abs(horizontalInput) > 0) {
 				_sprite.Play("walk");

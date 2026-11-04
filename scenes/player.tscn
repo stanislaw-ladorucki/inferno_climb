@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7unpoydrc25p" path="res://src/entities/Player.cs" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://c6b3ifujq1mdw" path="res://assets/sprites/player.tres" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(22, 32)

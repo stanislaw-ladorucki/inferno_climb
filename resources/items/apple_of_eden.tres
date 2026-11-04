@@ -8,7 +8,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wmkk6"]
 gradient = SubResource("Gradient_6sctd")
-fill_from = Vector2(0, 1)
+fill_from = Vector2(0.47863248, 0.54273504)
 
 [resource]
 script = ExtResource("2_tmlyx")

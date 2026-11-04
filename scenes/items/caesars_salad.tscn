@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://x8v0ub2nj8k8"]
 
 [ext_resource type="Script" uid="uid://rg45qlqgbaxt" path="res://src/items/components/CaesarsSalad.cs" id="1_m01cu"]
-[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="1_w40j5"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="1_w40j5"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_jgo8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb4xq"]

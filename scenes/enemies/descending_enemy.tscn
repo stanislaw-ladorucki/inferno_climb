@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wg5t5by76gjw" path="res://src/entities/enemies/DescendingEnemy.cs" id="1_alg1b"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_dvym7"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_o4gok"]
-[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attack.tscn" id="3_dvym7"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_dvym7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(24, 24)

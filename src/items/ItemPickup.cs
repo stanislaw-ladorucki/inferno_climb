@@ -19,6 +19,7 @@ public partial class ItemPickup : Node2D {
     public static readonly List<ItemDefinition> ItemPool = [
         GD.Load<ItemDefinition>("res://resources/items/caesar_salad.tres"),
         GD.Load<ItemDefinition>("res://resources/items/apple_of_eden.tres"),
+        GD.Load<ItemDefinition>("res://resources/items/rosary.tres"),
     ];
 
     public void _OnBodyEntered(Node2D body) {
