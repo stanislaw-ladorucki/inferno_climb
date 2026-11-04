@@ -28,6 +28,10 @@ public partial class LevelManager : Node2D {
 
 	[Signal]
 	public delegate void EnemySpawnedEventHandler(Entity enemy);
+
+	public static LevelManager GetInstance(Node node) {
+		return node.GetTree().GetCurrentScene().GetNode<LevelManager>("LevelManager");
+	}
 	
 	public struct EnemySpawner {
 		public delegate Entity[] SpawnHandler(LevelChunk chunk, Platform platform); // the platform that the enemy will be spawned relative to

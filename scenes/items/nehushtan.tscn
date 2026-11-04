@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kpg400o15x8w"]
+
+[ext_resource type="Script" uid="uid://cy51js55sg32f" path="res://src/items/components/Nehushtan.cs" id="1_w47si"]
+
+[node name="Nehushtan" type="Node2D" unique_id=142616860]
+script = ExtResource("1_w47si")

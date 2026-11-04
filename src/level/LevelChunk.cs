@@ -14,9 +14,6 @@ public partial class LevelChunk : Node2D {
 	[Export] public Vector2 CleanupClusterDistance = new (90, 50);
 	[Export] public float[] PlatformSpawnWeights = [1f, 1f, 1f, 1f];
 	
-	[Signal]
-	public delegate void EnemySpawnedEventHandler(BaseEnemy enemy, Platform platform);
-	
 	private static readonly PackedScene[] PlatformScenes = [
 		GD.Load<PackedScene>("res://scenes/level/platform_sm.tscn"),
 		GD.Load<PackedScene>("res://scenes/level/platform_md.tscn"),
