@@ -1,11 +1,11 @@
-using System.Diagnostics;
 using Godot;
 using InfernoClimb.entities.attacks;
 
 namespace InfernoClimb.items.components;
 
 public partial class Rosary : ItemComponent {
-    [Export] public float InvulnerabilityChance = 0.05f;
+    [Export] public float InvulnerabilityChance = 0.01f;
+    [Export] public float InvulnerabilityChanceIncrease = 0.01f;
     [Export] public float InvulnerabilityDuration = 5f;
     
     public override void _Process(double delta) {
@@ -19,7 +19,7 @@ public partial class Rosary : ItemComponent {
     public override void AddStack() {
         base.AddStack();
         if (Stack > 1) {
-            InvulnerabilityChance += 0.05f / Stack;
+            InvulnerabilityChance += InvulnerabilityChanceIncrease / Stack;
         }
     }
 }
