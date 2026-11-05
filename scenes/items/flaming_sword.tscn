@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://cs6oxs88swbai"]
+
+[ext_resource type="Script" uid="uid://dnyvpf5len81t" path="res://src/items/components/FlamingSword.cs" id="1_x3h1j"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="2_yqnxe"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="3_qd8pf"]
+
+[sub_resource type="Animation" id="Animation_mlwcx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_klrbp"]
+resource_name = "spin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attack:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_awv3l"]
+_data = {
+&"RESET": SubResource("Animation_mlwcx"),
+&"spin": SubResource("Animation_klrbp")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m47wv"]
+radius = 8.0
+height = 70.0
+
+[node name="FlamingSword" type="Node2D" unique_id=214737031]
+script = ExtResource("1_x3h1j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=590165864]
+libraries/ = SubResource("AnimationLibrary_awv3l")
+
+[node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("2_yqnxe")]
+scale = Vector2(1e-05, 1e-05)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+Damage = 6.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Attack" unique_id=1783969912]
+position = Vector2(41.999996, 0)
+scale = Vector2(0.51562494, 0.12499999)
+texture = ExtResource("3_qd8pf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=258698726]
+position = Vector2(42, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_m47wv")
+
+[node name="Timer" type="Timer" parent="." unique_id=251983778 groups=["cooldown"]]
+wait_time = 2.6
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

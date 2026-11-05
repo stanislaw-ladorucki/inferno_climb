@@ -23,6 +23,7 @@ public partial class ItemPickup : Node2D {
         GD.Load<ItemDefinition>("res://resources/items/pluto.tres"),
         GD.Load<ItemDefinition>("res://resources/items/kuiper_belt.tres"),
         GD.Load<ItemDefinition>("res://resources/items/nehushtan.tres"),
+        GD.Load<ItemDefinition>("res://resources/items/flaming_sword.tres"),
     ];
 
     public void _OnBodyEntered(Node2D body) {
@@ -33,7 +34,7 @@ public partial class ItemPickup : Node2D {
 
     public void Pickup(Player player) {
         FloatingText text = (FloatingText)FloatingTextEffectScene.Instantiate();
-        text.Text = Definition.Description; 
+        text.Text = Definition.Name; 
         player.AddSibling(text);
         text.GlobalPosition = player.GlobalPosition;
         ItemComponent component = player.GetItem(Definition);

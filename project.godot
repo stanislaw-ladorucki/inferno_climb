@@ -23,6 +23,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Inferno Climb"
 
+[global_group]
+
+cooldown="Timers that work with cooldown reducing items"
+
 [input]
 
 move_left={
