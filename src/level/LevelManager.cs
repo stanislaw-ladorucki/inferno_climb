@@ -157,5 +157,10 @@ public partial class LevelManager : Node2D {
 			PopulateItems(chunk, platforms);
 			PopulateEnemies(chunk, platforms);
 		}
+		
+		// quick-restart the game
+		if (Input.IsActionJustPressed("restart")) {
+			GetTree().ReloadCurrentScene();
+		}
 	}
 }
