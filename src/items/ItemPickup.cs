@@ -38,14 +38,7 @@ public partial class ItemPickup : Node2D {
         text.Text = Definition.Name; 
         player.AddSibling(text);
         text.GlobalPosition = player.GlobalPosition;
-        ItemComponent component = player.GetItem(Definition);
-        if (component == null) {
-            component = Definition.Scene.Instantiate<ItemComponent>();
-            component.Player = player;
-            component.Definition = Definition;
-            player.AddChild(component);
-        }
-        component.AddStack();
+        player.AddItem(Definition);
         QueueFree();
     }
 }

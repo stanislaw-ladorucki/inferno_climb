@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 using InfernoClimb.entities.attacks;
 using InfernoClimb.items;
@@ -19,6 +20,9 @@ public partial class Player : Entity {
 	[Export] public float EnemyBounceForce = 200f;
 
 	[Export] public float InvulnerabilityTime;
+
+	[Export] public Node ItemDisplayContainer;
+	public static readonly PackedScene ItemDisplayScene = GD.Load<PackedScene>("res://scenes/ui/item_display.tscn"); 
 
 	private Attack _jumpAttackHitbox;
 	private AnimatedSprite2D _sprite;
@@ -123,6 +127,33 @@ public partial class Player : Entity {
 		return IsOnFloor() || AdditionalJumpsRemaining > 0;
 	}
 
+	public void AddItem(ItemDefinition itemDefinition) {
+		ItemComponent component = GetItem(itemDefinition);
+		if (component == null) {
+			component = itemDefinition.Scene.Instantiate<ItemComponent>();
+			component.Player = this;
+			component.Definition = itemDefinition;
+			AddChild(component);
+		}
+		component.Stack++;
+		component.AddStack();
+
+		if (ItemDisplayContainer != null) {
+			ItemDisplay itemDisplay = (ItemDisplay)Array.Find(
+				ItemDisplayContainer.GetChildren().ToArray(),
+				itemDisplay => ((ItemDisplay)itemDisplay).ItemDefinition == itemDefinition
+			);
+			if (itemDisplay != null) {
+				itemDisplay.Stack = component.Stack;
+			}
+			else {
+				itemDisplay = ItemDisplayScene.Instantiate<ItemDisplay>();
+				itemDisplay.ItemDefinition = itemDefinition;
+				itemDisplay.Stack = component.Stack;
+				ItemDisplayContainer.AddChild(itemDisplay);
+			} 
+		}
+	}
 	public ItemComponent GetItem(ItemDefinition itemDefinition) {
 		foreach (Node child in GetChildren()) {
 			if (child is ItemComponent item) {

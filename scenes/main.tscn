@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelManager.cs" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
-[ext_resource type="Shader" uid="uid://bmj64yttdw7e6" path="res://shaders/vignette.gdshader" id="6_tefeu"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
@@ -38,12 +37,6 @@ shader = ExtResource("8_85g3d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xf4jf"]
 shader = ExtResource("8_85g3d")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_trceg"]
-shader = ExtResource("6_tefeu")
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D" unique_id=1347739713]
 
@@ -114,20 +107,35 @@ script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
 FollowLerp = 0.4
 
-[node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
+[node name="Player" parent="." unique_id=1765285203 node_paths=PackedStringArray("ItemDisplayContainer") instance=ExtResource("1_o5qli")]
+ItemDisplayContainer = NodePath("../HUD/VBoxContainer/GridContainer")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=648844377]
 
-[node name="ScoreDisplay" parent="HUD" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
-offset_right = 57.0
-offset_bottom = 15.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-Player = NodePath("../../Player")
-
-[node name="Vignette" type="CenterContainer" parent="HUD" unique_id=1707153655]
-material = SubResource("ShaderMaterial_trceg")
-anchors_preset = 15
-anchor_right = 1.0
+[node name="VBoxContainer" type="BoxContainer" parent="HUD" unique_id=1526661507]
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
+offset_right = 300.0
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+vertical = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/VBoxContainer" unique_id=943137346]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScoreDisplay" parent="HUD/VBoxContainer/MarginContainer" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+Player = NodePath("../../../../Player")
+
+[node name="GridContainer" type="GridContainer" parent="HUD/VBoxContainer" unique_id=2037188808]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+columns = 2

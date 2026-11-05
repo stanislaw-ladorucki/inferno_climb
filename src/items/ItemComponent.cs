@@ -8,7 +8,5 @@ public partial class ItemComponent : Node2D {
     [Export] public int Stack;
     [Export] public ItemDefinition Definition;
 
-    public virtual void AddStack() {
-        Stack++;
-    }
+    public virtual void AddStack() {}
 }

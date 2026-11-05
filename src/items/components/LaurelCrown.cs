@@ -36,7 +36,6 @@ public partial class LaurelCrown : ItemComponent {
 			if (node is CooldownTimer timer) {
 				double timeLeft = timer.TimeLeft; 
 				timer.Advance(CooldownReduction);
-				Debug.WriteLine((timer.Cooldown, timer.WaitTime, timer.TimeLeft, timeLeft));
 			}
 		}
 	}
