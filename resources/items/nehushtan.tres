@@ -2,18 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_2n1nn"]
 [ext_resource type="PackedScene" uid="uid://kpg400o15x8w" path="res://scenes/items/nehushtan.tscn" id="1_4vxv3"]
-
-[sub_resource type="Gradient" id="Gradient_ulv5c"]
-colors = PackedColorArray(0.9108804, 0.29379287, 0, 1, 0, 0.6745098, 0.39607844, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2n1nn"]
-gradient = SubResource("Gradient_ulv5c")
-fill_to = Vector2(1, 1)
+[ext_resource type="Texture2D" uid="uid://bcna846duxpq5" path="res://assets/items/Nehushtan.png" id="1_ulv5c"]
 
 [resource]
 script = ExtResource("1_2n1nn")
 Name = "Nehushtan"
 Description = "Kill to survive"
-Icon = SubResource("GradientTexture2D_2n1nn")
+Icon = ExtResource("1_ulv5c")
 Scene = ExtResource("1_4vxv3")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

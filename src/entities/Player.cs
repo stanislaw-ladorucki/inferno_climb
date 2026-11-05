@@ -139,15 +139,15 @@ public partial class Player : Entity {
 		component.AddStack();
 
 		if (ItemDisplayContainer != null) {
-			ItemDisplay itemDisplay = (ItemDisplay)Array.Find(
+			ui.ItemDisplay itemDisplay = (ui.ItemDisplay)Array.Find(
 				ItemDisplayContainer.GetChildren().ToArray(),
-				itemDisplay => ((ItemDisplay)itemDisplay).ItemDefinition == itemDefinition
+				itemDisplay => ((ui.ItemDisplay)itemDisplay).ItemDefinition == itemDefinition
 			);
 			if (itemDisplay != null) {
 				itemDisplay.Stack = component.Stack;
 			}
 			else {
-				itemDisplay = ItemDisplayScene.Instantiate<ItemDisplay>();
+				itemDisplay = ItemDisplayScene.Instantiate<ui.ItemDisplay>();
 				itemDisplay.ItemDefinition = itemDefinition;
 				itemDisplay.Stack = component.Stack;
 				ItemDisplayContainer.AddChild(itemDisplay);

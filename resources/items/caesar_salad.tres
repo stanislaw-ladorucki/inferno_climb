@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://5ap3qlrgfagv"]
 
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_8hp24"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_lhkol"]
+[ext_resource type="Texture2D" uid="uid://db5whhniqdj3a" path="res://assets/items/Caesar's Salad.png" id="1_606tw"]
 [ext_resource type="PackedScene" uid="uid://x8v0ub2nj8k8" path="res://scenes/items/caesars_salad.tscn" id="2_606tw"]
 
 [resource]
 script = ExtResource("1_8hp24")
 Name = "Caesar's Salad"
 Description = "Watch your back!"
-Icon = ExtResource("1_lhkol")
+Icon = ExtResource("1_606tw")
 Scene = ExtResource("2_606tw")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"
