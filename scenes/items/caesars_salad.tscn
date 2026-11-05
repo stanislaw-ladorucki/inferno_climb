@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rg45qlqgbaxt" path="res://src/items/components/CaesarsSalad.cs" id="1_m01cu"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="1_w40j5"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_jgo8e"]
+[ext_resource type="Texture2D" uid="uid://btj7ij0vprekx" path="res://assets/items/Ceasar's Dagger_R.png" id="3_m01cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb4xq"]
 size = Vector2(20, 6)
@@ -141,9 +141,9 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_hb4xq")
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftDaggerAttack" unique_id=956673769]
-position = Vector2(-1.9073486e-06, 0)
-scale = Vector2(0.15999985, 0.039999843)
-texture = ExtResource("2_jgo8e")
+position = Vector2(-3, 0)
+scale = Vector2(-0.04, -0.04)
+texture = ExtResource("3_m01cu")
 
 [node name="RightDaggerAttack" parent="." unique_id=971470508 instance=ExtResource("1_w40j5")]
 position = Vector2(25, 0)
@@ -156,9 +156,9 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_hb4xq")
 
 [node name="Sprite2D" type="Sprite2D" parent="RightDaggerAttack" unique_id=1117524026]
-position = Vector2(-1.9073486e-06, 0)
-scale = Vector2(0.15999985, 0.039999843)
-texture = ExtResource("2_jgo8e")
+position = Vector2(3, 0)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_m01cu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=292854484]
 libraries/ = SubResource("AnimationLibrary_ywi3m")

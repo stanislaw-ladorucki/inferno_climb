@@ -107,8 +107,7 @@ script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
 FollowLerp = 0.4
 
-[node name="Player" parent="." unique_id=1765285203 node_paths=PackedStringArray("ItemDisplayContainer") instance=ExtResource("1_o5qli")]
-ItemDisplayContainer = NodePath("../HUD/VBoxContainer/GridContainer")
+[node name="Player" parent="." unique_id=1765285203 instance=ExtResource("1_o5qli")]
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=648844377]
 
