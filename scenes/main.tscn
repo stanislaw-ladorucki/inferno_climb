@@ -99,7 +99,6 @@ ChunkGenerateMargin = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Follow")]
 position = Vector2(0, -249)
-zoom = Vector2(1.5, 1.5)
 script = ExtResource("2_sugp2")
 Follow = NodePath("../Player")
 FollowLerp = 0.4
