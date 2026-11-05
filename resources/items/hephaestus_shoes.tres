@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://lv5mdl41jf8"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_3nui8"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_btm1k"]
+[ext_resource type="PackedScene" uid="uid://4b622p62m1m5" path="res://scenes/items/hephaestus_shoes.tscn" id="2_wu1cg"]
+
+[resource]
+script = ExtResource("1_btm1k")
+Name = "Hephaestus' shoes"
+Description = "When jumping spawns a damaging fire bursts under the player."
+Icon = ExtResource("1_3nui8")
+Scene = ExtResource("2_wu1cg")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

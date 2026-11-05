@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dfemjilpi7v8l"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_25ubh"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_atoq5"]
+[ext_resource type="PackedScene" uid="uid://dfpwaj0d5w2hy" path="res://scenes/items/super_dead_fish.tscn" id="2_n05nn"]
+
+[resource]
+script = ExtResource("1_25ubh")
+Name = "Super Dead Fish"
+Description = "Periodically launches a bouncing dead fish projectile from the player’s position in a random direction."
+Icon = ExtResource("1_atoq5")
+Scene = ExtResource("2_n05nn")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dvdx6r8cla5s8"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_gqjrs"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_rril1"]
+[ext_resource type="PackedScene" uid="uid://dpd3i1fu073r1" path="res://scenes/items/watered_down_wine.tscn" id="2_kcabf"]
+
+[resource]
+script = ExtResource("1_gqjrs")
+Name = "Watered Down Wine"
+Description = "When an enemy is killed, Satan is slowed down for a moment."
+Icon = ExtResource("1_rril1")
+Scene = ExtResource("2_kcabf")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

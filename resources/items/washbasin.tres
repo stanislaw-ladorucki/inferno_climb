@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dyfvnf60q5al4"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_stmbj"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_ui2wy"]
+[ext_resource type="PackedScene" uid="uid://gkysxelrdseh" path="res://scenes/items/washbasin.tscn" id="2_egpft"]
+
+[resource]
+script = ExtResource("1_ui2wy")
+Name = "Washbasin"
+Description = "Sporadically fires bubble projectiles in random directions. They decelerate quickly and remain in the air for some time before bursting. They deal contact damage to enemies, and can also be bounced on by the player, which bursts them as well."
+Icon = ExtResource("1_stmbj")
+Scene = ExtResource("2_egpft")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gkysxelrdseh"]
+
+[ext_resource type="Script" uid="uid://siev3b36mbhg" path="res://src/items/components/Washbasin.cs" id="1_ayj1v"]
+
+[node name="Washbasin" type="Node2D" unique_id=943836360]
+script = ExtResource("1_ayj1v")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bq4uke4o7bvoo"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_ba1n3"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_lmbtj"]
+[ext_resource type="PackedScene" uid="uid://difqdjis1ifhd" path="res://scenes/items/angels_light.tscn" id="2_lugpt"]
+
+[resource]
+script = ExtResource("1_ba1n3")
+Name = "Angel's Light"
+Description = "On kill summon a wisp familiar, that follows the player and homes in on enemies nearby.Stacking adds a chance to summon more wisps."
+Icon = ExtResource("1_lmbtj")
+Scene = ExtResource("2_lugpt")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b7lh0pisfpg71"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_ch3g3"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_d8ycl"]
+[ext_resource type="PackedScene" uid="uid://yxmdwd7nodiu" path="res://scenes/items/harpe.tscn" id="2_odm27"]
+
+[resource]
+script = ExtResource("1_d8ycl")
+Name = "Harpe"
+Description = "Periodically lobs arching sickle projectiles over the players head on a cooldown.Increases the amount of sickles thrown with stacking."
+Icon = ExtResource("1_ch3g3")
+Scene = ExtResource("2_odm27")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bnlku4wfmlmp0"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_lwvmd"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_ptb2s"]
+[ext_resource type="PackedScene" uid="uid://bsnetufjisxjn" path="res://scenes/items/almond_flower.tscn" id="2_q0n08"]
+
+[resource]
+script = ExtResource("1_ptb2s")
+Name = "Almond Flower"
+Description = "Speeds up all the player’s orbitals. Also spawns an empty plastic water bottle orbital.Stacking increases the orbital speed."
+Icon = ExtResource("1_lwvmd")
+Scene = ExtResource("2_q0n08")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

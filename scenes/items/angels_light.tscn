@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://difqdjis1ifhd"]
+
+[ext_resource type="Script" uid="uid://cn1pep57qamwi" path="res://src/items/components/AngelsLight.cs" id="1_pa36b"]
+
+[node name="AngelsLight" type="Node2D" unique_id=1087428164]
+script = ExtResource("1_pa36b")

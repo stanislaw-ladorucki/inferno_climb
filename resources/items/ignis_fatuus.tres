@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://na3k1taay4w1"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_2gnxw"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_q6feq"]
+[ext_resource type="PackedScene" uid="uid://ljwu6yfk2q6x" path="res://scenes/items/ignis_fatuus.tscn" id="2_ai57p"]
+
+[resource]
+script = ExtResource("1_q6feq")
+Name = "Ignis Fatuus"
+Description = "Increases the damage, velocity and aggro area of all summoned wisps, stacking with subsequent item pickups. Also makes the player sporadically summon a wisp."
+Icon = ExtResource("1_2gnxw")
+Scene = ExtResource("2_ai57p")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

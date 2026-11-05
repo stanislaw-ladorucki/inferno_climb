@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://btj0jusmfx3tu"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_juw6n"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_qqtah"]
+[ext_resource type="PackedScene" uid="uid://1g7jc4sfraff" path="res://scenes/items/davids_sling.tscn" id="2_xe3sk"]
+
+[resource]
+script = ExtResource("1_juw6n")
+Name = "David's Sling"
+Description = "Add a charge bar that fills up when the player is not jumping. When filled, the next jump is much larger than usual, and resets the bar. Subsequent stacks increase the rate at which the bar replenishes, and the strength of the jump."
+Icon = ExtResource("1_qqtah")
+Scene = ExtResource("2_xe3sk")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

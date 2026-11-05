@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kruwhy8bwgkt"]
+
+[ext_resource type="Script" uid="uid://pp7d2w6u24l1" path="res://src/items/components/TrumpetOfApocalypse.cs" id="1_orl6b"]
+
+[node name="TrumpetOfApocalypse" type="Node2D" unique_id=755974976]
+script = ExtResource("1_orl6b")

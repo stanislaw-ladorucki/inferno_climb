@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dd0wmsohthh5m"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_0w8au"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_chqcb"]
+[ext_resource type="PackedScene" uid="uid://bxbtwldllrjok" path="res://scenes/items/titans_sandals.tscn" id="2_q8jpx"]
+
+[resource]
+script = ExtResource("1_0w8au")
+Name = "Titants Sandals"
+Description = "Landing after falling a certain distance causes a shockwave damaging enemies, also spawning rock projectiles aimed upwards."
+Icon = ExtResource("1_chqcb")
+Scene = ExtResource("2_q8jpx")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

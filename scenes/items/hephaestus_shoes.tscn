@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://4b622p62m1m5"]
+
+[ext_resource type="Script" uid="uid://c2jmnd3ehfmh" path="res://src/items/components/HephaestusShoes.cs" id="1_w4oqt"]
+
+[node name="HephaestusShoes" type="Node2D" unique_id=915056687]
+script = ExtResource("1_w4oqt")

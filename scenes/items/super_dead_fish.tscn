@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dfpwaj0d5w2hy"]
+
+[ext_resource type="Script" uid="uid://wrbtspnv605s" path="res://src/items/components/SuperDeadFish.cs" id="1_q7t5g"]
+
+[node name="SuperDeadFish" type="Node2D" unique_id=69335936]
+script = ExtResource("1_q7t5g")

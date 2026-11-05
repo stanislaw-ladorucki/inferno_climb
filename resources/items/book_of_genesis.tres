@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bg34ida7uikrl"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_50x50"]
+[ext_resource type="PackedScene" uid="uid://kh6nnudr016e" path="res://scenes/items/book_of_genesis.tscn" id="2_0sifg"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="3_n5k6j"]
+
+[resource]
+script = ExtResource("3_n5k6j")
+Name = "Book of Genesis"
+Description = "Spawns falling Meteors from the top of the top of the screen."
+Icon = ExtResource("1_50x50")
+Scene = ExtResource("2_0sifg")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

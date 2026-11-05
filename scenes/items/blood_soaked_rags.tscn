@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ceoxyyc4dsn16"]
+
+[ext_resource type="Script" uid="uid://dgpwqv5s60op3" path="res://src/items/components/BloodSoakedRags.cs" id="1_r5w7c"]
+
+[node name="BloodSoakedRags" type="Node2D" unique_id=829697280]
+script = ExtResource("1_r5w7c")

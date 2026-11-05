@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ljwu6yfk2q6x"]
+
+[ext_resource type="Script" uid="uid://bufp0e7805p63" path="res://src/items/components/IgnisFatuus.cs" id="1_hfqg4"]
+
+[node name="IgnisFatuus" type="Node2D" unique_id=1540789610]
+script = ExtResource("1_hfqg4")

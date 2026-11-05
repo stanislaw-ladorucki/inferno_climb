@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://1g7jc4sfraff"]
+
+[ext_resource type="Script" uid="uid://clci60y41yx0w" path="res://src/items/components/DavidsSling.cs" id="1_6d7il"]
+
+[node name="DavidsSling" type="Node2D" unique_id=650200162]
+script = ExtResource("1_6d7il")

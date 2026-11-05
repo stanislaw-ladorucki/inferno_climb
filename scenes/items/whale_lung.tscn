@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bufwu2lg128un"]
+
+[ext_resource type="Script" uid="uid://c3lgnjwrtlcab" path="res://src/items/components/WhaleLung.cs" id="1_5tjrg"]
+
+[node name="WhaleLung" type="Node2D" unique_id=386941233]
+script = ExtResource("1_5tjrg")

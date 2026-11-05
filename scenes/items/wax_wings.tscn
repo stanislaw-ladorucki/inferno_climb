@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://brrbjsedu7np3"]
+
+[ext_resource type="Script" uid="uid://dow6poxmr6i40" path="res://src/items/components/WaxWings.cs" id="1_36ub7"]
+
+[node name="WaxWings" type="Node2D" unique_id=1379924276]
+script = ExtResource("1_36ub7")

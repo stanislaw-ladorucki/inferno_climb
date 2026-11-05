@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d27pdlk0koxnr"]
+
+[ext_resource type="Script" uid="uid://bquranxic3koo" path="res://src/items/components/BaseballBat.cs" id="1_y05rc"]
+
+[node name="BaseballBat" type="Node2D" unique_id=2111132272]
+script = ExtResource("1_y05rc")

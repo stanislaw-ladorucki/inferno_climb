@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lhvvat77aas7"]
+
+[ext_resource type="Script" uid="uid://ccs8f3qq8bmpk" path="res://src/items/components/Meatball.cs" id="1_x7na4"]
+
+[node name="Meatball" type="Node2D" unique_id=390703305]
+script = ExtResource("1_x7na4")

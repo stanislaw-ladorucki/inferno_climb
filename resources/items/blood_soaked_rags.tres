@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cpeqm4jlnj5mx"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_lo3oh"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_luoq0"]
+[ext_resource type="PackedScene" uid="uid://ceoxyyc4dsn16" path="res://scenes/items/blood_soaked_rags.tscn" id="2_c6d77"]
+
+[resource]
+script = ExtResource("1_lo3oh")
+Name = "Blood Soaked Rags"
+Description = "When an enemy is killed, spawn a floating bubble that explodes after some amount of time, dealing low AOE damage. The bubble can also be jumped off of, for an even bigger bounce.Each stack of the item increases the explosion area and damage."
+Icon = ExtResource("1_luoq0")
+Scene = ExtResource("2_c6d77")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

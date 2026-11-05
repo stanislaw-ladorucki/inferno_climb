@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://yxmdwd7nodiu"]
+
+[ext_resource type="Script" uid="uid://b7yp13d84ufqt" path="res://src/items/components/Harpe.cs" id="1_b57x0"]
+
+[node name="Harpe" type="Node2D" unique_id=1308693693]
+script = ExtResource("1_b57x0")

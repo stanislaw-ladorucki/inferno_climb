@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dpd3i1fu073r1"]
+
+[ext_resource type="Script" uid="uid://yq7keglr73mg" path="res://src/items/components/WateredDownWine.cs" id="1_efyhi"]
+
+[node name="WateredDownWine" type="Node2D" unique_id=1659138111]
+script = ExtResource("1_efyhi")

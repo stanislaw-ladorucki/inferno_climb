@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bks7jfybgk3fo"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_1xexn"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_s4efl"]
+[ext_resource type="PackedScene" uid="uid://kruwhy8bwgkt" path="res://scenes/items/trumpet_of_apocalypse.tscn" id="2_514gn"]
+
+[resource]
+script = ExtResource("1_s4efl")
+Name = "Trumpet of Apocalypse"
+Description = "When the player changes walking direction, summons a bunch of damaging spark projectiles. "
+Icon = ExtResource("1_1xexn")
+Scene = ExtResource("2_514gn")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

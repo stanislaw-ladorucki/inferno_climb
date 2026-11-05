@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bnbiinp73k84t"]
+
+[ext_resource type="Script" uid="uid://cse4art8brvv7" path="res://src/items/components/GoliathsSword.cs" id="1_mbqt3"]
+
+[node name="GoliathsSword" type="Node2D" unique_id=1416808433]
+script = ExtResource("1_mbqt3")

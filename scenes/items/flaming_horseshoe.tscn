@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cit86ftbtmi6a"]
+
+[ext_resource type="Script" uid="uid://bep010lc63r8v" path="res://src/items/components/FlamingHorseshoe.cs" id="1_860uo"]
+
+[node name="FlamingHorseshoe" type="Node2D" unique_id=1965355955]
+script = ExtResource("1_860uo")

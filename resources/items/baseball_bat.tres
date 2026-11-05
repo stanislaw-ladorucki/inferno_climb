@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cmkq7p1g6blmo"]
+
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_ao785"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_dhwc7"]
+[ext_resource type="PackedScene" uid="uid://d27pdlk0koxnr" path="res://scenes/items/baseball_bat.tscn" id="2_261t4"]
+
+[resource]
+script = ExtResource("1_ao785")
+Name = "Baseball Bat (signed, Satan)"
+Description = "When a sword item is activated, it has a chance to launch a ball projectile in the direction of the sword.  Also periodically on a cooldown activates a baseball bat swing to the player’s left or right, that always launches a ball. The bat swing also deals damage itself."
+Icon = ExtResource("1_dhwc7")
+Scene = ExtResource("2_261t4")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"

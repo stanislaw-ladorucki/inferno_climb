@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxbtwldllrjok"]
+
+[ext_resource type="Script" uid="uid://crkachdspbvlv" path="res://src/items/components/TitansSandals.cs" id="1_10iom"]
+
+[node name="TitansSandals" type="Node2D" unique_id=598773926]
+script = ExtResource("1_10iom")

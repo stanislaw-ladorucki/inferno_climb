@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kh6nnudr016e"]
+
+[ext_resource type="Script" uid="uid://2dmc42awoboq" path="res://src/items/components/BookOfGenesis.cs" id="1_iyahs"]
+
+[node name="BookOfGenesis" type="Node2D" unique_id=250408713]
+script = ExtResource("1_iyahs")

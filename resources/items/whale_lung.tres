@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://evl2g4cu4iye"]
+
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_4r58a"]
+[ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_h6t7a"]
+[ext_resource type="PackedScene" uid="uid://bufwu2lg128un" path="res://scenes/items/whale_lung.tscn" id="2_j78cm"]
+
+[resource]
+script = ExtResource("1_h6t7a")
+Name = "Whale Lung"
+Description = "Periodically creates an AOE shockwave around the player, reflecting any projectiles in the area, and knocking all enemies away. When knocked enemies hit a wall they receive damage."
+Icon = ExtResource("1_4r58a")
+Scene = ExtResource("2_j78cm")
+metadata/_custom_type_script = "uid://b3oexm6tsgtva"
