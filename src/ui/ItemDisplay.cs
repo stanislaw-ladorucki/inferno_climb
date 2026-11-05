@@ -1,6 +1,8 @@
 using Godot;
 using InfernoClimb.items;
 
+namespace InfernoClimb.ui;
+
 public partial class ItemDisplay : Control {
 	private ItemDefinition _itemDefinition;
 	private int _stack;

@@ -21,12 +21,10 @@ sprite_frames = ExtResource("2_eq8eu")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
-visible = false
 shape = SubResource("RectangleShape2D_qhqgy")
 debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
 
 [node name="CollisionAttackHitbox" parent="." unique_id=1679916697 instance=ExtResource("3_jewn2")]
-visible = false
 collision_layer = 0
 collision_mask = 2
 KnockbackStrength = 200.0
