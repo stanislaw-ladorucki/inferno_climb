@@ -26,6 +26,7 @@ project/assembly_name="Inferno Climb"
 [global_group]
 
 cooldown="Timers that work with cooldown reducing items"
+enemy=""
 
 [input]
 

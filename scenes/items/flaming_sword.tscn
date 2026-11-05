@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dnyvpf5len81t" path="res://src/items/components/FlamingSword.cs" id="1_x3h1j"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="2_yqnxe"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="3_qd8pf"]
+[ext_resource type="Script" uid="uid://776qo6jhwygj" path="res://src/util/CooldownTimer.cs" id="4_yqnxe"]
 
 [sub_resource type="Animation" id="Animation_mlwcx"]
 length = 0.001
@@ -116,8 +117,11 @@ position = Vector2(42, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m47wv")
 
-[node name="Timer" type="Timer" parent="." unique_id=251983778 groups=["cooldown"]]
+[node name="Timer" type="Timer" parent="." unique_id=1504320615 groups=["cooldown"]]
 wait_time = 2.6
 autostart = true
+script = ExtResource("4_yqnxe")
+Cooldown = 2.6
+metadata/_custom_type_script = "uid://776qo6jhwygj"
 
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

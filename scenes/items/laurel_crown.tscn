@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://7ttmuh0jlabx"]
+
+[ext_resource type="Script" uid="uid://diqaknt4wtgpj" path="res://src/items/components/LaurelCrown.cs" id="1_ieink"]
+
+[node name="LaurelCrown" type="Node2D" unique_id=1382670523]
+script = ExtResource("1_ieink")

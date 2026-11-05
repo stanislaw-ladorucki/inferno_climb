@@ -37,7 +37,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_5uy6h")
 debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 
-[node name="Blood" parent="." unique_id=674090606 instance=ExtResource("2_jewn2")]
+[node name="Blood" parent="." unique_id=674090606 groups=["enemy"] instance=ExtResource("2_jewn2")]
 
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]

@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 using InfernoClimb.entities;
 using InfernoClimb.entities.enemies;
 using InfernoClimb.level;
@@ -14,10 +15,19 @@ public partial class Nehushtan : ItemComponent {
     [Export] public float StackingInvulnerabilityDurabilityIncrease = 0.25f;
 
     public override void _Ready() {
-        LevelManager.GetInstance(this).EnemySpawned += OnEntitySpawned;
+        LevelManager level = LevelManager.GetInstance(this);
+        level.EnemySpawned += OnEntitySpawned;
+     
+        // subscribe to living enemy signals
+        foreach (Node node in GetTree().GetNodesInGroup("enemy")) {
+            if (node is Entity entity) {
+                entity.Died += OnEnemyDied;
+            }
+        }
     }
 
     public void OnEntitySpawned(Entity entity) {
+        // subscribe to newly spawned enemies
         if (entity is BaseEnemy enemy) {
             enemy.Died += OnEnemyDied;
         }

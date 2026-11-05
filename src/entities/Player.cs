@@ -86,12 +86,6 @@ public partial class Player : Entity {
 		}
 
 		Score = (int)Math.Max(Score, -Position.Y);
-
-		// quick-restart the game
-		// FIXME: restart does not work when the player is killed - stupid oversight
-		if (Input.IsActionJustPressed("restart")) {
-			GetTree().ReloadCurrentScene();
-		}
 	}
 	
 	private void UpdateSprite(float horizontalInput) {

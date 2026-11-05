@@ -9,9 +9,11 @@ public partial class FlamingSword : ItemComponent {
 	
 	public override void AddStack() {
 		base.AddStack();
-		Attack attack = GetNode<Attack>("Attack");
-		attack.Scale *= StackingScaleMultiplier;
-		attack.Damage *= StackingDamageMultiplier;
+		if (Stack > 0) {
+			Attack attack = GetNode<Attack>("Attack");
+			attack.Scale *= StackingScaleMultiplier;
+			attack.Damage *= StackingDamageMultiplier;
+		}
 	}
 
 	public void _OnTimerTimeout() {
