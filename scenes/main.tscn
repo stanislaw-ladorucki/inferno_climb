@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d1a8hf7r5vcp2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Shader" uid="uid://di77l3k1jdnfa" path="res://shaders/level_bg.gdshader" id="1_ya4ey"]
 [ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyScrollingCamera.cs" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://cv8rex0px8lcb" path="res://assets/level/intro_front.png" id="3_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://bx4t425eeu5pb" path="res://assets/level/intro.png" id="3_ya4ey"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelManager.cs" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
@@ -13,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+shader = ExtResource("1_ya4ey")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fl36j"]
 shader = ExtResource("1_ya4ey")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4ey"]
@@ -58,6 +62,12 @@ position = Vector2(0, 310)
 scale = Vector2(0.34894273, 0.34894273)
 texture = ExtResource("5_85g3d")
 
+[node name="Sprite2D" type="Sprite2D" parent="StaticEnvironment" unique_id=1432555039]
+material = SubResource("ShaderMaterial_fl36j")
+position = Vector2(0, -350)
+scale = Vector2(0.39687848, 0.49946654)
+texture = ExtResource("3_eb6dy")
+
 [node name="FloorSprite" type="Sprite2D" parent="StaticEnvironment" unique_id=528979892]
 z_index = -9
 material = SubResource("ShaderMaterial_ya4ey")
@@ -77,20 +87,20 @@ shape = SubResource("WorldBoundaryShape2D_tbgi4")
 shape = SubResource("WorldBoundaryShape2D_hb4xq")
 
 [node name="WallsParalax" type="Parallax2D" parent="StaticEnvironment/Walls" unique_id=1657615070]
-repeat_size = Vector2(0, 1590)
+repeat_size = Vector2(0, 1720)
 
 [node name="LeftWallSprite" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=2012383381]
 z_index = 1
 material = SubResource("ShaderMaterial_eb6dy")
-position = Vector2(-685, 123)
-scale = Vector2(0.17, 0.17)
+position = Vector2(-875, 165)
+scale = Vector2(0.17, 0.18338472)
 texture = ExtResource("9_choun")
 
 [node name="RightWallSprite" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=27230040]
 z_index = 1
 material = SubResource("ShaderMaterial_xf4jf")
-position = Vector2(685, 125)
-scale = Vector2(0.17, 0.17)
+position = Vector2(875, 187.95744)
+scale = Vector2(0.17, 0.18339379)
 texture = ExtResource("10_ya4ey")
 
 [node name="LevelManager" type="Node2D" parent="." unique_id=1814566028]
