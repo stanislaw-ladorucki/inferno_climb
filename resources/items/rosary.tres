@@ -1,18 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://bq0ugul7ie0bd"]
 
+[ext_resource type="Texture2D" uid="uid://c0rrcx0rikdne" path="res://assets/items/Rosary.png" id="1_3rmq8"]
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_fhdax"]
 [ext_resource type="PackedScene" uid="uid://qh72y56qg1l6" path="res://scenes/items/rosary.tscn" id="1_hxy70"]
-
-[sub_resource type="Gradient" id="Gradient_3rmq8"]
-colors = PackedColorArray(0, 0.6301428, 0.46584934, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hxy70"]
-gradient = SubResource("Gradient_3rmq8")
 
 [resource]
 script = ExtResource("1_fhdax")
 Name = "Rosary"
 Description = "Guardian Angel Up!"
-Icon = SubResource("GradientTexture2D_hxy70")
+Icon = ExtResource("1_3rmq8")
 Scene = ExtResource("1_hxy70")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"
