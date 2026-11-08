@@ -1,5 +1,6 @@
 using Godot;
 using InfernoClimb.entities.attacks;
+using InfernoClimb.util;
 
 namespace InfernoClimb.items.components;
 
@@ -18,8 +19,15 @@ public partial class FlamingSword : ItemComponent {
 
 	public void _OnTimerTimeout() {
 		AnimationPlayer animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		AnimateTrigger();
 		if (!animationPlayer.IsPlaying()) {
 			animationPlayer.Play("spin");
 		}		
+	}
+
+	public override void _Process(double delta) {
+		base._Process(delta);
+		CooldownTimer cooldown = GetNode<CooldownTimer>("Timer");
+		AnimateProgress(cooldown.TimeLeft == 0 ? 1.0f : (float)(1 - cooldown.TimeLeft / cooldown.Cooldown));
 	}
 }

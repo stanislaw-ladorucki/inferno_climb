@@ -37,6 +37,7 @@ public partial class LaurelCrown : ItemComponent {
 				double timeLeft = timer.TimeLeft; 
 				timer.Advance(CooldownReduction);
 			}
+			AnimateTrigger();
 		}
 	}
     

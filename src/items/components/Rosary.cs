@@ -12,6 +12,7 @@ public partial class Rosary : ItemComponent {
         using RandomNumberGenerator rng = new RandomNumberGenerator();
         if (rng.Randf() / (float)delta < InvulnerabilityChance && Player.InvulnerabilityTime <= 0) {
             Player.InvulnerabilityTime += InvulnerabilityDuration;
+            AnimateTrigger();
         }
         GetNode<Attack>("Attack").Monitoring = Player.IsInvulnerable;
     }

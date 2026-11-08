@@ -25,4 +25,12 @@ public partial class ItemDisplay : Control {
 	public void SetStack() {
 		GetNode<Label>("Label").Text = $"x{_stack}";
 	}
+
+	public void AnimateTrigger() {
+		GetNode<AnimationPlayer>("AnimationPlayer").Play("trigger");
+	}
+	
+	public void AnimateProgress(float progress) {
+		((ShaderMaterial)GetNode<TextureRect>("MarginContainer/TextureRect").GetMaterial()).SetShaderParameter("progress", progress);
+	}
 }

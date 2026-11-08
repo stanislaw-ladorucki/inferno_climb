@@ -34,6 +34,7 @@ public partial class Meatball : ItemComponent {
 				meatball.Position = enemy.Position;
 				LevelManager.GetInstance(this).EmitSignal("EnemySpawned", meatball);
 			}
+			AnimateTrigger();
 		}
 	}
 }

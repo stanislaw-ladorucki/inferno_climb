@@ -38,6 +38,7 @@ public partial class Nehushtan : ItemComponent {
         using RandomNumberGenerator rng = new RandomNumberGenerator();
         if (rng.Randf() < TriggerChance) {
             Player.InvulnerabilityTime = Math.Max(Player.InvulnerabilityTime, InvulnerabilityDuration);
+            AnimateTrigger();
         }
     }
     

@@ -151,6 +151,8 @@ public partial class Player : Entity {
 				itemDisplay = ItemDisplayScene.Instantiate<ui.ItemDisplay>();
 				itemDisplay.ItemDefinition = itemDefinition;
 				itemDisplay.Stack = component.Stack;
+				component.Trigger += itemDisplay.AnimateTrigger;
+				component.UpdateProgress += itemDisplay.AnimateProgress;
 				ItemDisplayContainer.AddChild(itemDisplay);
 			} 
 		}
