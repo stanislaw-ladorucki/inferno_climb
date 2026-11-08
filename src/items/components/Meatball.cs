@@ -28,7 +28,7 @@ public partial class Meatball : ItemComponent {
 	private void OnEnemyDied(Entity enemy) {
 		if (!(enemy is entities.enemies.Meatball)) {
 			using RandomNumberGenerator rng = new RandomNumberGenerator();
-			for (int i = 0; i < Stack / 2f + rng.Randf() * Stack; i++) {
+			for (int i = 0; i < Stack / 2f + rng.Randf() * Stack / 2; i++) {
 				entities.enemies.Meatball meatball = MeatballScene.Instantiate<entities.enemies.Meatball>();
 				enemy.AddSibling(meatball);
 				meatball.Position = enemy.Position;
