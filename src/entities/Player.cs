@@ -119,6 +119,7 @@ public partial class Player : Entity {
 	}
 
 	private void _OnJumpAttackHitboxHit(Node2D body) {
+		// TDE: make so jump attack cannot hit multiple enemies at once - tiny cooldown?
 		Velocity = Velocity with { Y = Input.IsActionPressed("jump") ? -EnemyJumpBounceForce : -EnemyBounceForce };
 	}
 	

@@ -25,8 +25,10 @@ public partial class Attack : Area2D {
 
 	public void _OnBodyEntered(Node2D body) {
 		if (body is Entity entity) {
-			entity.ApplyAttack(this, Damage, GetKnockback(body), KnockbackMode);
-			EmitSignalHit(entity);
+			Callable.From(() => {
+				entity.ApplyAttack(this, Damage, GetKnockback(body), KnockbackMode);
+				EmitSignalHit(entity);
+			}).CallDeferred();
 		}
 	}
 
