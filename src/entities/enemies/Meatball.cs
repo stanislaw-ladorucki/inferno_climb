@@ -4,7 +4,7 @@ using Math = System.Math;
 namespace InfernoClimb.entities.enemies;
 
 public partial class Meatball : BaseEnemy {
-    [Export] public float MinInitialSpeed = 60;
+    [Export] public float MinInitialSpeed = 100;
     [Export] public float MaxInitialSpeed = 290;
     [Export] public float VelocityDampening = 0.0001f;
     

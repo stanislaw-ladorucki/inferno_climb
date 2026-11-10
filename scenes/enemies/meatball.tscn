@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bfhegq5rk6612"]
 
 [ext_resource type="Script" uid="uid://csdli201imx1f" path="res://src/entities/enemies/Meatball.cs" id="1_5nvry"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="2_timdf"]
+[ext_resource type="Texture2D" uid="uid://da7qmf47uljn8" path="res://assets/items/Meatball.png" id="2_5nvry"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="3_x1kkw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gd0a"]
-radius = 6.0
+radius = 8.0
 
 [node name="Meatball" type="CharacterBody2D" unique_id=1459157320 groups=["enemy"]]
 collision_layer = 4
@@ -13,10 +13,9 @@ collision_mask = 0
 script = ExtResource("1_5nvry")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1682579551]
-modulate = Color(1, 0.24705882, 0.29411766, 1)
-rotation = -3.1415925
-scale = Vector2(0.09257596, 0.09257596)
-texture = ExtResource("2_timdf")
+rotation = -6.2831855
+scale = Vector2(0.08409681, 0.08409681)
+texture = ExtResource("2_5nvry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
 shape = SubResource("CircleShape2D_4gd0a")
