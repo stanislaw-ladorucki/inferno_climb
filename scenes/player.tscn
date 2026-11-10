@@ -17,9 +17,8 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2063675855]
 scale = Vector2(0.14627062, 0.14627062)
 sprite_frames = ExtResource("2_qhqgy")
-animation = &"fall"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.041727033
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
 shape = SubResource("RectangleShape2D_qhqgy")

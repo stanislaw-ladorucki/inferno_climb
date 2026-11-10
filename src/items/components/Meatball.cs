@@ -10,7 +10,7 @@ public partial class Meatball : ItemComponent {
 	public override void _Ready() {
 		LevelManager level = LevelManager.GetInstance(this);
 		level.EnemySpawned += OnEntitySpawned;
-     
+	 
 		// subscribe to living enemy signals
 		foreach (Node node in GetTree().GetNodesInGroup("enemy")) {
 			if (node is Entity entity) {
