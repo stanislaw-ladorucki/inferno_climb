@@ -8,6 +8,7 @@ namespace InfernoClimb.level;
 public partial class LevelManager : Node2D {
 	[Export] public Vector2 ChunkSize = new(600, 1000);
 	[Export] public float ChunkGenerateMargin = 200;
+	[Export] public float ChunkDiscardMargin = 1000;
 	
 	[Export] public float ItemsOccurrenceInterval = 500;
 	
@@ -146,6 +147,7 @@ public partial class LevelManager : Node2D {
 	public override void _Process(double delta) {
 		Camera2D camera = GetViewport().GetCamera2D();
 		float cameraTop = (camera.GetScreenCenterPosition() - camera.GetViewportRect().Size / 2).Y;
+		float cameraBottom = (camera.GetScreenCenterPosition() + camera.GetViewportRect().Size / 2).Y;
 		
 		// when the top of the chunk is about to be in-view,
 		// generate the next chunk offscreen
@@ -155,6 +157,16 @@ public partial class LevelManager : Node2D {
 			_lastPlatformPosition = platforms[^1].GlobalPosition;
 			PopulateItems(chunk, platforms);
 			PopulateEnemies(chunk, platforms);
+		}
+
+		// remove the chunks off the bottom of the screen + margin
+		foreach (Node node in GetChildren()) {
+			if (node != _lastChunk && node is LevelChunk chunk) {
+				if (cameraBottom < chunk.GlobalPosition.Y - chunk.Size.Y - ChunkDiscardMargin) {
+					// TDE: check, whether enemies remain above the chunk boundary, and reparent them 
+					chunk.QueueFree();
+				}	
+			}
 		}
 		
 		// quick-restart the game
