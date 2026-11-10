@@ -10,6 +10,7 @@ public partial class Pluto : ItemComponent {
 
     public override void _Process(double delta) {
         Rotation += RotationSpeed * (float)delta;
+        GetNode<Sprite2D>("Attack/Sprite2D").GlobalRotation = 0.0f;
     }
     
     public override void AddStack() {
