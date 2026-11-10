@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_1fqpp"]
 [ext_resource type="Script" uid="uid://20s82od7p0hh" path="res://src/ui/ItemDisplay.cs" id="1_vxlkq"]
-[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://assets/theme.tres" id="2_vxlkq"]
+[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://resources/theme.tres" id="2_vxlkq"]
 
 [sub_resource type="Shader" id="Shader_vxlkq"]
 code = "shader_type canvas_item;

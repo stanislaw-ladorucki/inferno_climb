@@ -73,9 +73,9 @@ rendering_device/driver.windows="d3d12"
 
 background_gradient={
 "type": "sampler2D",
-"value": "res://assets/background_gradient.tres"
+"value": "res://resources/background_gradient.tres"
 }
 foreground_gradient={
 "type": "sampler2D",
-"value": "res://assets/foreground_gradient.tres"
+"value": "res://resources/foreground_gradient.tres"
 }

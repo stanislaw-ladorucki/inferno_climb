@@ -55,10 +55,16 @@ position = Vector2(0, 310)
 scale = Vector2(0.34894273, 0.34894273)
 texture = ExtResource("5_85g3d")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticEnvironment" unique_id=1432555039]
+[node name="FloorForegroundParalax" type="Parallax2D" parent="StaticEnvironment" unique_id=500933150]
+z_index = 10
+texture_repeat = 2
+scroll_scale = Vector2(1, 1.2)
+scroll_offset = Vector2(0, -102)
+
+[node name="FloorForegroundSprite" type="Sprite2D" parent="StaticEnvironment/FloorForegroundParalax" unique_id=1432555039]
 material = SubResource("ShaderMaterial_fl36j")
 position = Vector2(0, -350)
-scale = Vector2(0.39687848, 0.49946654)
+scale = Vector2(0.333, 0.417)
 texture = ExtResource("3_eb6dy")
 
 [node name="FloorSprite" type="Sprite2D" parent="StaticEnvironment" unique_id=528979892]
@@ -80,6 +86,7 @@ shape = SubResource("WorldBoundaryShape2D_tbgi4")
 shape = SubResource("WorldBoundaryShape2D_hb4xq")
 
 [node name="WallsParalax" type="Parallax2D" parent="StaticEnvironment/Walls" unique_id=1657615070]
+z_index = -5
 repeat_size = Vector2(0, 1720)
 
 [node name="LeftWallSprite" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=2012383381]
