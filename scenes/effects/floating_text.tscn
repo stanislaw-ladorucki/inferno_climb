@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6jeiujbc8ctx"]
 
-[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://assets/theme.tres" id="1_lgwrg"]
+[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://resources/theme.tres" id="1_lgwrg"]
 [ext_resource type="Script" uid="uid://dx81fs3tihfs0" path="res://src/effects/FloatingText.cs" id="1_llnos"]
 
 [sub_resource type="Animation" id="Animation_2ceor"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqq2n4ff2fxl5"]
 
-[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://assets/theme.tres" id="1_ad7uf"]
+[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://resources/theme.tres" id="1_ad7uf"]
 [ext_resource type="Script" uid="uid://k1g1u6gwcawh" path="res://src/ui/ScoreDisplay.cs" id="2_urhan"]
 
 [node name="ScoreDisplay" type="Label" unique_id=1783430945]
