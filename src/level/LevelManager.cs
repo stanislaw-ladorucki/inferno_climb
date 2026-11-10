@@ -75,8 +75,7 @@ public partial class LevelManager : Node2D {
 		if (_lastChunk != null) {
 			// The first chunk is created at the origin of the manager.
 			// The subsequent ones are generated at the top of the last chunk.
-			// FIXME: the upper chunk boundary might not be working correctly - may cause trouble down the line
-			chunk.Position = _lastChunk.Position with { Y = _lastChunk.Position.Y - ChunkSize.Y};
+			chunk.GlobalPosition = _lastChunk.GlobalPosition with { Y = _lastChunk.GlobalPosition.Y - ChunkSize.Y};
 		}
 
 		// update enemy pool after reaching a threshold

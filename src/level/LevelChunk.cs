@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Godot;
-using InfernoClimb.entities.enemies;
+
 
 namespace InfernoClimb.level;
 
 public partial class LevelChunk : Node2D {
-	[Export] public Vector2 Size = new(600, 800);
+	[Export] public Vector2 Size = new(600, 1000);
 	[Export] public Vector2 PlatformMinDistance = new (50, 30); // horizontal and vertical components
 	[Export] public Vector2 PlatformMaxDistance = new (200, 100); // horizontal and vertical components
 	[Export] public float RedundantPlatformRouteChance;
@@ -29,7 +29,8 @@ public partial class LevelChunk : Node2D {
 		foreach (Platform platform in platforms) {
 			if (rng.Randf() < RedundantPlatformRouteChance) {
 				Platform[] route = SpawnPlatformRoute(
-					startPosition: platform.GlobalPosition, maxHeight: Size.Y - platform.Position.Y,
+					startPosition: platform.GlobalPosition,
+					stopAtHeight: GlobalPosition.Y - Size.Y,
 					maxPlatforms: rng.RandiRange(MinRedundantPlatformRouteLenght, MaxRedundantPlatformRouteLenght)
 				);
 				foreach (Platform routePlatform in route) {
@@ -44,17 +45,17 @@ public partial class LevelChunk : Node2D {
 	}
 
 	private Platform[] PopulateMainPlatformRoute(Vector2 startPosition) {
-		return SpawnPlatformRoute(startPosition, Size.Y);
+		return SpawnPlatformRoute(startPosition, GlobalPosition.Y - Size.Y);
 	}
 
-	private Platform[] SpawnPlatformRoute(Vector2 startPosition, float maxHeight = 0, int maxPlatforms = 0) {
+	private Platform[] SpawnPlatformRoute(Vector2 startPosition, float stopAtHeight = 0, int maxPlatforms = 0) {
 		using RandomNumberGenerator rng = new RandomNumberGenerator();
 		List<Platform> platforms = [CreatePlatform(startPosition)];
 		while (maxPlatforms == 0 || platforms.Count < maxPlatforms) {
 			Platform platform = CreatePlatform(GetNewPlatformPosition(platforms[^1], rng));
 			platforms.Add(platform);
 			
-			if (maxHeight != 0 && platform.Position.Y <= startPosition.Y - maxHeight) {
+			if (stopAtHeight != 0 && platform.GlobalPosition.Y <= stopAtHeight) {
 				break;
 			}
 		}
