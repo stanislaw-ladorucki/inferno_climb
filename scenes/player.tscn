@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://7unpoydrc25p" path="res://src/entities/Player.cs" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://c6b3ifujq1mdw" path="res://assets/sprites/player.tres" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://cedouosudsqbn" path="res://assets/sfx/jump.wav" id="4_dqkch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(22, 32)
@@ -32,5 +33,8 @@ KnockbackVector = Vector2(0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpAttackHitbox" unique_id=2107815232]
 position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_dqkch")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=593738419]
+stream = ExtResource("4_dqkch")
 
 [connection signal="Hit" from="JumpAttackHitbox" to="." method="_OnJumpAttackHitboxHit"]
