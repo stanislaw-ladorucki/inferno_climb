@@ -22,9 +22,9 @@ public partial class LevelManager : Node2D {
 	[Export] public float[] StartingPlatformSpawnWeights = [0.25f, 2f, 0.5f, 0.25f]; // sm, md, lg, xl
 	[Export] public float[] FinalPlatformSpawnWeights = [2.5f, 1.5f, 0.25f, 0.125f]; // sm, md, lg, xl
 
-	[Export] public float FinalEnemyDifficultyHeight = 20_000; 
+	[Export] public float FinalEnemyDifficultyHeight = 40_000; 
 	[Export] public int StartingEnemySpawnsPerChunk = 0;
-	[Export] public int FinalEnemySpawnsPerChunk = 100;
+	[Export] public int FinalEnemySpawnsPerChunk = 20;
 
 	[Signal]
 	public delegate void EnemySpawnedEventHandler(Entity enemy);
