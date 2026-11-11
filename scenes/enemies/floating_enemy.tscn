@@ -15,6 +15,7 @@ size = Vector2(25, 17)
 
 [node name="FloatingEnemy" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
+motion_mode = 1
 script = ExtResource("1_0gwgf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]

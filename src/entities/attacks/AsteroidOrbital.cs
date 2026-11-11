@@ -7,5 +7,7 @@ public partial class AsteroidOrbital : Node2D {
 
 	public override void _Process(double delta) {
 		Rotation += RotationSpeed * (float)delta;
+		Attack attack = GetNode<Attack>("Attack");
+		attack.KnockbackVector = attack.KnockbackVector.Rotated(Rotation);
 	}
 }

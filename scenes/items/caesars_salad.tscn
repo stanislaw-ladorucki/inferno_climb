@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://rg45qlqgbaxt" path="res://src/items/components/CaesarsSalad.cs" id="1_m01cu"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="1_w40j5"]
-[ext_resource type="Texture2D" uid="uid://btj7ij0vprekx" path="res://assets/items/Ceasar's Dagger_R.png" id="3_m01cu"]
+[ext_resource type="Texture2D" uid="uid://btj7ij0vprekx" path="res://assets/caesars_salad_dagger.png" id="3_m01cu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb4xq"]
-size = Vector2(20, 6)
+size = Vector2(36, 8)
 
 [sub_resource type="Animation" id="Animation_m01cu"]
 length = 0.001
@@ -134,6 +134,9 @@ script = ExtResource("1_m01cu")
 [node name="LeftDaggerAttack" parent="." unique_id=2088546204 instance=ExtResource("1_w40j5")]
 collision_layer = 0
 collision_mask = 4
+KnockbackAngle = 1
+KnockbackStrength = 300.0
+KnockbackVector = Vector2(-1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDaggerAttack" unique_id=1911951317]
 position = Vector2(-1.1368684e-13, 0)
@@ -149,9 +152,11 @@ texture = ExtResource("3_m01cu")
 position = Vector2(25, 0)
 collision_layer = 0
 collision_mask = 4
+KnockbackAngle = 1
+KnockbackStrength = 300.0
+KnockbackVector = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDaggerAttack" unique_id=1625512186]
-position = Vector2(-1.1368684e-13, 0)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_hb4xq")
 
