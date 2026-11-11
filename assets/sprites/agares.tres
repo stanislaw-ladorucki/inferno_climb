@@ -41,13 +41,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_drs5e")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_77wjs")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"hurt",
 "speed": 5.0
 }, {

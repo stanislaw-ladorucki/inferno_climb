@@ -18,5 +18,20 @@ public partial class FloatingEnemy : BaseEnemy {
 			}
 			MoveAndSlide();
 		}
+
+		UpdateSprite();
+	}
+	
+	private void UpdateSprite() {
+		// handle sprite flashing to signify invulnerability
+		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		if (sprite.Animation == "hurt" && sprite.FrameProgress == 1.0f) {
+			sprite.Play("idle");
+		}
+	}
+
+	public void OnHit(Node2D attack, float totalIncomingDamage) {
+		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		sprite.Play("hurt");
 	}
 }
