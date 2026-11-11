@@ -36,7 +36,6 @@ public partial class Attack : Area2D {
 	public Vector2 GetKnockback(Node2D body) {
 		switch (KnockbackAngle) {
 			case KnockbackAngle.AttackAngle:
-				// TODO: can this be done with advanced physics?
 				return (Position - body.Position).Normalized() * KnockbackStrength;
 			case KnockbackAngle.ConstantAngle:
 				return KnockbackVector.Normalized() * KnockbackStrength;
