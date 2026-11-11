@@ -17,11 +17,13 @@ size = Vector2(25, 17)
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_0gwgf")
+Health = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
 scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("2_eq8eu")
-animation = &"idle"
+animation = &"hurt"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
 shape = SubResource("CapsuleShape2D_tuyoq")
@@ -52,3 +54,4 @@ shape = SubResource("CapsuleShape2D_hb4xq")
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]
 [connection signal="Died" from="." to="Corpse" method="_OnParentDied"]
+[connection signal="Hit" from="." to="." method="OnHit"]
