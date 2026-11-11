@@ -24,7 +24,8 @@ public partial class CaesarsSalad : ItemComponent {
         base.AddStack();
         if (Stack > 1) {
             Scale += Vector2.One * StackingScaleIncrease;
-            GetNode<Attack>("Attack").Damage += StackingDamageIncrease;
+            GetNode<Attack>("LeftDaggerAttack").Damage += StackingDamageIncrease;
+            GetNode<Attack>("RightDaggerAttack").Damage += StackingDamageIncrease;
         }
     }
 }
