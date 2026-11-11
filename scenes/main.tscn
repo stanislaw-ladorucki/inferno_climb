@@ -43,7 +43,7 @@ shader = ExtResource("8_85g3d")
 [node name="StaticEnvironment" type="Node2D" parent="." unique_id=1493180632]
 
 [node name="BackgroundParalax" type="Parallax2D" parent="StaticEnvironment" unique_id=1783364739]
-z_index = -10
+z_index = -20
 texture_repeat = 2
 scroll_scale = Vector2(1, 0.7)
 repeat_size = Vector2(0, 1850)
@@ -68,7 +68,7 @@ scale = Vector2(0.333, 0.417)
 texture = ExtResource("3_eb6dy")
 
 [node name="FloorSprite" type="Sprite2D" parent="StaticEnvironment" unique_id=528979892]
-z_index = -9
+z_index = -15
 material = SubResource("ShaderMaterial_ya4ey")
 position = Vector2(0, -360)
 scale = Vector2(0.33605614, 0.33605614)

@@ -22,6 +22,7 @@ one_way_collision = true
 debug_color = Color(0, 0.6, 0.69803923, 0.53333336)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1135492073]
+z_index = -10
 material = SubResource("ShaderMaterial_rkwd4")
 offset_left = -74.29637
 offset_top = -10.0
