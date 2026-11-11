@@ -1,8 +1,11 @@
 using Godot;
+using InfernoClimb.entities.attacks;
 
 namespace InfernoClimb.items.components;
 
 public partial class CaesarsSalad : ItemComponent {
+    [Export] public float StackingScaleIncrease = 0.5f; 
+    [Export] public float StackingDamageIncrease = 1.0f; 
     public bool IsHidden = true;
     
     public override void _Process(double delta) {
@@ -20,7 +23,8 @@ public partial class CaesarsSalad : ItemComponent {
     public override void AddStack() {
         base.AddStack();
         if (Stack > 1) {
-            Scale += Vector2.One * 0.5f;
+            Scale += Vector2.One * StackingScaleIncrease;
+            GetNode<Attack>("Attack").Damage += StackingDamageIncrease;
         }
     }
 }
