@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://d3i3an3uoid7"]
+
+[ext_resource type="Script" uid="uid://bpys4iuwfdf4v" path="res://src/entities/attacks/HarpeProjectile.cs" id="1_h6t5j"]
+[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_hcsgb"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_h6t5j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h6t5j"]
+bounce = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hb4xq"]
+radius = 6.0827627
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m47wv"]
+radius = 9.0
+
+[node name="HarpeProjectile" type="RigidBody2D" unique_id=1395677421]
+collision_layer = 0
+collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_h6t5j")
+linear_velocity = Vector2(150, -600)
+angular_velocity = 3.1415927
+script = ExtResource("1_h6t5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=288685386]
+shape = SubResource("CircleShape2D_hb4xq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=528551495]
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("1_hcsgb")
+
+[node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("3_h6t5j")]
+collision_layer = 0
+collision_mask = 4
+Damage = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1387620414]
+shape = SubResource("CircleShape2D_m47wv")
+
+[node name="Timeout" type="Timer" parent="." unique_id=1012912553]
+wait_time = 4.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timeout" to="." method="_OnTimeout"]

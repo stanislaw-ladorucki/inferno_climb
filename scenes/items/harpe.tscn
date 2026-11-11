@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://yxmdwd7nodiu"]
 
 [ext_resource type="Script" uid="uid://b7yp13d84ufqt" path="res://src/items/components/Harpe.cs" id="1_b57x0"]
+[ext_resource type="Script" uid="uid://776qo6jhwygj" path="res://src/util/CooldownTimer.cs" id="2_jby54"]
 
 [node name="Harpe" type="Node2D" unique_id=1308693693]
 script = ExtResource("1_b57x0")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1069276965 groups=["cooldown"]]
+wait_time = 0.7
+autostart = true
+script = ExtResource("2_jby54")
+Cooldown = 0.7
+metadata/_custom_type_script = "uid://776qo6jhwygj"
+
+[connection signal="timeout" from="Cooldown" to="." method="_OnTimerTimeout"]
