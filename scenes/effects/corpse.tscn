@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b0obqski7wfqg"]
+
+[ext_resource type="Script" uid="uid://cppi2fegmrs03" path="res://src/effects/Corpse.cs" id="1_5vjvh"]
+
+[node name="Corpse" type="RigidBody2D" unique_id=574074381]
+process_mode = 4
+visible = false
+collision_layer = 0
+script = ExtResource("1_5vjvh")
