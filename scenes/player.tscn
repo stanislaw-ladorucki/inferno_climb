@@ -43,7 +43,6 @@ stream = ExtResource("4_dqkch")
 [node name="Corpse" parent="." unique_id=574074381 instance=ExtResource("5_qlg0r")]
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Corpse" unique_id=1003118119]
-modulate = Color(0.36367702, 0.36367702, 0.36367702, 1)
 scale = Vector2(0.14627062, 0.14627062)
 sprite_frames = ExtResource("2_qhqgy")
 animation = &"fall"
