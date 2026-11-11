@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1a8hf7r5vcp2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Shader" uid="uid://di77l3k1jdnfa" path="res://shaders/level_bg.gdshader" id="1_ya4ey"]
-[ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyScrollingCamera.cs" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyFollowingCamera.cs" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cv8rex0px8lcb" path="res://assets/level/intro_front.png" id="3_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://bx4t425eeu5pb" path="res://assets/level/intro.png" id="3_ya4ey"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelManager.cs" id="4_tbgi4"]
@@ -111,8 +111,8 @@ ChunkGenerateMargin = 0.0
 position = Vector2(0, -249)
 zoom = Vector2(1.2, 1.2)
 script = ExtResource("2_sugp2")
-Follow = NodePath("../Player")
-FollowLerp = 0.4
+Follow = NodePath("../Player/Corpse")
+FollowLerp = 0.9
 
 [node name="Player" parent="." unique_id=1765285203 node_paths=PackedStringArray("ItemDisplayContainer") instance=ExtResource("1_o5qli")]
 ItemDisplayContainer = NodePath("../HUD/VBoxContainer/GridContainer")
