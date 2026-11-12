@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://c4issbb8khn1t" path="res://scenes/ui/item_description_toast.tscn" id="12_eb6dy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -37,6 +38,8 @@ shader = ExtResource("8_85g3d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xf4jf"]
 shader = ExtResource("8_85g3d")
+
+[sub_resource type="Theme" id="Theme_hb4xq"]
 
 [node name="Main" type="Node2D" unique_id=1347739713]
 
@@ -115,21 +118,31 @@ script = ExtResource("2_sugp2")
 Follow = NodePath("../Player/Corpse")
 FollowLerp = 0.9
 
-[node name="Player" parent="." unique_id=1765285203 node_paths=PackedStringArray("ItemDisplayContainer") instance=ExtResource("1_o5qli")]
-ItemDisplayContainer = NodePath("../HUD/VBoxContainer/GridContainer")
+[node name="Player" parent="." unique_id=1765285203 node_paths=PackedStringArray("ItemDisplayContainer", "ItemDescriptionToast") instance=ExtResource("1_o5qli")]
+ItemDisplayContainer = NodePath("../HUD/MarginContainer/LeftSidebar/GridContainer")
+ItemDescriptionToast = NodePath("../HUD/MarginContainer/Bottom/ItemDescriptionToast")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=648844377]
 
-[node name="VBoxContainer" type="BoxContainer" parent="HUD" unique_id=1526661507]
-anchors_preset = 9
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=1938527433]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 300.0
+grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_hb4xq")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="LeftSidebar" type="BoxContainer" parent="HUD/MarginContainer" unique_id=1526661507]
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 vertical = true
 
-[node name="MarginContainer" type="MarginContainer" parent="HUD/VBoxContainer" unique_id=943137346]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/LeftSidebar" unique_id=943137346]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -138,12 +151,22 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ScoreDisplay" parent="HUD/VBoxContainer/MarginContainer" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+[node name="ScoreDisplay" parent="HUD/MarginContainer/LeftSidebar/MarginContainer" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-Player = NodePath("../../../../Player")
+Player = NodePath("../../../../../Player")
 
-[node name="GridContainer" type="GridContainer" parent="HUD/VBoxContainer" unique_id=2037188808]
+[node name="GridContainer" type="GridContainer" parent="HUD/MarginContainer/LeftSidebar" unique_id=2037188808]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 columns = 2
+
+[node name="Bottom" type="VBoxContainer" parent="HUD/MarginContainer" unique_id=1908812140]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+
+[node name="ItemDescriptionToast" parent="HUD/MarginContainer/Bottom" unique_id=1737067120 instance=ExtResource("12_eb6dy")]
+layout_mode = 2
+offset_transform_position = Vector2(0, 300)

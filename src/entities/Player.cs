@@ -3,6 +3,7 @@ using System.Linq;
 using Godot;
 using InfernoClimb.entities.attacks;
 using InfernoClimb.items;
+using InfernoClimb.ui;
 
 namespace InfernoClimb.entities;
 
@@ -22,6 +23,7 @@ public partial class Player : Entity {
 	[Export] public float InvulnerabilityTime;
 
 	[Export] public Node ItemDisplayContainer;
+	[Export] public ItemDescriptionToast ItemDescriptionToast;
 	public static readonly PackedScene ItemDisplayScene = GD.Load<PackedScene>("res://scenes/ui/item_display.tscn"); 
 
 	private Attack _jumpAttackHitbox;
@@ -155,6 +157,10 @@ public partial class Player : Entity {
 				component.UpdateProgress += itemDisplay.AnimateProgress;
 				ItemDisplayContainer.AddChild(itemDisplay);
 			} 
+		}
+
+		if (ItemDescriptionToast != null) {
+			ItemDescriptionToast.QueueItem(itemDefinition);
 		}
 	}
 	public ItemComponent GetItem(ItemDefinition itemDefinition) {
