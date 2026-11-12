@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://b7lh0pisfpg71"]
 
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_ch3g3"]
+[ext_resource type="Texture2D" uid="uid://brge3owsv76nq" path="res://assets/items/Harpe Icon.png" id="1_ch3g3"]
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_d8ycl"]
 [ext_resource type="PackedScene" uid="uid://yxmdwd7nodiu" path="res://scenes/items/harpe.tscn" id="2_odm27"]
 

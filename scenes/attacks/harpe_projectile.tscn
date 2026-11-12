@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3i3an3uoid7"]
 
 [ext_resource type="Script" uid="uid://bpys4iuwfdf4v" path="res://src/entities/attacks/HarpeProjectile.cs" id="1_h6t5j"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_hcsgb"]
+[ext_resource type="Texture2D" uid="uid://brge3owsv76nq" path="res://assets/items/Harpe Icon.png" id="2_h6t5j"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_h6t5j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h6t5j"]
@@ -26,7 +26,7 @@ shape = SubResource("CircleShape2D_hb4xq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=528551495]
 scale = Vector2(0.09375, 0.09375)
-texture = ExtResource("1_hcsgb")
+texture = ExtResource("2_h6t5j")
 
 [node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("3_h6t5j")]
 collision_layer = 0
