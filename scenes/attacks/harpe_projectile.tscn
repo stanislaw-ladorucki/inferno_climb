@@ -8,23 +8,24 @@
 bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hb4xq"]
-radius = 6.0827627
+radius = 11.045361
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m47wv"]
-radius = 9.0
+radius = 20.024984
 
 [node name="HarpeProjectile" type="RigidBody2D" unique_id=1395677421]
 collision_layer = 0
 collision_mask = 8
 physics_material_override = SubResource("PhysicsMaterial_h6t5j")
 linear_velocity = Vector2(150, -600)
-angular_velocity = 3.1415927
+angular_velocity = 18.849556
 script = ExtResource("1_h6t5j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=288685386]
 shape = SubResource("CircleShape2D_hb4xq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=528551495]
+position = Vector2(-2, -2)
 scale = Vector2(0.09375, 0.09375)
 texture = ExtResource("2_h6t5j")
 
