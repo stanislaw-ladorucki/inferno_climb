@@ -1,19 +1,13 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://cqo7k4dofnx3i"]
 
+[ext_resource type="Texture2D" uid="uid://bgr3u7wuxrn3g" path="res://assets/items/Laurel Crown.png" id="1_dacil"]
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_l8m1a"]
 [ext_resource type="PackedScene" uid="uid://7ttmuh0jlabx" path="res://scenes/items/laurel_crown.tscn" id="1_nyyfr"]
-
-[sub_resource type="Gradient" id="Gradient_l8m1a"]
-colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nyyfr"]
-gradient = SubResource("Gradient_l8m1a")
-fill_to = Vector2(1, 1)
 
 [resource]
 script = ExtResource("1_l8m1a")
 Name = "Laurel Crown"
 Description = "Cooldown reduction on kill"
-Icon = SubResource("GradientTexture2D_nyyfr")
+Icon = ExtResource("1_dacil")
 Scene = ExtResource("1_nyyfr")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"
