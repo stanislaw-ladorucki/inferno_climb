@@ -27,6 +27,7 @@ public partial class ItemPickup : Node2D {
         GD.Load<ItemDefinition>("res://resources/items/laurel_crown.tres"),
         GD.Load<ItemDefinition>("res://resources/items/meatball.tres"),
         GD.Load<ItemDefinition>("res://resources/items/harpe.tres"),
+        GD.Load<ItemDefinition>("res://resources/items/super_dead_fish.tres"),
     ];
 
     public void _OnBodyEntered(Node2D body) {

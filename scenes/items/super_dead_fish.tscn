@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://dfpwaj0d5w2hy"]
 
 [ext_resource type="Script" uid="uid://wrbtspnv605s" path="res://src/items/components/SuperDeadFish.cs" id="1_q7t5g"]
+[ext_resource type="Script" uid="uid://776qo6jhwygj" path="res://src/util/CooldownTimer.cs" id="2_ecpt3"]
 
 [node name="SuperDeadFish" type="Node2D" unique_id=69335936]
 script = ExtResource("1_q7t5g")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=361561648 groups=["cooldown"]]
+autostart = true
+script = ExtResource("2_ecpt3")
+Cooldown = 2.5
+metadata/_custom_type_script = "uid://776qo6jhwygj"
+
+[connection signal="timeout" from="Cooldown" to="." method="_OnTimerTimeout"]
