@@ -173,6 +173,8 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="ScoreDisplay" parent="HUD/MarginContainer/LeftSidebar/MarginContainer" unique_id=1783430945 node_paths=PackedStringArray("Player") instance=ExtResource("5_tbgi4")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 Player = NodePath("../../../../../Player")
