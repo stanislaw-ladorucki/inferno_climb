@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b1k7hnmdfp1bb"]
+
+[ext_resource type="Script" uid="uid://bfsi5h7ukup7l" path="res://src/ui/MainMenu.cs" id="1_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://clhsjkx11bkrp" path="res://assets/logo.png" id="2_m1kxf"]
+[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://resources/theme.tres" id="3_x2yvf"]
+
+[sub_resource type="Animation" id="Animation_muem4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dp3eg"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ld40"]
+_data = {
+&"RESET": SubResource("Animation_muem4"),
+&"flash": SubResource("Animation_dp3eg")
+}
+
+[node name="Main Menu" type="CenterContainer" unique_id=1795579789]
+script = ExtResource("1_1g8jr")
+
+[node name="Control" type="Control" parent="." unique_id=1811844897]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1980650599]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -465.0
+offset_right = 256.0
+offset_bottom = 47.0
+texture = ExtResource("2_m1kxf")
+
+[node name="PressAnyLabelControl" type="Control" parent="." unique_id=1124307818]
+visible = false
+layout_mode = 2
+
+[node name="PressAnyLabel" type="Label" parent="PressAnyLabelControl" unique_id=52672686]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = 156.0
+offset_right = 194.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_x2yvf")
+text = "Press any button to start"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PressAnyLabelControl/PressAnyLabel" unique_id=589634793]
+libraries/ = SubResource("AnimationLibrary_0ld40")
+autoplay = &"flash"
+
+[node name="Timer" type="Timer" parent="." unique_id=329882125]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

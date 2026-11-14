@@ -10,9 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
+[ext_resource type="PackedScene" uid="uid://bivucakfd3tkv" path="res://scenes/ui/dummy_satan.tscn" id="10_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://c4issbb8khn1t" path="res://scenes/ui/item_description_toast.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://ctcfx1ttvd2l3" path="res://scenes/satan.tscn" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://b1k7hnmdfp1bb" path="res://scenes/ui/main_menu.tscn" id="15_jkv2x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -41,6 +43,9 @@ shader = ExtResource("8_85g3d")
 shader = ExtResource("8_85g3d")
 
 [sub_resource type="Theme" id="Theme_hb4xq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb4xq"]
+bg_color = Color(0, 0, 0, 0.62352943)
 
 [node name="Main" type="Node2D" unique_id=1347739713]
 
@@ -113,7 +118,7 @@ script = ExtResource("4_tbgi4")
 ChunkGenerateMargin = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Player", "PlayerCorpse", "Satan")]
-position = Vector2(0, -249)
+position = Vector2(0, -906)
 zoom = Vector2(1.2, 1.2)
 limit_left = -1200
 limit_right = 1200
@@ -122,12 +127,19 @@ Player = NodePath("../Player")
 PlayerCorpse = NodePath("../Player/PlayerCorpse")
 Satan = NodePath("../Satan")
 
+[node name="DummySatan" parent="." unique_id=1018639082 instance=ExtResource("10_jbj1t")]
+position = Vector2(14, -139)
+
 [node name="Player" parent="." unique_id=1765285203 node_paths=PackedStringArray("ItemDisplayContainer", "ItemDescriptionToast") instance=ExtResource("1_o5qli")]
+process_mode = 4
+visible = false
 z_index = 20
+position = Vector2(0, -143)
 ItemDisplayContainer = NodePath("../HUD/MarginContainer/LeftSidebar/GridContainer")
 ItemDescriptionToast = NodePath("../HUD/MarginContainer/Bottom/ItemDescriptionToast")
 
 [node name="Satan" parent="." unique_id=551068982 instance=ExtResource("13_trceg")]
+process_mode = 4
 position = Vector2(4, 918)
 MaxDistanceFromPlayer = 1500.0
 
@@ -178,3 +190,18 @@ alignment = 2
 
 [node name="ItemDescriptionToast" parent="HUD/MarginContainer/Bottom" unique_id=1737067120 instance=ExtResource("12_eb6dy")]
 layout_mode = 2
+
+[node name="Main Menu" parent="HUD/MarginContainer" unique_id=1795579789 node_paths=PackedStringArray("Player", "Satan", "DummySatan") instance=ExtResource("15_jkv2x")]
+layout_mode = 2
+Player = NodePath("../../../Player")
+Satan = NodePath("../../../Satan")
+DummySatan = NodePath("../../../DummySatan")
+
+[node name="MenuBackground" type="PanelContainer" parent="HUD" unique_id=102577495]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hb4xq")

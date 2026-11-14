@@ -94,14 +94,15 @@ animations = [{
 size = Vector2(3000, 1000)
 
 [node name="Satan" type="Node2D" unique_id=551068982]
-scale = Vector2(0.5040529, 0.5040529)
 script = ExtResource("1_dc6fh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574240874]
-position = Vector2(29, -291.98706)
+position = Vector2(14, -137)
+scale = Vector2(0.504, 0.504)
 sprite_frames = SubResource("SpriteFrames_hb4xq")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.6882462
 
 [node name="KillZone" type="Area2D" parent="." unique_id=209232548]
 position = Vector2(0, -232.98708)

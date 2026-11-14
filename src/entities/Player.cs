@@ -30,7 +30,7 @@ public partial class Player : Entity {
 	private AnimatedSprite2D _sprite;
 	
 	public int Score;
-	public int AdditionalJumpsRemaining = 1;
+	public int AdditionalJumpsRemaining;
 	
 	public override void _Ready() {
 		_jumpAttackHitbox = GetNode<Attack>("JumpAttackHitbox");

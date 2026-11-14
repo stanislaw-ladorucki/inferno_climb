@@ -9,6 +9,7 @@ public partial class Satan : Node2D {
 	[Export] public float FinalVerticalSpeed = 120f;
 	[Export] public float FinalVerticalSpeedHeight = 14_000;
 	[Export] public float MaxDistanceFromPlayer = 2_000;
+	[Export] public float MaxDistanceFromCorpse = 800;
 	[Export] public float OpenDistance = 200f;
 
 	[Export] public float MaxBiteScreenShakeStrength = 10f;
@@ -20,9 +21,10 @@ public partial class Satan : Node2D {
 	public override void _Process(double delta) {
 		Node2D player = GetPlayerOrCorpse();
 		if (player != null) {
+			float bottomLimit = player.GlobalPosition.Y + (player is Player ? MaxDistanceFromPlayer : MaxDistanceFromCorpse);
 			GlobalPosition = GlobalPosition with {
 				X = player.GlobalPosition.X,
-				Y = Mathf.Min(GlobalPosition.Y - VerticalSpeed * (float)delta, player.GlobalPosition.Y + MaxDistanceFromPlayer),
+				Y = Mathf.Min(GlobalPosition.Y - VerticalSpeed * (float)delta, bottomLimit),
 			};
 			if (player.GlobalPosition.DistanceTo(GlobalPosition) <= OpenDistance) {
 				GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("open");
@@ -73,7 +75,7 @@ public partial class Satan : Node2D {
 		if (sprite.Animation == "idle" || sprite.Animation == "close") {
 			Node2D player = GetPlayerOrCorpse();
 			GetTree().Root.GetCamera2D().AddScreenShake(Mathf.Lerp(MaxBiteScreenShakeStrength, 0.0f,
-				Mathf.Clamp(player.GlobalPosition.DistanceTo(GlobalPosition) / MinBiteScreenShakeStrengthDistance,
+				Mathf.Clamp((player?.GlobalPosition.DistanceTo(GlobalPosition) ?? 0.0f) / MinBiteScreenShakeStrengthDistance,
 					0.0f, 1.0f)));
 			GetNode<AudioStreamPlayer2D>("BiteAudioPlayer").Play();
 		} else if (sprite.Animation == "chew") {

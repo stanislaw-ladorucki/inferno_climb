@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://bivucakfd3tkv"]
+
+[ext_resource type="Texture2D" uid="uid://dmqidks5bsqd5" path="res://assets/sprites/satan.png" id="1_yh1ur"]
+[ext_resource type="Script" uid="uid://dlt2lf0nqniu5" path="res://src/ui/DummySatan.cs" id="2_0otyn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd7h3"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(0, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ebst"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(962, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfmm1"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(0, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2cv8"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(1924, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6twee"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(0, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5tia"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(962, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsluw"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(1924, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsc1n"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(1924, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp3eg"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(1924, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ld40"]
+atlas = ExtResource("1_yh1ur")
+region = Rect2(1924, 0, 962, 1023)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd7h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ebst")
+}],
+"loop": 1,
+"name": &"chew",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_xfmm1")
+}],
+"loop": 0,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2cv8")
+}],
+"loop": 1,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6twee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5tia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsluw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsc1n")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_dp3eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ld40")
+}],
+"loop": 0,
+"name": &"release",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yh1ur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0otyn"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.07694662),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6njuj"]
+_data = {
+&"RESET": SubResource("Animation_yh1ur"),
+&"disappear": SubResource("Animation_0otyn")
+}
+
+[node name="DummySatan" type="Node2D" unique_id=461560853]
+script = ExtResource("2_0otyn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1018639082]
+scale = Vector2(0.504, 0.504)
+sprite_frames = SubResource("SpriteFrames_muem4")
+animation = &"release"
+autoplay = "chew"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=580096859]
+root_node = NodePath("../AnimatedSprite2D")
+libraries/ = SubResource("AnimationLibrary_6njuj")
