@@ -179,4 +179,11 @@ public partial class Player : Entity {
 	public bool HasItem(ItemDefinition itemDefinition) {
 		return GetItem(itemDefinition) != null;
 	}
+
+	public void _OnDied() {
+		AudioStreamPlayer2D audio = GetNode<AudioStreamPlayer2D>("DeathAudioPlayer");
+		audio.Play();
+		audio.Reparent(GetParent());
+		audio.Finished += () => { audio.QueueFree(); };
+	}
 }

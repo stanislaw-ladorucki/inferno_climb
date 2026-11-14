@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://ctcfx1ttvd2l3"]
+
+[ext_resource type="Script" uid="uid://dsbrgjhfssj1y" path="res://src/Satan.cs" id="1_dc6fh"]
+[ext_resource type="Texture2D" uid="uid://dmqidks5bsqd5" path="res://assets/sprites/satan.png" id="2_glj28"]
+[ext_resource type="AudioStream" uid="uid://b6v7pjsddyxxp" path="res://assets/sfx/satan_eating.wav" id="3_glj28"]
+[ext_resource type="AudioStream" uid="uid://5g4eocondtot" path="res://assets/sfx/player_death2.wav" id="4_cd7h3"]
+[ext_resource type="AudioStream" uid="uid://b8xtty2pwkvug" path="res://assets/sfx/hit_satan.wav" id="5_1ebst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd7h3"]
+atlas = ExtResource("2_glj28")
+region = Rect2(0, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ebst"]
+atlas = ExtResource("2_glj28")
+region = Rect2(962, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfmm1"]
+atlas = ExtResource("2_glj28")
+region = Rect2(0, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2cv8"]
+atlas = ExtResource("2_glj28")
+region = Rect2(1924, 1023, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6twee"]
+atlas = ExtResource("2_glj28")
+region = Rect2(0, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5tia"]
+atlas = ExtResource("2_glj28")
+region = Rect2(962, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsluw"]
+atlas = ExtResource("2_glj28")
+region = Rect2(1924, 0, 962, 1023)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsc1n"]
+atlas = ExtResource("2_glj28")
+region = Rect2(1924, 0, 962, 1023)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hb4xq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd7h3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ebst")
+}],
+"loop": 1,
+"name": &"chew",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_xfmm1")
+}],
+"loop": 0,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2cv8")
+}],
+"loop": 1,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6twee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5tia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsluw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsc1n")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glj28"]
+size = Vector2(3000, 1000)
+
+[node name="Satan" type="Node2D" unique_id=551068982]
+scale = Vector2(0.5040529, 0.5040529)
+script = ExtResource("1_dc6fh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574240874]
+position = Vector2(29, -291.98706)
+sprite_frames = SubResource("SpriteFrames_hb4xq")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="KillZone" type="Area2D" parent="." unique_id=209232548]
+position = Vector2(0, -232.98708)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" unique_id=591019874]
+position = Vector2(0, 732.0661)
+shape = SubResource("RectangleShape2D_glj28")
+
+[node name="BiteAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1469633736]
+stream = ExtResource("3_glj28")
+max_distance = 1000.0
+max_polyphony = 3
+
+[node name="EatAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1756852445]
+stream = ExtResource("4_cd7h3")
+volume_db = 5.0
+max_distance = 1000.0
+max_polyphony = 3
+
+[node name="ChewAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1757501002]
+stream = ExtResource("5_1ebst")
+volume_db = -3.0
+max_distance = 1000.0
+max_polyphony = 3
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_OnAnimationFinished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_OnAnimationLoopedOrFinished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_OnAnimationLoopedOrFinished"]
+[connection signal="body_entered" from="KillZone" to="." method="_OnBodyEnterKillZone"]

@@ -34,8 +34,8 @@ public partial class FloatingEnemy : BaseEnemy {
 		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		sprite.Play("hurt");
 	} 
-	public void _OnDied()
-	{
+	
+	public void _OnDied() {
 		AudioStreamPlayer2D audio = GetNode<AudioStreamPlayer2D>("EnemyDeathAudioPlayer");
 		audio.Play();
 		audio.Reparent(GetParent());
