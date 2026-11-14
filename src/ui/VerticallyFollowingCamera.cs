@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System;
 using Godot;
 
 namespace InfernoClimb.ui;
@@ -12,6 +12,7 @@ public partial class VerticallyFollowingCamera : Camera2D {
 	[Export] public float SatanZoom = 1.65f;
 
 	[Export] public float SatanLimitBottomOffset = 80f;
+	[Export] public int MinLimitBottom = 280;
 	
 	[Export] public float FollowLerp = 0.9f;
 	[Export] public float ZoomLerp = 0.1f;
@@ -25,7 +26,7 @@ public partial class VerticallyFollowingCamera : Camera2D {
 		Vector2 targetZoom = Zoom;
 		
 		if (IsInstanceValid(Satan)) {
-			LimitBottom = (int)(Satan.GlobalPosition.Y + SatanLimitBottomOffset);
+			LimitBottom = Math.Min((int)(Satan.GlobalPosition.Y + SatanLimitBottomOffset), MinLimitBottom);
 		}
 		
 		if (IsInstanceValid(Player)) {
