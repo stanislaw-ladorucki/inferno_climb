@@ -109,7 +109,7 @@ public partial class Player : Entity {
 		}
 		else {
 			if (Velocity.Y < 0) {
-				_sprite.Play("jump");
+				_sprite.Play(AdditionalJumpsRemaining < AdditionalJumps && AdditionalJumps > 0 ? "jump2" : "jump");
 			} else {
 				_sprite.Play("fall");
 			}

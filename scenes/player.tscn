@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://dslqf1bqxp6i0" path="res://assets/sfx/player_death.wav" id="6_tuyoq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hyu6y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trceg"]
+size = Vector2(24, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
 size = Vector2(16, 16)
@@ -19,13 +20,15 @@ collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2063675855]
-scale = Vector2(0.14627062, 0.14627062)
+position = Vector2(0, -5.9999995)
+scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("2_qhqgy")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
-shape = SubResource("CapsuleShape2D_hyu6y")
+position = Vector2(0, -3.75)
+shape = SubResource("RectangleShape2D_trceg")
 
 [node name="JumpAttackHitbox" parent="." unique_id=2088546204 instance=ExtResource("3_qhqgy")]
 collision_layer = 0
@@ -44,7 +47,7 @@ collision_layer = 2
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="PlayerCorpse" unique_id=1003118119]
 scale = Vector2(0.14627062, 0.14627062)
 sprite_frames = ExtResource("2_qhqgy")
-animation = &"fall"
+animation = &"jump2"
 autoplay = "fall"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerCorpse" unique_id=674647082]
