@@ -7,10 +7,10 @@
 script = ExtResource("1_b57x0")
 
 [node name="Cooldown" type="Timer" parent="." unique_id=1069276965 groups=["cooldown"]]
-wait_time = 0.7
+wait_time = 1.3
 autostart = true
 script = ExtResource("2_jby54")
-Cooldown = 0.7
+Cooldown = 1.3
 metadata/_custom_type_script = "uid://776qo6jhwygj"
 
 [connection signal="timeout" from="Cooldown" to="." method="_OnTimerTimeout"]

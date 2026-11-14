@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dyxhoy11k40f5"]
+
+[ext_resource type="Script" uid="uid://bpys4iuwfdf4v" path="res://src/entities/attacks/HarpeProjectile.cs" id="1_kp6fl"]
+[ext_resource type="Texture2D" uid="uid://b4n0xb6ur7y2q" path="res://assets/Super Dead Fish.png" id="2_kp6fl"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_a4ke5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h6t5j"]
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kp6fl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m47wv"]
+radius = 20.024984
+
+[sub_resource type="Animation" id="Animation_nq2pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a4ke5"]
+resource_name = "idle"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.375, 0.75),
+"transitions": PackedFloat32Array(3, 3, 3),
+"update": 0,
+"values": [0.2792526803190927, -0.2792526803190927, 0.2792526803190927]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spv3d"]
+_data = {
+&"RESET": SubResource("Animation_nq2pv"),
+&"idle": SubResource("Animation_a4ke5")
+}
+
+[node name="FishProjectile" type="RigidBody2D" unique_id=1395677421]
+collision_layer = 0
+collision_mask = 13
+physics_material_override = SubResource("PhysicsMaterial_h6t5j")
+linear_velocity = Vector2(150, -600)
+angular_velocity = 18.849556
+script = ExtResource("1_kp6fl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=288685386]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_kp6fl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=477760344]
+scale = Vector2(0.114603356, 0.10953465)
+texture = ExtResource("2_kp6fl")
+
+[node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("3_a4ke5")]
+collision_layer = 0
+collision_mask = 4
+Damage = 3.0
+KnockbackStrength = 700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1387620414]
+shape = SubResource("CircleShape2D_m47wv")
+
+[node name="Timeout" type="Timer" parent="." unique_id=1012912553]
+wait_time = 3.5
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=527829487]
+libraries/ = SubResource("AnimationLibrary_spv3d")
+autoplay = &"idle"
+
+[connection signal="timeout" from="Timeout" to="." method="_OnTimeout"]

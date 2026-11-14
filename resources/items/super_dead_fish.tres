@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://dfemjilpi7v8l"]
 
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_25ubh"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_atoq5"]
+[ext_resource type="Texture2D" uid="uid://cpovtkp4pwvgr" path="res://assets/items/Super Dead Fish.png" id="1_atoq5"]
 [ext_resource type="PackedScene" uid="uid://dfpwaj0d5w2hy" path="res://scenes/items/super_dead_fish.tscn" id="2_n05nn"]
 
 [resource]
