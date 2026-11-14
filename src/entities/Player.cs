@@ -124,6 +124,9 @@ public partial class Player : Entity {
 	private void _OnJumpAttackHitboxHit(Node2D body) {
 		// TDE: make so jump attack cannot hit multiple enemies at once - tiny cooldown?
 		Velocity = Velocity with { Y = Input.IsActionPressed("jump") ? -EnemyJumpBounceForce : -EnemyBounceForce };
+		// reset jumps
+		AdditionalJumpsRemaining = AdditionalJumps;
+		
 	}
 	
 	private bool CanJump() {
@@ -144,15 +147,15 @@ public partial class Player : Entity {
 		GetNode<AudioStreamPlayer2D>("PickupAudioPlayer").Play();
 
 		if (ItemDisplayContainer != null) {
-			ui.ItemDisplay itemDisplay = (ui.ItemDisplay)Array.Find(
+			ItemDisplay itemDisplay = (ItemDisplay)Array.Find(
 				ItemDisplayContainer.GetChildren().ToArray(),
-				itemDisplay => ((ui.ItemDisplay)itemDisplay).ItemDefinition == itemDefinition
+				itemDisplay => ((ItemDisplay)itemDisplay).ItemDefinition == itemDefinition
 			);
 			if (itemDisplay != null) {
 				itemDisplay.Stack = component.Stack;
 			}
 			else {
-				itemDisplay = ItemDisplayScene.Instantiate<ui.ItemDisplay>();
+				itemDisplay = ItemDisplayScene.Instantiate<ItemDisplay>();
 				itemDisplay.ItemDefinition = itemDefinition;
 				itemDisplay.Stack = component.Stack;
 				component.Trigger += itemDisplay.AnimateTrigger;
