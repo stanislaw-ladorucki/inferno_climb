@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c4issbb8khn1t" path="res://scenes/ui/item_description_toast.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://ctcfx1ttvd2l3" path="res://scenes/satan.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://b1k7hnmdfp1bb" path="res://scenes/ui/main_menu.tscn" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://cicdowpxw2wfl" path="res://scenes/ui/game_over_menu.tscn" id="16_jbj1t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -138,10 +139,11 @@ position = Vector2(0, -143)
 ItemDisplayContainer = NodePath("../HUD/MarginContainer/LeftSidebar/GridContainer")
 ItemDescriptionToast = NodePath("../HUD/MarginContainer/Bottom/ItemDescriptionToast")
 
-[node name="Satan" parent="." unique_id=551068982 instance=ExtResource("13_trceg")]
+[node name="Satan" parent="." unique_id=551068982 node_paths=PackedStringArray("GameOverMenu") instance=ExtResource("13_trceg")]
 process_mode = 4
 position = Vector2(4, 918)
 MaxDistanceFromPlayer = 1500.0
+GameOverMenu = NodePath("../HUD/MarginContainer/GameOverMenu")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=648844377]
 
@@ -193,11 +195,16 @@ alignment = 2
 [node name="ItemDescriptionToast" parent="HUD/MarginContainer/Bottom" unique_id=1737067120 instance=ExtResource("12_eb6dy")]
 layout_mode = 2
 
-[node name="Main Menu" parent="HUD/MarginContainer" unique_id=1795579789 node_paths=PackedStringArray("Player", "Satan", "DummySatan") instance=ExtResource("15_jkv2x")]
+[node name="MainMenu" parent="HUD/MarginContainer" unique_id=1795579789 node_paths=PackedStringArray("Player", "Satan", "DummySatan") instance=ExtResource("15_jkv2x")]
 layout_mode = 2
 Player = NodePath("../../../Player")
 Satan = NodePath("../../../Satan")
 DummySatan = NodePath("../../../DummySatan")
+
+[node name="GameOverMenu" parent="HUD/MarginContainer" unique_id=987290385 node_paths=PackedStringArray("Player") instance=ExtResource("16_jbj1t")]
+visible = false
+layout_mode = 2
+Player = NodePath("../../../Player")
 
 [node name="MenuBackground" type="PanelContainer" parent="HUD" unique_id=102577495]
 visible = false

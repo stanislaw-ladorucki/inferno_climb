@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://cicdowpxw2wfl"]
+
+[ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://resources/theme.tres" id="1_eqkiq"]
+[ext_resource type="Script" uid="uid://c1ukf044lai7q" path="res://src/ui/GameOverMenu.cs" id="1_fwoq4"]
+[ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="2_fwoq4"]
+
+[sub_resource type="Animation" id="Animation_fwoq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/GameOverLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxContainer/ScoreDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxContainer/RestartLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i4hgn"]
+resource_name = "appear"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/GameOverLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BoxContainer/ScoreDisplay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.90000004),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BoxContainer/RestartLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.8000001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5d0qp"]
+_data = {
+&"RESET": SubResource("Animation_fwoq4"),
+&"appear": SubResource("Animation_i4hgn")
+}
+
+[node name="GameOverMenu" type="CenterContainer" unique_id=987290385]
+script = ExtResource("1_fwoq4")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=8086798]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+vertical = true
+
+[node name="GameOverLabel" type="Label" parent="BoxContainer" unique_id=263383298]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_eqkiq")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 42
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="ScoreDisplay" parent="BoxContainer" unique_id=1783430945 instance=ExtResource("2_fwoq4")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="RestartLabel" type="Label" parent="BoxContainer" unique_id=1145223938]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_eqkiq")
+theme_override_constants/outline_size = 7
+text = "Press R to RESTART"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2010756006]
+libraries/ = SubResource("AnimationLibrary_5d0qp")

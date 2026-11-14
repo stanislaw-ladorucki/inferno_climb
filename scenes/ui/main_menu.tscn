@@ -81,6 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_x2yvf")
+theme_override_constants/outline_size = 7
 text = "Press any button to start"
 horizontal_alignment = 1
 

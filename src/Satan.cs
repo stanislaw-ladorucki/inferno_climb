@@ -1,6 +1,7 @@
 using Godot;
 using InfernoClimb.entities;
 using InfernoClimb.extensions;
+using InfernoClimb.ui;
 
 namespace InfernoClimb;
 
@@ -14,6 +15,8 @@ public partial class Satan : Node2D {
 
 	[Export] public float MaxBiteScreenShakeStrength = 10f;
 	[Export] public float MinBiteScreenShakeStrengthDistance = 1_000f;
+
+	[Export] public GameOverMenu GameOverMenu; 
 
 	public float VerticalSpeed => Mathf.Lerp(StartingVerticalSpeed, FinalVerticalSpeed,
 		Mathf.Clamp(GlobalPosition.Y / -FinalVerticalSpeedHeight, 0.0f, 1.0f));
@@ -60,6 +63,9 @@ public partial class Satan : Node2D {
 			}
 			else {
 				sprite.Play("chew");
+				// yea game over is triggered by this animation, and not the player dying.
+				// kind of flimsy, but who cares.
+				GameOverMenu.Start();
 			}
 		}
 
