@@ -13,6 +13,8 @@ public partial class Entity : CharacterBody2D {
 		set => Health = value ? 0 : Health;
 	}
 
+	public bool HasDied;
+
 	[Signal]
 	public delegate void HitEventHandler(Node2D attack, float totalIncomingDamage);
 	
@@ -24,7 +26,7 @@ public partial class Entity : CharacterBody2D {
 			Health -= damage;
 			ApplyKnockback(knockback, knockbackMode);
 			EmitSignalHit(attack, damage);
-			if (IsDead) {
+			if (IsDead && !HasDied) {
 				Die();
 			}
 		}
@@ -49,5 +51,7 @@ public partial class Entity : CharacterBody2D {
 	public void Die() {
 		EmitSignalDied();
 		QueueFree();
+
+		HasDied = true;
 	}
 }

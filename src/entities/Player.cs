@@ -60,10 +60,11 @@ public partial class Player : Entity {
 			if (!IsOnFloor()) {
 				AdditionalJumpsRemaining--;
 			}
+			GetNode<AudioStreamPlayer2D>("JumpAudioPlayer").Play();
 		}
 		
 		// hold jump for a longer jump - release for a short one
-		if (Input.IsActionJustReleased("jump") && Velocity.Y < 0) {
+		if (Input.IsActionJustReleased("jump") && Velocity.Y < 0) {	
 			Velocity = Velocity with { Y = Velocity.Y * JumpReleaseDampen };
 		}
 		
@@ -136,10 +137,11 @@ public partial class Player : Entity {
 			component = itemDefinition.Scene.Instantiate<ItemComponent>();
 			component.Player = this;
 			component.Definition = itemDefinition;
-			AddChild(component);
+			AddChild(component);	
 		}
 		component.Stack++;
 		component.AddStack();
+		GetNode<AudioStreamPlayer2D>("PickupAudioPlayer").Play();
 
 		if (ItemDisplayContainer != null) {
 			ui.ItemDisplay itemDisplay = (ui.ItemDisplay)Array.Find(
@@ -176,5 +178,12 @@ public partial class Player : Entity {
 
 	public bool HasItem(ItemDefinition itemDefinition) {
 		return GetItem(itemDefinition) != null;
+	}
+
+	public void _OnDied() {
+		AudioStreamPlayer2D audio = GetNode<AudioStreamPlayer2D>("DeathAudioPlayer");
+		audio.Play();
+		audio.Reparent(GetParent());
+		audio.Finished += () => { audio.QueueFree(); };
 	}
 }

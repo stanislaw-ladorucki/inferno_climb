@@ -23,11 +23,13 @@ public partial class FlamingSword : ItemComponent {
 		if (!animationPlayer.IsPlaying()) {
 			animationPlayer.Play("spin");
 		}		
+		GetNode<AudioStreamPlayer2D>("FlamingSwingAudioPlayer").Play();
 	}
 
 	public override void _Process(double delta) {
 		base._Process(delta);
 		CooldownTimer cooldown = GetNode<CooldownTimer>("Timer");
 		AnimateProgress(cooldown.TimeLeft == 0 ? 1.0f : (float)(1 - cooldown.TimeLeft / cooldown.Cooldown));
-	}
+
+	}	
 }
