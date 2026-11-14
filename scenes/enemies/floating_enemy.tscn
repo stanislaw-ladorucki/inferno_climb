@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_jewn2"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_jewn2"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_jewn2"]
+[ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="6_7byo4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
 
@@ -18,6 +19,9 @@ collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_0gwgf")
 Health = 3.0
+
+[node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1446995770]
+stream = ExtResource("6_7byo4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
 scale = Vector2(0.2, 0.2)
@@ -54,4 +58,4 @@ shape = SubResource("CapsuleShape2D_hb4xq")
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]
 [connection signal="Died" from="." to="Corpse" method="_OnParentDied"]
-[connection signal="Hit" from="." to="." method="OnHit"]
+[connection signal="Hit" from="." to="." method="_OnHit"]

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dvc1qyxbmtfb2"
-path="res://.godot/imported/satan_eating.wav-51c77008a2c48ecb81838abfb6308234.sample"
+uid="uid://b6v7pjsddyxxp"
+path="res://.godot/imported/Satan_eating.wav-01e1012aac7b7c85bff420e7b6fc1a05.sample"
 
 [deps]
 
-source_file="res://assets/sfx/satan_eating.wav"
-dest_files=["res://.godot/imported/satan_eating.wav-51c77008a2c48ecb81838abfb6308234.sample"]
+source_file="res://assets/sfx/Satan_eating.wav"
+dest_files=["res://.godot/imported/Satan_eating.wav-01e1012aac7b7c85bff420e7b6fc1a05.sample"]
 
 [params]
 

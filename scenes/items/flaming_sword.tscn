@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="2_yqnxe"]
 [ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="3_qd8pf"]
 [ext_resource type="Script" uid="uid://776qo6jhwygj" path="res://src/util/CooldownTimer.cs" id="4_yqnxe"]
+[ext_resource type="AudioStream" uid="uid://dbp850wxuj603" path="res://assets/sfx/flaming_sword.wav" id="5_qd8pf"]
 
 [sub_resource type="Animation" id="Animation_mlwcx"]
 length = 0.001
@@ -149,5 +150,8 @@ autostart = true
 script = ExtResource("4_yqnxe")
 Cooldown = 2.6
 metadata/_custom_type_script = "uid://776qo6jhwygj"
+
+[node name="FlamingSwingAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1900073855]
+stream = ExtResource("5_qd8pf")
 
 [connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]
