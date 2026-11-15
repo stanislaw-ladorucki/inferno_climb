@@ -2,18 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://cs6oxs88swbai" path="res://scenes/items/flaming_sword.tscn" id="1_38sas"]
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_hvt0k"]
-
-[sub_resource type="Gradient" id="Gradient_s2642"]
-colors = PackedColorArray(0.8357183, 3.2247603e-06, 7.70092e-07, 1, 0.81960785, 0.5176471, 0.10980392, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_38sas"]
-gradient = SubResource("Gradient_s2642")
-fill_to = Vector2(0, 1)
+[ext_resource type="Texture2D" uid="uid://bki63cnxvletn" path="res://assets/items/Flaming Sword.png" id="1_s2642"]
 
 [resource]
 script = ExtResource("1_hvt0k")
 Name = "Flaming Sword"
 Description = "Ain't a way back to Eden"
-Icon = SubResource("GradientTexture2D_38sas")
+Icon = ExtResource("1_s2642")
 Scene = ExtResource("1_38sas")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"
