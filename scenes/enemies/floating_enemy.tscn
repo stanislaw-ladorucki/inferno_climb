@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://sfw1iif2khit"]
 
 [ext_resource type="Script" uid="uid://bfk8mimvh0iom" path="res://src/entities/enemies/FloatingEnemy.cs" id="1_0gwgf"]
-[ext_resource type="SpriteFrames" uid="uid://djtw2aeg37a8k" path="res://assets/sprites/agares.tres" id="2_eq8eu"]
+[ext_resource type="SpriteFrames" uid="uid://djtw2aeg37a8k" path="res://assets/sprites/agaresOld.tres" id="2_eq8eu"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_jewn2"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_jewn2"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_jewn2"]

@@ -23,7 +23,6 @@ public partial class FloatingEnemy : BaseEnemy {
 	}
 	
 	private void UpdateSprite() {
-		// handle sprite flashing to signify invulnerability
 		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (sprite.Animation == "hurt" && sprite.FrameProgress == 1.0f) {
 			sprite.Play("idle");

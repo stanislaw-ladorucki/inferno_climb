@@ -1,0 +1,78 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://djtw2aeg37a8k"]
+
+[ext_resource type="Texture2D" uid="uid://d2u8smikq3cfi" path="res://assets/sprites/agaresOld.png" id="1_7birm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihgt3"]
+atlas = ExtResource("1_7birm")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drs5e"]
+atlas = ExtResource("1_7birm")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77wjs"]
+atlas = ExtResource("1_7birm")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8vnc"]
+atlas = ExtResource("1_7birm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8t0y"]
+atlas = ExtResource("1_7birm")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qhj8"]
+atlas = ExtResource("1_7birm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu1oo"]
+atlas = ExtResource("1_7birm")
+region = Rect2(256, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihgt3")
+}],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_drs5e")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_77wjs")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8vnc")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8t0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qhj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu1oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qhj8")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]

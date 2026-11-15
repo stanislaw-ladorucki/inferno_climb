@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b1cocqbtw2dfj"]
+
+[ext_resource type="Script" uid="uid://cj7244vuj1qbd" path="res://src/entities/enemies/Agares.cs" id="1_rk5xh"]
+[ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="2_jdabw"]
+[ext_resource type="SpriteFrames" uid="uid://bqgnet7h7mdvb" path="res://assets/sprites/agares.tres" id="3_cpgxd"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="4_1rwyk"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="5_78g2g"]
+[ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="6_i1la0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6lew"]
+radius = 18.027756
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(43, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rk5xh"]
+radius = 13.0
+
+[node name="Agares" type="CharacterBody2D" unique_id=1459157320]
+collision_layer = 4
+script = ExtResource("1_rk5xh")
+Health = 10.0
+KnockbackMultiplier = 0.25
+
+[node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1446995770]
+stream = ExtResource("2_jdabw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
+position = Vector2(1.1920929e-07, -7.1525574e-07)
+scale = Vector2(0.188, 0.188)
+sprite_frames = ExtResource("3_cpgxd")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.3301831
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
+shape = SubResource("CircleShape2D_p6lew")
+debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
+
+[node name="CollisionAttackHitbox" parent="." unique_id=1679916697 instance=ExtResource("4_1rwyk")]
+collision_layer = 0
+collision_mask = 2
+KnockbackStrength = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttackHitbox" unique_id=342842665]
+position = Vector2(0.5, 5.5)
+shape = SubResource("RectangleShape2D_5uy6h")
+debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
+
+[node name="Blood" parent="." unique_id=674090606 groups=["enemy"] instance=ExtResource("5_78g2g")]
+
+[node name="Corpse" parent="." unique_id=574074381 instance=ExtResource("6_i1la0")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Corpse" unique_id=720499278]
+scale = Vector2(0.188, 0.188)
+sprite_frames = ExtResource("3_cpgxd")
+animation = &"dead"
+autoplay = "dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
+shape = SubResource("CircleShape2D_rk5xh")
+
+[connection signal="Died" from="." to="." method="_OnDied"]
+[connection signal="Died" from="." to="Blood" method="_OnParentDied"]
+[connection signal="Died" from="." to="Corpse" method="_OnParentDied"]
+[connection signal="Hit" from="." to="." method="_OnHit"]
