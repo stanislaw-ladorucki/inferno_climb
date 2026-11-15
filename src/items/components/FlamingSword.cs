@@ -30,6 +30,9 @@ public partial class FlamingSword : ItemComponent {
 		base._Process(delta);
 		CooldownTimer cooldown = GetNode<CooldownTimer>("Timer");
 		AnimateProgress(cooldown.TimeLeft == 0 ? 1.0f : (float)(1 - cooldown.TimeLeft / cooldown.Cooldown));
-
-	}	
+		
+		GpuParticles2D fire = GetNode<GpuParticles2D>("Attack/Dynamic_Fire");
+		AnimationPlayer animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		fire.Emitting = animationPlayer.IsPlaying() && animationPlayer.CurrentAnimation == "spin";
+	}
 }
