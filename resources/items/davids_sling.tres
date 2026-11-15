@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemDefinition" format=3 uid="uid://btj0jusmfx3tu"]
 
 [ext_resource type="Script" uid="uid://b3oexm6tsgtva" path="res://src/items/ItemDefinition.cs" id="1_juw6n"]
-[ext_resource type="Texture2D" uid="uid://bmheikp2582ar" path="res://icon.svg" id="1_qqtah"]
+[ext_resource type="Texture2D" uid="uid://c0jujeodi0f36" path="res://assets/items/David's Sling.png" id="1_qqtah"]
 [ext_resource type="PackedScene" uid="uid://1g7jc4sfraff" path="res://scenes/items/davids_sling.tscn" id="2_xe3sk"]
 
 [resource]
