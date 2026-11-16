@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_awgsb"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="4_art5c"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_uug8o"]
+[ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="6_awgsb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_org5v"]
 radius = 20.0
@@ -57,6 +58,11 @@ autoplay = "death"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=1925939628]
 shape = SubResource("CircleShape2D_uug8o")
 
+[node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1700432110]
+stream = ExtResource("6_awgsb")
+
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]
 [connection signal="Died" from="." to="Corpse" method="_OnParentDied"]
+[connection signal="Hit" from="." to="." method="_OnHit"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_OnAnimationFinished"]
