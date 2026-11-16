@@ -10,8 +10,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6lew"]
 radius = 19.026299
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
-size = Vector2(35, 22)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uug8o"]
+radius = 12.0
+height = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rk5xh"]
 radius = 13.0
@@ -44,7 +45,8 @@ KnockbackStrength = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttackHitbox" unique_id=342842665]
 position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_5uy6h")
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_uug8o")
 debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 
 [node name="Blood" parent="." unique_id=674090606 groups=["enemy"] instance=ExtResource("5_78g2g")]
@@ -54,8 +56,8 @@ debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Corpse" unique_id=720499278]
 scale = Vector2(0.188, 0.188)
 sprite_frames = ExtResource("3_cpgxd")
-animation = &"dead"
-autoplay = "dead"
+animation = &"hurt"
+autoplay = "death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
 shape = SubResource("CircleShape2D_rk5xh")

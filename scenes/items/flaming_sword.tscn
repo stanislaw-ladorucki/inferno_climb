@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="2_yqnxe"]
 [ext_resource type="Texture2D" uid="uid://bcqhigkdtbqd1" path="res://assets/items/Flaming Sword no flames.png" id="3_awv3l"]
 [ext_resource type="Script" uid="uid://776qo6jhwygj" path="res://src/util/CooldownTimer.cs" id="4_yqnxe"]
-[ext_resource type="Shader" uid="uid://cj6d0hcmlbraj" path="res://scenes/effects/erosion_shader.tres" id="5_klrbp"]
+[ext_resource type="Shader" uid="uid://cj6d0hcmlbraj" path="res://shaders/erosion_shader.tres" id="5_klrbp"]
 [ext_resource type="AudioStream" uid="uid://dbp850wxuj603" path="res://assets/sfx/flaming_sword.wav" id="5_qd8pf"]
 [ext_resource type="Texture2D" uid="uid://b7tqbddjx8bgp" path="res://assets/effects/Flame1.png" id="6_awv3l"]
 [ext_resource type="Texture2D" uid="uid://jdm3fcx0n7hn" path="res://assets/effects/1 pixel.jpg" id="7_y1706"]

@@ -28,10 +28,10 @@ public partial class EnemyManager : Node2D {
     public Stack<KeyValuePair<int, EnemySpawner>> EnemyPoolUpdateThresholds = new([
         new (5_000, new((manager, platform) => [manager.SpawnAtPlatform(GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"), platform)], 0.25f)),
 		
-        // clump of floating enemies
+        // clump of vasago guys
         new (3_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
-            PackedScene scene = GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn");
+            PackedScene scene = GD.Load<PackedScene>("res://scenes/enemies/vasago.tscn");
             List<Entity> enemies = new();
             LevelChunk chunk = platform.GetParent<LevelChunk>();
             Vector2 position = new(rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2), platform.GlobalPosition.Y);
@@ -42,24 +42,35 @@ public partial class EnemyManager : Node2D {
             return enemies.ToArray();
         }, 0.25f)),
         
-        new (2_000, new((manager, platform) => [manager.SpawnAtPlatform(GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"), platform)], 0.5f)),
-		
         // agares
-        new (1_000, new((manager, platform) => {
+        new (3_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             return [manager.SpawnAtPosition(
-                GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
+                GD.Load<PackedScene>("res://scenes/enemies/agares.tscn"),
                 platform.GetParent<Node2D>(),
                 platform.GlobalPosition + new Vector2(rng.RandfRange(-platform.Size * 0.4f, platform.Size * 0.4f), -100.0f)
             )];
         }, 1.0f)),
+        
+        // buer (falling down at the player)
+        new (2_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            LevelChunk chunk = platform.GetParent<LevelChunk>();
+            float horizontalPosition = rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2);
+            return [manager.SpawnAtPosition(GD.Load<PackedScene>("res://scenes/enemies/buer.tscn"), platform,
+                platform.GlobalPosition with {
+                    // spawn on random horizontal position
+                    X = horizontalPosition,
+                }
+            )];
+        }, 0.5f)),
 		
-        // floating enemy
+        // vasago
         new (1_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             LevelChunk chunk = platform.GetParent<LevelChunk>();
             float horizontalPosition = rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2);
-            return [manager.SpawnAtPosition(GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"), platform,
+            return [manager.SpawnAtPosition(GD.Load<PackedScene>("res://scenes/enemies/vasago.tscn"), platform,
                 platform.GlobalPosition with {
                     // spawn on random horizontal position
                     X = horizontalPosition,

@@ -4,7 +4,7 @@ using InfernoClimb.extensions;
 
 namespace InfernoClimb.entities.enemies;
 
-public partial class FloatingEnemy : BaseEnemy {
+public partial class Vasago : BaseEnemy {
 	[Export] public float Speed = 40;
 	[Export] public float MoveChance = 0.045f;
 	[Export] public float VelocityDampening = 0.0001f;

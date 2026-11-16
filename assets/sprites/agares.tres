@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cecr10xdmfnxb" path="res://assets/sprites/enemyAgares.png" id="1_7birm"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7birm"]
+atlas = ExtResource("1_7birm")
+region = Rect2(512, 0, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpgxd"]
 atlas = ExtResource("1_7birm")
 region = Rect2(768, 0, 256, 256)
@@ -22,10 +26,13 @@ region = Rect2(256, 0, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7birm")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cpgxd")
 }],
-"loop": 1,
-"name": &"dead",
+"loop": 0,
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{

@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://syj46p1ob8vc"]
+
+[ext_resource type="Texture2D" uid="uid://ddo6cu33176jq" path="res://assets/sprites/enemyBuer.png" id="1_5dmke"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dmke"]
+atlas = ExtResource("1_5dmke")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av8pd"]
+atlas = ExtResource("1_5dmke")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf1um"]
+atlas = ExtResource("1_5dmke")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egnck"]
+atlas = ExtResource("1_5dmke")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwcyu"]
+atlas = ExtResource("1_5dmke")
+region = Rect2(0, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dmke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av8pd")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf1um")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egnck")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwcyu")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]

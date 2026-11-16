@@ -1,10 +1,9 @@
-using System.Diagnostics;
 using Godot;
 using InfernoClimb.extensions;
 
 namespace InfernoClimb.entities.enemies;
 
-public partial class DescendingEnemy : BaseEnemy {
+public partial class Buer : BaseEnemy {
 	[Export] public float Speed = 100;
 	
 	public override void _Ready() {

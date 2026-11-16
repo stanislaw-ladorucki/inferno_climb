@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://d2u8smikq3cfi" path="res://assets/sprites/agaresOld.png" id="1_7birm"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_org5v"]
+atlas = ExtResource("1_7birm")
+region = Rect2(256, 256, 256, 256)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ihgt3"]
 atlas = ExtResource("1_7birm")
 region = Rect2(0, 256, 256, 256)
@@ -34,9 +38,12 @@ region = Rect2(256, 0, 256, 256)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_org5v")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ihgt3")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"death",
 "speed": 5.0
 }, {

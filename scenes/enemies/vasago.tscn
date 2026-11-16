@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sfw1iif2khit"]
 
-[ext_resource type="Script" uid="uid://bfk8mimvh0iom" path="res://src/entities/enemies/FloatingEnemy.cs" id="1_0gwgf"]
+[ext_resource type="Script" uid="uid://bfk8mimvh0iom" path="res://src/entities/enemies/Vasago.cs" id="1_0gwgf"]
 [ext_resource type="SpriteFrames" uid="uid://djtw2aeg37a8k" path="res://assets/sprites/agaresOld.tres" id="2_eq8eu"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_jewn2"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_jewn2"]
@@ -14,11 +14,10 @@ size = Vector2(25, 17)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb4xq"]
 
-[node name="FloatingEnemy" type="CharacterBody2D" unique_id=1459157320]
+[node name="Vasago" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_0gwgf")
-Health = 3.0
 
 [node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1446995770]
 stream = ExtResource("6_7byo4")
@@ -51,6 +50,7 @@ debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("2_eq8eu")
 animation = &"death"
+autoplay = "death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
 shape = SubResource("CapsuleShape2D_hb4xq")
