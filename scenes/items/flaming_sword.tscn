@@ -183,6 +183,7 @@ KnockbackVector = Vector2(0, -1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Attack" unique_id=1783969912]
 position = Vector2(41.999996, 0)
+rotation = 1.5707964
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_awv3l")
 
