@@ -3,11 +3,9 @@
 [ext_resource type="Script" uid="uid://dnyvpf5len81t" path="res://src/items/components/FlamingSword.cs" id="1_x3h1j"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="2_yqnxe"]
 [ext_resource type="Texture2D" uid="uid://bcqhigkdtbqd1" path="res://assets/items/Flaming Sword no flames.png" id="3_awv3l"]
+[ext_resource type="PackedScene" uid="uid://4hk1cqb8mlk0" path="res://scenes/effects/dynamic_fire.tscn" id="4_mlwcx"]
 [ext_resource type="Script" uid="uid://776qo6jhwygj" path="res://src/util/CooldownTimer.cs" id="4_yqnxe"]
-[ext_resource type="Shader" uid="uid://cj6d0hcmlbraj" path="res://shaders/erosion_shader.tres" id="5_klrbp"]
 [ext_resource type="AudioStream" uid="uid://dbp850wxuj603" path="res://assets/sfx/flaming_sword.wav" id="5_qd8pf"]
-[ext_resource type="Texture2D" uid="uid://b7tqbddjx8bgp" path="res://assets/effects/Flame1.png" id="6_awv3l"]
-[ext_resource type="Texture2D" uid="uid://jdm3fcx0n7hn" path="res://assets/effects/1 pixel.jpg" id="7_y1706"]
 
 [sub_resource type="Animation" id="Animation_mlwcx"]
 length = 0.001
@@ -122,49 +120,6 @@ _data = {
 radius = 8.0
 height = 70.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rvn3d"]
-noise_type = 4
-frequency = 0.0111
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_klrbp"]
-noise = SubResource("FastNoiseLite_rvn3d")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3wyp"]
-shader = ExtResource("5_klrbp")
-shader_parameter/Dissolver_Texture = SubResource("NoiseTexture2D_klrbp")
-shader_parameter/Flame_Texture = ExtResource("6_awv3l")
-
-[sub_resource type="Curve" id="Curve_a68rr"]
-_data = [Vector2(0.01351352, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_awv3l"]
-texture_mode = 1
-curve = SubResource("Curve_a68rr")
-
-[sub_resource type="Gradient" id="Gradient_56gb5"]
-offsets = PackedFloat32Array(0.008333334, 0.21311475, 0.5, 0.74590164, 1)
-colors = PackedColorArray(0.9795731, 0.76081675, 0.21448883, 1, 0.7682966, 0.3279624, 0.15984344, 1, 0.658361, 0.100839145, 0, 1, 0.79704505, 0.37408498, 0.17718068, 1, 0.98373514, 0.741916, 0.41569316, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_y1706"]
-gradient = SubResource("Gradient_56gb5")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2k1cn"]
-particle_flag_rotate_y = true
-particle_flag_disable_z = true
-angle_min = -89.99999
-angle_max = 90.000015
-inherit_velocity_ratio = 0.2
-direction = Vector3(0, -1, 0)
-spread = 0.0
-initial_velocity_min = 80.0
-initial_velocity_max = 180.0
-gravity = Vector3(0, -200, 0)
-scale_min = 0.0
-scale_max = 60.0
-color_ramp = SubResource("GradientTexture1D_y1706")
-alpha_curve = SubResource("CurveTexture_awv3l")
-
 [node name="FlamingSword" type="Node2D" unique_id=214737031]
 script = ExtResource("1_x3h1j")
 
@@ -192,13 +147,8 @@ position = Vector2(42, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m47wv")
 
-[node name="Dynamic_Fire" type="GPUParticles2D" parent="Attack" unique_id=744753105]
-material = SubResource("ShaderMaterial_i3wyp")
+[node name="Dynamic_Fire" parent="Attack" unique_id=419984196 instance=ExtResource("4_mlwcx")]
 position = Vector2(42, 0)
-amount = 60
-texture = ExtResource("7_y1706")
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_2k1cn")
 
 [node name="Timer" type="Timer" parent="." unique_id=1504320615 groups=["cooldown"]]
 wait_time = 2.6

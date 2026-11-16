@@ -32,7 +32,7 @@ public partial class Entity : CharacterBody2D {
 		}
 	}
 
-	public void ApplyKnockback(Vector2 knockback, KnockbackMode knockbackMode) {
+	public virtual void ApplyKnockback(Vector2 knockback, KnockbackMode knockbackMode) {
 		if (KnockbackMultiplier == 0)
 			// When knockback multiplier is set to zero, the entity should be immune.
 			// Make sure that the entity won't become staggered by a `Set` mode knockback, with a zero strength.

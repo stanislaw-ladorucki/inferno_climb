@@ -26,7 +26,18 @@ public partial class EnemyManager : Node2D {
     
     public List<EnemySpawner> EnemySpawnerPool = new();
     public Stack<KeyValuePair<int, EnemySpawner>> EnemyPoolUpdateThresholds = new([
-        new (5_000, new((manager, platform) => [manager.SpawnAtPlatform(GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"), platform)], 0.25f)),
+        // imp (flying and shooting at the player)
+        new (7_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            LevelChunk chunk = platform.GetParent<LevelChunk>();
+            float horizontalPosition = rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2);
+            return [manager.SpawnAtPosition(GD.Load<PackedScene>("res://scenes/enemies/imp.tscn"), platform,
+                platform.GlobalPosition with {
+                    // spawn on random horizontal position
+                    X = horizontalPosition,
+                }
+            )];
+        }, 0.5f)),
 		
         // clump of vasago guys
         new (3_000, new((manager, platform) => {

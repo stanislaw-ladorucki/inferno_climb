@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ci61curtmoqct"]
+
+[ext_resource type="Script" uid="uid://dn76ygrngxhru" path="res://src/entities/attacks/Fireball.cs" id="1_gp56f"]
+[ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="1_l5qua"]
+[ext_resource type="PackedScene" uid="uid://4hk1cqb8mlk0" path="res://scenes/effects/dynamic_fire.tscn" id="2_rnpk7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gp56f"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m47wv"]
+radius = 15.033297
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hb4xq"]
+radius = 16.0
+
+[node name="Fireball" type="RigidBody2D" unique_id=1008356989]
+collision_layer = 0
+collision_mask = 8
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_gp56f")
+gravity_scale = 0.0
+script = ExtResource("1_gp56f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=46253174]
+shape = SubResource("CircleShape2D_m47wv")
+
+[node name="Attack" parent="." unique_id=2088546204 instance=ExtResource("1_l5qua")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1626055202]
+shape = SubResource("CircleShape2D_hb4xq")
+
+[node name="Dynamic_Fire" parent="." unique_id=419984196 instance=ExtResource("2_rnpk7")]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Timer" type="Timer" parent="." unique_id=687207581]
+wait_time = 3.0
+one_shot = true

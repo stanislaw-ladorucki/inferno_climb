@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://tgid0fjcdya1"]
+
+[ext_resource type="Script" uid="uid://bgmmnqflgrm37" path="res://src/entities/enemies/Imp.cs" id="1_b7d7s"]
+[ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="2_b7d7s"]
+[ext_resource type="SpriteFrames" uid="uid://cym3bjpvfwrb3" path="res://assets/sprites/imp.tres" id="3_b7d7s"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="5_i5vaa"]
+[ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="6_gmf8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vdv3"]
+radius = 18.027756
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb4xq"]
+
+[node name="Imp" type="CharacterBody2D" unique_id=1459157320]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_b7d7s")
+
+[node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1446995770]
+stream = ExtResource("2_b7d7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("3_b7d7s")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
+shape = SubResource("CircleShape2D_8vdv3")
+debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
+
+[node name="Blood" parent="." unique_id=674090606 groups=["enemy"] instance=ExtResource("5_i5vaa")]
+
+[node name="Corpse" parent="." unique_id=574074381 instance=ExtResource("6_gmf8o")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Corpse" unique_id=720499278]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("3_b7d7s")
+animation = &"death"
+autoplay = "death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
+shape = SubResource("CapsuleShape2D_hb4xq")
+
+[node name="Timer" type="Timer" parent="." unique_id=1612958695]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="Died" from="." to="." method="_OnDied"]
+[connection signal="Died" from="." to="Blood" method="_OnParentDied"]
+[connection signal="Died" from="." to="Corpse" method="_OnParentDied"]
+[connection signal="Hit" from="." to="." method="_OnHit"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_OnAnimationFinished"]
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://4hk1cqb8mlk0"]
+
+[ext_resource type="Shader" uid="uid://cj6d0hcmlbraj" path="res://shaders/erosion_shader.tres" id="1_knatk"]
+[ext_resource type="Texture2D" uid="uid://b7tqbddjx8bgp" path="res://assets/effects/Flame1.png" id="2_85d70"]
+[ext_resource type="Texture2D" uid="uid://jdm3fcx0n7hn" path="res://assets/effects/1 pixel.jpg" id="3_wjgds"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rvn3d"]
+noise_type = 4
+frequency = 0.0111
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_klrbp"]
+noise = SubResource("FastNoiseLite_rvn3d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3wyp"]
+shader = ExtResource("1_knatk")
+shader_parameter/Dissolver_Texture = SubResource("NoiseTexture2D_klrbp")
+shader_parameter/Flame_Texture = ExtResource("2_85d70")
+
+[sub_resource type="Curve" id="Curve_a68rr"]
+_data = [Vector2(0.01351352, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_awv3l"]
+texture_mode = 1
+curve = SubResource("Curve_a68rr")
+
+[sub_resource type="Gradient" id="Gradient_56gb5"]
+offsets = PackedFloat32Array(0.008333334, 0.21311475, 0.5, 0.74590164, 1)
+colors = PackedColorArray(0.9795731, 0.76081675, 0.21448883, 1, 0.7682966, 0.3279624, 0.15984344, 1, 0.658361, 0.100839145, 0, 1, 0.79704505, 0.37408498, 0.17718068, 1, 0.98373514, 0.741916, 0.41569316, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y1706"]
+gradient = SubResource("Gradient_56gb5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2k1cn"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -89.99999
+angle_max = 90.000015
+inherit_velocity_ratio = 0.2
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 80.0
+initial_velocity_max = 180.0
+gravity = Vector3(0, -200, 0)
+scale_min = 0.0
+scale_max = 60.0
+color_ramp = SubResource("GradientTexture1D_y1706")
+alpha_curve = SubResource("CurveTexture_awv3l")
+
+[node name="Dynamic_Fire" type="GPUParticles2D" unique_id=419984196]
+material = SubResource("ShaderMaterial_i3wyp")
+amount = 60
+texture = ExtResource("3_wjgds")
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_2k1cn")

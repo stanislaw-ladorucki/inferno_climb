@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cym3bjpvfwrb3"]
+
+[ext_resource type="Texture2D" uid="uid://c60162s6jp1lq" path="res://assets/sprites/enemyImp.png" id="1_1ym0p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5vaa"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmf8o"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpx33"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bie6p"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b25i"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghgv4"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtgr3"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anqn8"]
+atlas = ExtResource("1_1ym0p")
+region = Rect2(256, 512, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5vaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmf8o")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpx33")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_bie6p")
+}],
+"loop": 0,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4b25i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghgv4")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtgr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anqn8")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
