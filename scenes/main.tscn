@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
+[ext_resource type="Script" uid="uid://bg7sicmlmfl0s" path="res://src/level/EnemyManager.cs" id="9_muem4"]
 [ext_resource type="PackedScene" uid="uid://bivucakfd3tkv" path="res://scenes/ui/dummy_satan.tscn" id="10_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://c4issbb8khn1t" path="res://scenes/ui/item_description_toast.tscn" id="12_eb6dy"]
@@ -114,9 +115,13 @@ position = Vector2(875, 187.95744)
 scale = Vector2(0.17, 0.18339379)
 texture = ExtResource("10_ya4ey")
 
-[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028]
+[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028 node_paths=PackedStringArray("EnemyManager")]
 script = ExtResource("4_tbgi4")
 ChunkGenerateMargin = 0.0
+EnemyManager = NodePath("../EnemyManager")
+
+[node name="EnemyManager" type="Node2D" parent="." unique_id=1908421284]
+script = ExtResource("9_muem4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1131160295 node_paths=PackedStringArray("Player", "PlayerCorpse", "Satan")]
 position = Vector2(0, -906)

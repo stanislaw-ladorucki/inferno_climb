@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using Godot;
+using InfernoClimb.entities;
+
+namespace InfernoClimb.level;
+
+public partial class EnemyManager : Node2D {
+    [Signal] public delegate void EnemySpawnedEventHandler(Entity enemy);
+    [Signal] public delegate void EnemyDiedEventHandler(Entity enemy);
+
+    [Export] public float FinalEnemyDifficultyHeight = 20_000; 
+    [Export] public int StartingEnemySpawnsPerChunk = 0;
+    [Export] public int FinalEnemySpawnsPerChunk = 25;
+    
+    public struct EnemySpawner {
+        public delegate Entity[] SpawnHandler(EnemyManager manager, Platform platform);
+        public SpawnHandler Spawn;
+        public float Weight = 1.0f;
+
+        public EnemySpawner(SpawnHandler spawn, float weight) {
+            Spawn = spawn;
+            Weight = weight;
+        }
+    }
+    
+    public List<EnemySpawner> EnemySpawnerPool = new();
+    public Stack<KeyValuePair<int, EnemySpawner>> EnemyPoolUpdateThresholds = new([
+        new (5_000, new((manager, platform) => [manager.SpawnAtPlatform(GD.Load<PackedScene>("res://scenes/enemies/bouncing_enemy.tscn"), platform)], 0.25f)),
+		
+        // clump of floating enemies
+        new (3_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            PackedScene scene = GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn");
+            List<Entity> enemies = new();
+            LevelChunk chunk = platform.GetParent<LevelChunk>();
+            Vector2 position = new(rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2), platform.GlobalPosition.Y);
+            int enemyCount = rng.RandiRange(3, 6); 
+            for (int i = 0; i < enemyCount; i++) {
+                enemies.Add(manager.SpawnAtPosition(scene, chunk, position + Vector2.FromAngle(rng.Randf() * Mathf.Pi * 2.0f) * rng.Randf() * 175.0f * new Vector2(1.0f, 0.5f)));
+            }
+            return enemies.ToArray();
+        }, 0.25f)),
+        
+        new (2_000, new((manager, platform) => [manager.SpawnAtPlatform(GD.Load<PackedScene>("res://scenes/enemies/descending_enemy.tscn"), platform)], 0.5f)),
+		
+        // agares
+        new (1_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            return [manager.SpawnAtPosition(
+                GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"),
+                platform.GetParent<Node2D>(),
+                platform.GlobalPosition + new Vector2(rng.RandfRange(-platform.Size * 0.4f, platform.Size * 0.4f), -100.0f)
+            )];
+        }, 1.0f)),
+		
+        // floating enemy
+        new (1_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            LevelChunk chunk = platform.GetParent<LevelChunk>();
+            float horizontalPosition = rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2);
+            return [manager.SpawnAtPosition(GD.Load<PackedScene>("res://scenes/enemies/floating_enemy.tscn"), platform,
+                platform.GlobalPosition with {
+                    // spawn on random horizontal position
+                    X = horizontalPosition,
+                }
+            )];
+        }, 1.0f)),
+    ]);
+
+    public Entity SpawnAtPlatform(PackedScene scene, Platform platform) {
+        return SpawnAtPosition(scene, platform.GetParent<Node2D>(), platform.GlobalPosition);
+    }
+
+    public Entity SpawnAtPosition(PackedScene scene, Node2D parent, Vector2 position) {
+        Entity enemy = scene.Instantiate<Entity>();   
+        parent.AddChild(enemy);
+        enemy.GlobalPosition = position;
+        
+        EmitSignalEnemySpawned(enemy);
+        enemy.Died += () => EmitSignalEnemyDied(enemy);
+        
+        return enemy;
+    }
+
+    public void UpdateEnemySpawnerPool(float height) {
+        // update enemy pool after reaching a threshold
+        if (EnemyPoolUpdateThresholds.Count > 0 && EnemyPoolUpdateThresholds.Peek().Key <= height) {
+            EnemySpawnerPool.Add(EnemyPoolUpdateThresholds.Pop().Value);
+        }
+    }
+
+    public void PopulateEnemies(LevelChunk chunk, Platform[] platforms) {
+        using RandomNumberGenerator rng = new RandomNumberGenerator();
+        
+        UpdateEnemySpawnerPool(-chunk.Position.Y);
+        float difficulty = chunk.Position.Y == 0 ? 0 : Mathf.Min(chunk.Position.Y / -FinalEnemyDifficultyHeight, 1.0f);
+        float[] spawnerWeights = Array.ConvertAll(EnemySpawnerPool.ToArray(), spawner => spawner.Weight);
+        
+        EnemySpawner.SpawnHandler[] spawnerHandlers = Array.ConvertAll(EnemySpawnerPool.ToArray(), spawner => spawner.Spawn);
+        if (EnemySpawnerPool.Count > 0) {
+            for (int i = 0; i < Mathf.Lerp(StartingEnemySpawnsPerChunk, FinalEnemySpawnsPerChunk, difficulty); i++) {
+                Platform platform = platforms[rng.RandiRange(0, platforms.Length - 1)];
+                spawnerHandlers[rng.RandWeighted(spawnerWeights)].Invoke(this, platform);
+            }
+        }
+    }
+}
