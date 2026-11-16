@@ -7,6 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdwds"]
 radius = 9.055386
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4el3c"]
+radius = 5.0
+
 [node name="AsteroidOrbital" type="Node2D" unique_id=1931143783]
 script = ExtResource("1_0v82s")
 
@@ -20,8 +23,16 @@ KnockbackStrength = 150.0
 KnockbackVector = Vector2(0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Attack" unique_id=1690820573]
-scale = Vector2(0.1471973, 0.1471973)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_0v82s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=279477714]
 shape = SubResource("CircleShape2D_hdwds")
+
+[node name="ProjectileBlockBody" type="StaticBody2D" parent="." unique_id=653368199]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileBlockBody" unique_id=1762075979]
+position = Vector2(199, 0)
+shape = SubResource("CircleShape2D_4el3c")

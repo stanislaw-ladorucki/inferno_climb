@@ -7,6 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hb4xq"]
 radius = 9.055386
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcxk7"]
+
 [node name="Pluto" type="Node2D" unique_id=1875687718]
 script = ExtResource("1_lcxk7")
 
@@ -22,3 +24,11 @@ texture = ExtResource("3_lcxk7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=281200254]
 shape = SubResource("CircleShape2D_hb4xq")
+
+[node name="ProjectileBlockBody" type="StaticBody2D" parent="." unique_id=1441010093]
+position = Vector2(93, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileBlockBody" unique_id=889297255]
+shape = SubResource("CircleShape2D_lcxk7")
