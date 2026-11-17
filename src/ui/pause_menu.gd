@@ -12,10 +12,12 @@ func pause():
 	$AnimationPlayer.play("blur")
 
 func testEsc():
-	if Input.is_action_just_pressed("pause") and get_tree().paused == false:
-		pause()
-	elif Input.is_action_just_pressed("pause") and get_tree().paused == true:
-		resume()
+	if Input.is_action_just_pressed("pause"):
+		print("PAUSE PRESSED")
+		if get_tree().paused:
+			resume()
+		else:
+			pause()
 
 
 func _on_resume_pressed() -> void:
@@ -30,5 +32,5 @@ func _on_restart_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-func _process(delta):
+func _process(_delta):
 	testEsc()

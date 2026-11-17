@@ -8,7 +8,7 @@ shader = ExtResource("1_6tw0m")
 shader_parameter/lod = 0.0
 
 [sub_resource type="Animation" id="Animation_6tw0m"]
-length = 0.001
+length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -152,11 +152,15 @@ grow_vertical = 2
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1740448854]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 842.9999
+offset_top = 418.0
+offset_right = 1030.9999
+offset_bottom = 618.0
+scale = Vector2(1.3364482, 1.2703421)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1624595247]
 layout_mode = 2
+theme_override_constants/separation = 53
 
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1636571826]
 layout_mode = 2
