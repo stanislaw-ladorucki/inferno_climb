@@ -36,7 +36,7 @@ particle_flag_rotate_y = true
 particle_flag_disable_z = true
 angle_min = -89.99999
 angle_max = 90.000015
-inherit_velocity_ratio = 0.2
+inherit_velocity_ratio = 0.1
 direction = Vector3(0, -1, 0)
 spread = 0.0
 initial_velocity_min = 80.0
@@ -47,7 +47,7 @@ scale_max = 60.0
 color_ramp = SubResource("GradientTexture1D_y1706")
 alpha_curve = SubResource("CurveTexture_awv3l")
 
-[node name="Dynamic_Fire" type="GPUParticles2D" unique_id=419984196]
+[node name="DynamicsFire" type="GPUParticles2D" unique_id=419984196]
 material = SubResource("ShaderMaterial_i3wyp")
 amount = 60
 texture = ExtResource("3_wjgds")
