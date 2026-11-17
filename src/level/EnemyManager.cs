@@ -34,7 +34,7 @@ public partial class EnemyManager : Node2D {
                 platform.GetParent<Node2D>(),
                 platform.GlobalPosition + new Vector2(rng.RandfRange(-platform.Size * 0.4f, platform.Size * 0.4f), -100.0f)
             )];
-        }, 0.5f)),
+        }, 0.15f)),
         
         // imp (flying and shooting at the player)
         new (16_000, new((manager, platform) => {
@@ -47,7 +47,7 @@ public partial class EnemyManager : Node2D {
                     X = horizontalPosition,
                 }
             )];
-        }, 0.5f)),
+        }, 0.35f)),
         
         
         // gaap! (leaps at the player like a frog, kamikaze style)
@@ -58,7 +58,7 @@ public partial class EnemyManager : Node2D {
                 platform.GetParent<Node2D>(),
                 platform.GlobalPosition + new Vector2(rng.RandfRange(-platform.Size * 0.4f, platform.Size * 0.4f), -100.0f)
             )];
-        }, 0.5f)),
+        }, 0.25f)),
 		
         // clump of vasago guys
         new (7_000, new((manager, platform) => {
