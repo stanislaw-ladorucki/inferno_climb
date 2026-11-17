@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://ca6pp1pqj8tv2" path="res://resources/001_foreground_gradient.tres" id="26_fv21b"]
 [ext_resource type="Texture2D" uid="uid://bjecburhndrs3" path="res://resources/002_foreground_gradient.tres" id="27_tel4y"]
 [ext_resource type="Script" uid="uid://he772dm6rnfd" path="res://src/level/LevelColorManager.cs" id="28_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://chf8yqwc1t18j" path="res://scenes/ui/pause_menu.tscn" id="29_yq6so"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -279,3 +280,7 @@ params/foreground_gradient = ExtResource("26_fv21b")
 params/foreground_gradient_mix = ExtResource("27_tel4y")
 script = ExtResource("28_qkpxi")
 Player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1411733834]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=118202203 instance=ExtResource("29_yq6so")]
