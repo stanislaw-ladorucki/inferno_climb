@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://c6b3ifujq1mdw" path="res://assets/sprites/player.tres" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://cedouosudsqbn" path="res://assets/sfx/jump.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dxa04v3q0w7xv" path="res://assets/sfx/pickup.wav" id="5_fjrip"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://dslqf1bqxp6i0" path="res://assets/sfx/player_death.wav" id="6_tuyoq"]
 
@@ -55,6 +56,7 @@ autoplay = "fall"
 shape = SubResource("CapsuleShape2D_qlg0r")
 
 [node name="PickupAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=196053955]
+stream = ExtResource("5_fjrip")
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=593738419]
 stream = ExtResource("4_dqkch")
