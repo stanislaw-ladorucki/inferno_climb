@@ -79,9 +79,21 @@ rendering_device/driver.windows="d3d12"
 
 background_gradient={
 "type": "sampler2D",
-"value": "res://resources/background_gradient.tres"
+"value": "res://resources/001_background_gradient.tres"
 }
 foreground_gradient={
 "type": "sampler2D",
-"value": "res://resources/foreground_gradient.tres"
+"value": "res://resources/001_foreground_gradient.tres"
+}
+foreground_gradient_mix={
+"type": "sampler2D",
+"value": "res://resources/002_foreground_gradient.tres"
+}
+mix_ratio={
+"type": "float",
+"value": 0.0
+}
+background_gradient_mix={
+"type": "sampler2D",
+"value": "res://resources/002_background_gradient.tres"
 }
