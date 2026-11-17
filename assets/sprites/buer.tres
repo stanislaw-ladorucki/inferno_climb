@@ -12,11 +12,11 @@ region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf1um"]
 atlas = ExtResource("1_5dmke")
-region = Rect2(512, 0, 256, 256)
+region = Rect2(0, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egnck"]
 atlas = ExtResource("1_5dmke")
-region = Rect2(256, 0, 256, 256)
+region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwcyu"]
 atlas = ExtResource("1_5dmke")
