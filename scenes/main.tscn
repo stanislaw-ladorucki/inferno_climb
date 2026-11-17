@@ -167,9 +167,10 @@ position = Vector2(406.95865, -1142.31)
 scale = Vector2(0.4727452, 0.40382755)
 texture = ExtResource("22_2f3dj")
 
-[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028]
+[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028 node_paths=PackedStringArray("EnemyManager")]
 script = ExtResource("4_tbgi4")
 ChunkGenerateMargin = 0.0
+EnemyManager = NodePath("../EnemyManager")
 
 [node name="EnemyManager" type="Node2D" parent="." unique_id=1908421284]
 script = ExtResource("9_muem4")
