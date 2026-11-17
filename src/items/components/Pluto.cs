@@ -6,7 +6,7 @@ namespace InfernoClimb.items.components;
 public partial class Pluto : ItemComponent {
     [Export] public float RotationSpeed = 0.25f;
     [Export] public float StackingScaleMultiplier = 1.2f;
-    [Export] public float StackingOrbitDistanceIncrease = 20f;
+     [Export] public float StackingOrbitDistanceMultiplier = 1.1f;
     [Export] public float StackingDamageIncrease = 2f;
 
     public override void _Process(double delta) {
@@ -24,8 +24,8 @@ public partial class Pluto : ItemComponent {
             attack.Damage += StackingDamageIncrease;
             attack.Scale *= StackingScaleMultiplier;
             block.Scale *= StackingScaleMultiplier;
-            attack.Position += Vector2.Right * StackingOrbitDistanceIncrease;
-            block.Position += Vector2.Right * StackingOrbitDistanceIncrease;
+            attack.Position *= StackingOrbitDistanceMultiplier;
+            block.Position *= StackingOrbitDistanceMultiplier;
         }
     }
 }
