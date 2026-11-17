@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_fhdax")
 Name = "Rosary"
-Description = "Guardian Angel Up!"
+Description = "Chance of invulnerability."
 Icon = ExtResource("1_3rmq8")
 Scene = ExtResource("1_hxy70")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_ygtt7")
 Name = "Pluto"
-Description = "Not quite a planet"
+Description = "A floating planet."
 Icon = ExtResource("1_8mo82")
 Scene = ExtResource("1_vqr83")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

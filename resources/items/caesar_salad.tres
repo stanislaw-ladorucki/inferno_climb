@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_8hp24")
 Name = "Caesar's Salad"
-Description = "Watch your back!"
+Description = "Daggers sticking out."
 Icon = ExtResource("1_606tw")
 Scene = ExtResource("2_606tw")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

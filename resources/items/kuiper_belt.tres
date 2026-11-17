@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_pau2l")
 Name = "Kuiper Belt"
-Description = "Pants up!"
+Description = "Oribiting asteroids."
 Icon = ExtResource("1_jqcqo")
 Scene = ExtResource("1_s63au")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_sv16g")
 Name = "Hermes' Shoelace"
-Description = "Jumps Up!"
+Description = "Double jump."
 Icon = ExtResource("1_3tcsq")
 Scene = ExtResource("1_xutli")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

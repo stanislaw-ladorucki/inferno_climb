@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_25ubh")
 Name = "Super Dead Fish"
-Description = "Periodically launches a bouncing dead fish projectile from the player’s position in a random direction."
+Description = "Launching a bouncing dead fish."
 Icon = ExtResource("1_atoq5")
 Scene = ExtResource("2_n05nn")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

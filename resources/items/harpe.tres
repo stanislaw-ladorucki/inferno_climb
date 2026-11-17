@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_d8ycl")
 Name = "Harpe"
-Description = "Periodically lobs arching sickle projectiles over the players head on a cooldown.Increases the amount of sickles thrown with stacking."
+Description = "Lobs arching sickles."
 Icon = ExtResource("1_ch3g3")
 Scene = ExtResource("2_odm27")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"
