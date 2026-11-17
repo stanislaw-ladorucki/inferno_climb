@@ -9,14 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
 [ext_resource type="Shader" uid="uid://c01x0hcpd68nx" path="res://shaders/level_fg.gdshader" id="8_85g3d"]
+[ext_resource type="Texture2D" uid="uid://clwttdmxnlm62" path="res://assets/level/jumpSkeleton.png" id="8_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://b7q1tb8fr3cfj" path="res://assets/level/wall_L.png" id="9_choun"]
 [ext_resource type="Script" uid="uid://bg7sicmlmfl0s" path="res://src/level/EnemyManager.cs" id="9_muem4"]
+[ext_resource type="Texture2D" uid="uid://dnoau5fo26mlg" path="res://assets/level/jumpInstruction.png" id="9_y6deb"]
 [ext_resource type="PackedScene" uid="uid://bivucakfd3tkv" path="res://scenes/ui/dummy_satan.tscn" id="10_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://ddm1ra3puw2ei" path="res://assets/level/wall_R.png" id="10_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://c4issbb8khn1t" path="res://scenes/ui/item_description_toast.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://ctcfx1ttvd2l3" path="res://scenes/satan.tscn" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://b1k7hnmdfp1bb" path="res://scenes/ui/main_menu.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cicdowpxw2wfl" path="res://scenes/ui/game_over_menu.tscn" id="16_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://bpkiv7k64goto" path="res://assets/level/moveInstruction.png" id="19_og1vs"]
+[ext_resource type="Texture2D" uid="uid://dprwjhqt3jn8v" path="res://assets/level/moveSkeleton.png" id="20_2wyq8"]
+[ext_resource type="Texture2D" uid="uid://b42w1p7hr1jjp" path="res://assets/level/killInstruction.png" id="21_vxglm"]
+[ext_resource type="Texture2D" uid="uid://c5qkpxhcnxfkk" path="res://assets/level/killSkeleton.png" id="22_2f3dj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -114,6 +120,47 @@ material = SubResource("ShaderMaterial_xf4jf")
 position = Vector2(875, 187.95744)
 scale = Vector2(0.17, 0.18339379)
 texture = ExtResource("10_ya4ey")
+
+[node name="Instructions" type="Node2D" parent="StaticEnvironment" unique_id=1918196876]
+
+[node name="JumpSkeleton" type="Sprite2D" parent="StaticEnvironment/Instructions" unique_id=78400460]
+modulate = Color(1, 1, 1, 0.5294118)
+position = Vector2(489.8953, -288.31006)
+scale = Vector2(0.4727452, 0.40382755)
+texture = ExtResource("8_pm3ni")
+
+[node name="JumpInstruction" type="Sprite2D" parent="StaticEnvironment/Instructions" unique_id=93489767]
+modulate = Color(1, 1, 1, 0.5294118)
+position = Vector2(482.83115, -197.10547)
+rotation = 0.13299179
+scale = Vector2(0.4727452, 0.40382755)
+texture = ExtResource("9_y6deb")
+
+[node name="MoveInstruction" type="Sprite2D" parent="StaticEnvironment/Instructions" unique_id=729511505]
+modulate = Color(1, 1, 1, 0.5294118)
+position = Vector2(-476, -543)
+rotation = -0.1317557
+scale = Vector2(0.4727452, 0.40382755)
+texture = ExtResource("19_og1vs")
+
+[node name="MoveSkeleton" type="Sprite2D" parent="StaticEnvironment/Instructions" unique_id=1920246468]
+modulate = Color(1, 1, 1, 0.5294118)
+position = Vector2(-487.4886, -651.7573)
+scale = Vector2(0.4727452, 0.40382755)
+texture = ExtResource("20_2wyq8")
+
+[node name="KillInstruction" type="Sprite2D" parent="StaticEnvironment/Instructions" unique_id=1643367532]
+modulate = Color(1, 1, 1, 0.5294118)
+position = Vector2(412.00003, -1045)
+rotation = 0.044614468
+scale = Vector2(0.4727452, 0.40382755)
+texture = ExtResource("21_vxglm")
+
+[node name="KillSkeleton" type="Sprite2D" parent="StaticEnvironment/Instructions" unique_id=603439474]
+modulate = Color(1, 1, 1, 0.5294118)
+position = Vector2(406.95865, -1142.31)
+scale = Vector2(0.4727452, 0.40382755)
+texture = ExtResource("22_2f3dj")
 
 [node name="LevelManager" type="Node2D" parent="." unique_id=1814566028 node_paths=PackedStringArray("EnemyManager")]
 script = ExtResource("4_tbgi4")

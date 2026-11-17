@@ -1,110 +1,9 @@
 [gd_scene format=3 uid="uid://bivucakfd3tkv"]
 
-[ext_resource type="Texture2D" uid="uid://dmqidks5bsqd5" path="res://assets/sprites/satan.png" id="1_yh1ur"]
 [ext_resource type="Script" uid="uid://dlt2lf0nqniu5" path="res://src/ui/DummySatan.cs" id="2_0otyn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cd7h3"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(0, 1023, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ebst"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(962, 1023, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xfmm1"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(0, 0, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2cv8"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(1924, 1023, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6twee"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(0, 0, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q5tia"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(962, 0, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsluw"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(1924, 0, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lsc1n"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(1924, 0, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dp3eg"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(1924, 1023, 962, 1023)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0ld40"]
-atlas = ExtResource("1_yh1ur")
-region = Rect2(1924, 0, 962, 1023)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cd7h3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ebst")
-}],
-"loop": 1,
-"name": &"chew",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_xfmm1")
-}],
-"loop": 0,
-"name": &"close",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i2cv8")
-}],
-"loop": 1,
-"name": &"hurt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6twee")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q5tia")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsluw")
-}],
-"loop": 1,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lsc1n")
-}],
-"loop": 0,
-"name": &"open",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 6.0,
-"texture": SubResource("AtlasTexture_dp3eg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0ld40")
-}],
-"loop": 0,
-"name": &"release",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://c46i1nrm4tqso" path="res://assets/sprites/satan.tres" id="2_6njuj"]
+[ext_resource type="AudioStream" uid="uid://b8xtty2pwkvug" path="res://assets/sfx/hit_satan.wav" id="3_6njuj"]
+[ext_resource type="AudioStream" uid="uid://bbcmgg6j8awqe" path="res://assets/sfx/satan_puke.wav" id="4_yx52a"]
 
 [sub_resource type="Animation" id="Animation_yh1ur"]
 length = 0.001
@@ -147,10 +46,25 @@ script = ExtResource("2_0otyn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1018639082]
 scale = Vector2(0.504, 0.504)
-sprite_frames = SubResource("SpriteFrames_muem4")
-animation = &"release"
+sprite_frames = ExtResource("2_6njuj")
+animation = &"chew"
 autoplay = "chew"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=580096859]
 root_node = NodePath("../AnimatedSprite2D")
 libraries/ = SubResource("AnimationLibrary_6njuj")
+
+[node name="HitAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=614211903]
+stream = ExtResource("3_6njuj")
+
+[node name="PukeAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=985902066]
+stream = ExtResource("4_yx52a")
+volume_db = 3.0
+
+[node name="ChewAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1478934865]
+stream = ExtResource("3_6njuj")
+volume_db = -11.0
+max_distance = 1000.0
+max_polyphony = 3
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_OnAnimationLooped"]
