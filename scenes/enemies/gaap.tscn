@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://decnqtrvt7oye"]
 
 [ext_resource type="Script" uid="uid://bb3jnndeqimgr" path="res://src/entities/enemies/Gaap.cs" id="1_4fbhs"]
-[ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="2_ebddt"]
-[ext_resource type="AudioStream" uid="uid://b6v7pjsddyxxp" path="res://assets/sfx/satan_eating.wav" id="3_03y33"]
+[ext_resource type="AudioStream" uid="uid://d1f3ibpeb2evx" path="res://assets/sfx/gaat_dead.wav" id="2_wbb6l"]
 [ext_resource type="SpriteFrames" uid="uid://g18s0mwptsab" path="res://assets/sprites/gaap.tres" id="3_ebddt"]
+[ext_resource type="AudioStream" uid="uid://kakxdrnfy7q8" path="res://assets/sfx/gaat_jump.wav" id="3_wjscu"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="4_wbb6l"]
+[ext_resource type="AudioStream" uid="uid://by8i3awbxiky3" path="res://assets/sfx/gaat_fall.wav" id="4_xfap5"]
+[ext_resource type="AudioStream" uid="uid://cfb7juugepp6v" path="res://assets/sfx/gaat_ready.wav" id="5_jl6pc"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="5_wjscu"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="6_xfap5"]
 
@@ -25,14 +27,18 @@ Health = 8.0
 KnockbackMultiplier = 0.5
 
 [node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1446995770]
-stream = ExtResource("2_ebddt")
-volume_db = 2.0
-pitch_scale = 5.0
+stream = ExtResource("2_wbb6l")
+volume_db = -1.0
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=30970440]
-stream = ExtResource("3_03y33")
+stream = ExtResource("3_wjscu")
 volume_db = 6.0
-pitch_scale = 9.0
+
+[node name="FallAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1624405894]
+stream = ExtResource("4_xfap5")
+
+[node name="PrepareAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=293697873]
+stream = ExtResource("5_jl6pc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
 position = Vector2(-1.0000001, 1.7053026e-13)
@@ -70,6 +76,9 @@ autoplay = "death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
 shape = SubResource("CircleShape2D_rk5xh")
+
+[node name="JumpCooldownTimer" type="Timer" parent="." unique_id=1998612102]
+one_shot = true
 
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]

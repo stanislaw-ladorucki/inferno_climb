@@ -15,7 +15,6 @@ public partial class Gaap : BaseEnemy {
 	}
 	
 	public override void _PhysicsProcess(double delta) {
-		
 		MoveAndSlide();
 		if (!IsOnFloor()) {
 			Velocity += GetGravity() * (float)delta;
@@ -29,12 +28,19 @@ public partial class Gaap : BaseEnemy {
 		UpdateSprite();
 		
 		Player player = FindPlayerTarget();
+		Timer jumpCooldownTimer = GetNode<Timer>("JumpCooldownTimer");
 		if (player != null && Mathf.Abs(player.GlobalPosition.Y - GlobalPosition.Y) <= AggroVerticalDistance) {
 			AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			// only when the hurt animation is not playing, and is standing on the floor
-			if (sprite.Animation == "idle") {
+			if (sprite.Animation == "idle" && jumpCooldownTimer.TimeLeft == 0) {
+				GetNode<AudioStreamPlayer2D>("PrepareAudioPlayer").Play();
 				sprite.Play("prepare");
 			}
+		}
+		// only process cooldown after landing
+		jumpCooldownTimer.SetPaused(!IsOnFloor());
+		if (!IsOnFloor() && Velocity.Y > 150 && GlobalPosition.Y > player?.GlobalPosition.Y + 200) {
+			GetNode<AudioStreamPlayer2D>("FallAudioPlayer").Play();
 		}
 	}
 	
@@ -64,6 +70,8 @@ public partial class Gaap : BaseEnemy {
 		
 		AudioStreamPlayer2D audio = GetNode<AudioStreamPlayer2D>("JumpAudioPlayer");
 		audio.Play();
+		
+		GetNode<Timer>("JumpCooldownTimer").SetPaused(!IsOnFloor());
 	}
 
 	public void _OnHit(Node2D attack, float totalIncomingDamage) {
