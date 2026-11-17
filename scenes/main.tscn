@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://di77l3k1jdnfa" path="res://shaders/level_bg.gdshader" id="1_ya4ey"]
 [ext_resource type="Script" uid="uid://dvib1ilq4hhe1" path="res://src/ui/VerticallyFollowingCamera.cs" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cv8rex0px8lcb" path="res://assets/level/intro_front.png" id="3_eb6dy"]
-[ext_resource type="Texture2D" uid="uid://bx4t425eeu5pb" path="res://assets/level/intro.png" id="3_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://bveh6tlkn8uga" path="res://assets/level/bg BNW ENTRY1.png" id="4_2f3dj"]
 [ext_resource type="Script" uid="uid://bvp4s8yjtxxxw" path="res://src/level/LevelManager.cs" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://c3vipuhdtrhjs" path="res://assets/level/BG BNW WIP.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bqq2n4ff2fxl5" path="res://scenes/ui/score_display.tscn" id="5_tbgi4"]
@@ -73,7 +73,7 @@ repeat_size = Vector2(0, 1850)
 [node name="BackgroundSprite" type="Sprite2D" parent="StaticEnvironment/BackgroundParalax" unique_id=827360041]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_choun")
-position = Vector2(0, 310)
+position = Vector2(0, 311)
 scale = Vector2(0.34894273, 0.34894273)
 texture = ExtResource("5_85g3d")
 
@@ -85,7 +85,7 @@ scroll_offset = Vector2(0, -102)
 
 [node name="FloorForegroundSprite" type="Sprite2D" parent="StaticEnvironment/FloorForegroundParalax" unique_id=1432555039]
 material = SubResource("ShaderMaterial_fl36j")
-position = Vector2(0, -350)
+position = Vector2(0, -330)
 scale = Vector2(0.333, 0.417)
 texture = ExtResource("3_eb6dy")
 
@@ -94,7 +94,7 @@ z_index = -15
 material = SubResource("ShaderMaterial_ya4ey")
 position = Vector2(0, -360)
 scale = Vector2(0.33605614, 0.33605614)
-texture = ExtResource("3_ya4ey")
+texture = ExtResource("4_2f3dj")
 
 [node name="Walls" type="StaticBody2D" parent="StaticEnvironment" unique_id=763485334]
 collision_layer = 9
@@ -167,10 +167,9 @@ position = Vector2(406.95865, -1142.31)
 scale = Vector2(0.4727452, 0.40382755)
 texture = ExtResource("22_2f3dj")
 
-[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028 node_paths=PackedStringArray("EnemyManager")]
+[node name="LevelManager" type="Node2D" parent="." unique_id=1814566028]
 script = ExtResource("4_tbgi4")
 ChunkGenerateMargin = 0.0
-EnemyManager = NodePath("../EnemyManager")
 
 [node name="EnemyManager" type="Node2D" parent="." unique_id=1908421284]
 script = ExtResource("9_muem4")
