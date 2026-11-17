@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://sfw1iif2khit"]
 
 [ext_resource type="Script" uid="uid://bfk8mimvh0iom" path="res://src/entities/enemies/Vasago.cs" id="1_0gwgf"]
-[ext_resource type="SpriteFrames" uid="uid://djtw2aeg37a8k" path="res://assets/sprites/agaresOld.tres" id="2_eq8eu"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="2_jewn2"]
+[ext_resource type="SpriteFrames" uid="uid://b6rc48d0fw8fe" path="res://assets/sprites/beel.tres" id="3_78fl4"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="3_jewn2"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_jewn2"]
 [ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="6_7byo4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_78fl4"]
+radius = 13.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
-size = Vector2(25, 17)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_78fl4"]
+radius = 10.5
+height = 25.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb4xq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhilm"]
+radius = 13.038404
 
 [node name="Vasago" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
@@ -23,13 +26,13 @@ script = ExtResource("1_0gwgf")
 stream = ExtResource("6_7byo4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
-scale = Vector2(0.2, 0.2)
-sprite_frames = ExtResource("2_eq8eu")
+scale = Vector2(0.1452404, 0.1452404)
+sprite_frames = ExtResource("3_78fl4")
 animation = &"hurt"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
-shape = SubResource("CapsuleShape2D_tuyoq")
+shape = SubResource("CircleShape2D_78fl4")
 debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
 
 [node name="CollisionAttackHitbox" parent="." unique_id=1679916697 instance=ExtResource("3_jewn2")]
@@ -38,8 +41,9 @@ collision_mask = 2
 KnockbackStrength = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionAttackHitbox" unique_id=342842665]
-position = Vector2(0.5, 4.5)
-shape = SubResource("RectangleShape2D_5uy6h")
+position = Vector2(0, 3)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_78fl4")
 debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 
 [node name="Blood" parent="." unique_id=674090606 groups=["enemy"] instance=ExtResource("2_jewn2")]
@@ -47,13 +51,13 @@ debug_color = Color(0.5625805, 0.55938697, 0, 0.41960785)
 [node name="Corpse" parent="." unique_id=574074381 instance=ExtResource("5_jewn2")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Corpse" unique_id=720499278]
-scale = Vector2(0.2, 0.2)
-sprite_frames = ExtResource("2_eq8eu")
+scale = Vector2(0.1451997, 0.1451997)
+sprite_frames = ExtResource("3_78fl4")
 animation = &"death"
 autoplay = "death"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
-shape = SubResource("CapsuleShape2D_hb4xq")
+shape = SubResource("CircleShape2D_nhilm")
 
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]
