@@ -9,3 +9,5 @@ volume_db = -12.0
 autoplay = true
 parameters/looping = true
 script = ExtResource("2_wp5x7")
+OutOfGameVolume = -17.0
+InGameVolume = -12.0
