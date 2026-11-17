@@ -15,6 +15,9 @@ public partial class LaurelCrown : ItemComponent {
     
 	// TDE: consider checking if the enemy was killed by the player specifically 
 	public void OnEnemyDied(Entity enemy) {
+		if (!IsInstanceValid(this)) {
+			return;
+		}
 		foreach (Node node in GetTree().GetNodesInGroup("cooldown")) {
 			if (node is CooldownTimer timer) {
 				timer.Advance(CooldownReduction);

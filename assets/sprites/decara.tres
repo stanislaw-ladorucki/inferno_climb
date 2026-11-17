@@ -1,0 +1,68 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dor5vphbcbkt7"]
+
+[ext_resource type="Texture2D" uid="uid://c60162s6jp1lq" path="res://assets/sprites/enemyImp.png" id="1_drlb4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drlb4"]
+atlas = ExtResource("1_drlb4")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do1jr"]
+atlas = ExtResource("1_drlb4")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4w4x"]
+atlas = ExtResource("1_drlb4")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xk4f"]
+atlas = ExtResource("1_drlb4")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uqey"]
+atlas = ExtResource("1_drlb4")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tgt8"]
+atlas = ExtResource("1_drlb4")
+region = Rect2(0, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drlb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do1jr")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_u4w4x")
+}],
+"loop": 0,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xk4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uqey")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tgt8")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
