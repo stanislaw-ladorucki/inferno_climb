@@ -8,7 +8,7 @@ public partial class Imp : BaseEnemy {
 	[Export] public float Speed = 40;
 	[Export] public float MoveChance = 0.045f;
 	[Export] public float VelocityDampening = 0.0001f;
-	[Export] public float FireballVelocity = 5.0f;
+	[Export] public float FireballVelocity = 4.0f;
 	[Export] public float FireballAttackKickback = 250.0f;
 	[Export] public float PlayerAggroDistance = 350.0f;
 
@@ -30,6 +30,11 @@ public partial class Imp : BaseEnemy {
 			if (timer.IsStopped()) {
 				timer.Start();
 			}
+		}
+		
+		if (player != null) {
+			AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			sprite.FlipH = player.GlobalPosition.X <= GlobalPosition.X;
 		}
 	}
 

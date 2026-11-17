@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hln5y2nfkbln"
+path="res://.godot/imported/lincolnpepper - Jade.ogg-06ecd21c0f8a39f98336aa36f83b1393.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/ost/lincolnpepper - Jade.ogg"
+dest_files=["res://.godot/imported/lincolnpepper - Jade.ogg-06ecd21c0f8a39f98336aa36f83b1393.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

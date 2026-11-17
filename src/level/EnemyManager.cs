@@ -26,6 +26,16 @@ public partial class EnemyManager : Node2D {
     
     public List<EnemySpawner> EnemySpawnerPool = new();
     public Stack<KeyValuePair<int, EnemySpawner>> EnemyPoolUpdateThresholds = new([
+        // decara (shoots at the player, standing still on a platform)
+        new (14_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            return [manager.SpawnAtPosition(
+                GD.Load<PackedScene>("res://scenes/enemies/decara.tscn"),
+                platform.GetParent<Node2D>(),
+                platform.GlobalPosition + new Vector2(rng.RandfRange(-platform.Size * 0.4f, platform.Size * 0.4f), -100.0f)
+            )];
+        }, 0.5f)),
+        
         // imp (flying and shooting at the player)
         new (7_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();

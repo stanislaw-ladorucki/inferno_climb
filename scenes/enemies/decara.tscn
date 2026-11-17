@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://hxckc2ndcaxo"]
+
+[ext_resource type="Script" uid="uid://c2sokhs1kwcn2" path="res://src/entities/enemies/Decara.cs" id="1_1ti56"]
+[ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="2_txhbn"]
+[ext_resource type="SpriteFrames" uid="uid://dor5vphbcbkt7" path="res://assets/sprites/decara.tres" id="3_txhbn"]
+[ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="4_m1spk"]
+[ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_pei10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ti56"]
+size = Vector2(28, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txhbn"]
+radius = 17.0
+
+[node name="Decara" type="CharacterBody2D" unique_id=1459157320]
+collision_layer = 4
+script = ExtResource("1_1ti56")
+Health = 5.0
+
+[node name="EnemyDeathAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1446995770]
+stream = ExtResource("2_txhbn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=363267507]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("3_txhbn")
+animation = &"fire"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1985432623]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_1ti56")
+debug_color = Color(0.9625129, 1.540184e-06, 0.506941, 0.41960785)
+
+[node name="Blood" parent="." unique_id=674090606 groups=["enemy"] instance=ExtResource("4_m1spk")]
+
+[node name="Corpse" parent="." unique_id=574074381 instance=ExtResource("5_pei10")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Corpse" unique_id=720499278]
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("3_txhbn")
+animation = &"death"
+autoplay = "death"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse" unique_id=619457967]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_txhbn")
+
+[node name="Timer" type="Timer" parent="." unique_id=1612958695]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="Died" from="." to="." method="_OnDied"]
+[connection signal="Died" from="." to="Blood" method="_OnParentDied"]
+[connection signal="Died" from="." to="Corpse" method="_OnParentDied"]
+[connection signal="Hit" from="." to="." method="_OnHit"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_OnAnimationFinished"]
+[connection signal="timeout" from="Timer" to="." method="_OnTimerTimeout"]

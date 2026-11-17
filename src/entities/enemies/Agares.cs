@@ -5,7 +5,7 @@ namespace InfernoClimb.entities.enemies;
 
 public partial class Agares : BaseEnemy {
 	[Export] public float VelocityDampening = 0.0001f;
-	
+
 	public override void _PhysicsProcess(double delta) {
 		Velocity = Velocity with {
 			X = Mathf.Lerp(Velocity.X, 0.0f, 1 - (float)Math.Pow(VelocityDampening, delta)),
@@ -15,6 +15,7 @@ public partial class Agares : BaseEnemy {
 		if (!IsOnFloor()) {
 			Velocity += GetGravity() * (float)delta;
 		}
+		
 		UpdateSprite();
 	}
 	
@@ -22,6 +23,11 @@ public partial class Agares : BaseEnemy {
 		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		if (sprite.Animation == "hurt" && sprite.FrameProgress == 1.0f) {
 			sprite.Play("idle");
+		}
+
+		Player player = FindPlayerTarget();
+		if (player != null) {
+			sprite.FlipH = player.GlobalPosition.X <= GlobalPosition.X;
 		}
 	}
 
