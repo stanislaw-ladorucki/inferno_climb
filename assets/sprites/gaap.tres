@@ -1,0 +1,80 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://g18s0mwptsab"]
+
+[ext_resource type="Texture2D" uid="uid://l75xgtykrpat" path="res://assets/sprites/enemyGaap.png" id="1_qt755"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf5et"]
+atlas = ExtResource("1_qt755")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7jhb"]
+atlas = ExtResource("1_qt755")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7w7d"]
+atlas = ExtResource("1_qt755")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_013d2"]
+atlas = ExtResource("1_qt755")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03y33"]
+atlas = ExtResource("1_qt755")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo6p2"]
+atlas = ExtResource("1_qt755")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sf71"]
+atlas = ExtResource("1_qt755")
+region = Rect2(0, 256, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf5et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7jhb")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7w7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_013d2")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03y33")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo6p2")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_0sf71")
+}],
+"loop": 0,
+"name": &"prepare",
+"speed": 5.0
+}]

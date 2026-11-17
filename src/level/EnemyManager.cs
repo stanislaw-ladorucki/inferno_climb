@@ -48,6 +48,17 @@ public partial class EnemyManager : Node2D {
                 }
             )];
         }, 0.5f)),
+        
+        
+        // gaap! (leaps at the player like a frog, kamikaze style)
+        new (10_000, new((manager, platform) => {
+            using RandomNumberGenerator rng = new();
+            return [manager.SpawnAtPosition(
+                GD.Load<PackedScene>("res://scenes/enemies/gaap.tscn"),
+                platform.GetParent<Node2D>(),
+                platform.GlobalPosition + new Vector2(rng.RandfRange(-platform.Size * 0.4f, platform.Size * 0.4f), -100.0f)
+            )];
+        }, 0.5f)),
 		
         // clump of vasago guys
         new (7_000, new((manager, platform) => {
@@ -73,6 +84,7 @@ public partial class EnemyManager : Node2D {
             )];
         }, 1.0f)),
         
+        
         // buer (falling down at the player)
         new (3_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
@@ -85,8 +97,8 @@ public partial class EnemyManager : Node2D {
                 }
             )];
         }, 0.5f)),
-		
-        // vasago
+        
+        // vasago (just floating about)
         new (1_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             LevelChunk chunk = platform.GetParent<LevelChunk>();
