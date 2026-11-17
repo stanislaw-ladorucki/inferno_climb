@@ -23,6 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://dprwjhqt3jn8v" path="res://assets/level/moveSkeleton.png" id="20_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b42w1p7hr1jjp" path="res://assets/level/killInstruction.png" id="21_vxglm"]
 [ext_resource type="Texture2D" uid="uid://c5qkpxhcnxfkk" path="res://assets/level/killSkeleton.png" id="22_2f3dj"]
+[ext_resource type="Texture2D" uid="uid://de1tvb4j34j15" path="res://resources/001_background_gradient.tres" id="24_2f3dj"]
+[ext_resource type="Texture2D" uid="uid://b4ip70ccjrofh" path="res://resources/002_background_gradient.tres" id="25_2f3dj"]
+[ext_resource type="Texture2D" uid="uid://ca6pp1pqj8tv2" path="res://resources/001_foreground_gradient.tres" id="26_fv21b"]
+[ext_resource type="Texture2D" uid="uid://bjecburhndrs3" path="res://resources/002_foreground_gradient.tres" id="27_tel4y"]
+[ext_resource type="Script" uid="uid://he772dm6rnfd" path="res://src/level/LevelColorManager.cs" id="28_qkpxi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -266,3 +271,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hb4xq")
+
+[node name="LevelColorManager" type="ShaderGlobalsOverride" parent="." unique_id=1787702433 node_paths=PackedStringArray("Player")]
+params/background_gradient = ExtResource("24_2f3dj")
+params/background_gradient_mix = ExtResource("25_2f3dj")
+params/foreground_gradient = ExtResource("26_fv21b")
+params/foreground_gradient_mix = ExtResource("27_tel4y")
+script = ExtResource("28_qkpxi")
+Player = NodePath("../Player")
