@@ -5,12 +5,21 @@
 [ext_resource type="SpriteFrames" uid="uid://dor5vphbcbkt7" path="res://assets/sprites/decara.tres" id="3_txhbn"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="4_m1spk"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="5_pei10"]
+[ext_resource type="AudioStream" uid="uid://cslwu0fh33x7u" path="res://assets/sfx/fire_spit.wav" id="6_rgds8"]
+[ext_resource type="AudioStream" uid="uid://b8xtty2pwkvug" path="res://assets/sfx/hit_satan.wav" id="7_m1spk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ti56"]
 size = Vector2(28, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txhbn"]
 radius = 17.0
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_rgds8"]
+stream_count = 2
+stream_0/stream = ExtResource("6_rgds8")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("7_m1spk")
+stream_1/volume = 0.0
 
 [node name="Decara" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
@@ -48,6 +57,13 @@ shape = SubResource("CircleShape2D_txhbn")
 [node name="Timer" type="Timer" parent="." unique_id=1612958695]
 wait_time = 3.0
 one_shot = true
+
+[node name="AttackFinishAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=901577161]
+stream = SubResource("AudioStreamSynchronized_rgds8")
+
+[node name="AttackStartAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=848741790]
+stream = ExtResource("7_m1spk")
+pitch_scale = 4.7
 
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]

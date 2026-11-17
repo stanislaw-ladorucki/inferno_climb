@@ -11,6 +11,7 @@ public partial class Imp : BaseEnemy {
 	[Export] public float FireballVelocity = 4.0f;
 	[Export] public float FireballAttackKickback = 250.0f;
 	[Export] public float PlayerAggroDistance = 350.0f;
+	[Export] public float PlayerDeaggroDistance = 500.0f;
 
 	public static readonly PackedScene FireballScene = GD.Load<PackedScene>("res://scenes/attacks/fireball.tscn");
 	
@@ -25,22 +26,23 @@ public partial class Imp : BaseEnemy {
 		}
 
 		Player player = FindPlayerTarget();
-		if (player != null && (player.GlobalPosition - GlobalPosition).Length() < PlayerAggroDistance) {
+		if (player != null) {
 			Timer timer = GetNode<Timer>("Timer");
-			if (timer.IsStopped()) {
+			if ((player.GlobalPosition - GlobalPosition).Length() < PlayerAggroDistance && timer.IsStopped()) {
 				timer.Start();
 			}
-		}
-		
-		if (player != null) {
+			else if ((player.GlobalPosition - GlobalPosition).Length() > PlayerDeaggroDistance) {
+				timer.Stop();
+			}
+			
 			AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			sprite.FlipH = player.GlobalPosition.X <= GlobalPosition.X;
 		}
 	}
 
 	public void _OnTimerTimeout() {
-		AnimatedSprite2D sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		sprite.Play("fire");
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("fire");
+		GetNode<AudioStreamPlayer2D>("AttackStartAudioPlayer").Play();
 	}
 
 	public void _OnAnimationFinished() {
@@ -49,6 +51,7 @@ public partial class Imp : BaseEnemy {
 			// attacking
 			Player player = FindPlayerTarget();
 			if (player != null) {
+				GetNode<AudioStreamPlayer2D>("AttackFinishAudioPlayer").Play();
 				Vector2 attackDirection = (player.GlobalPosition - GlobalPosition).Normalized();
 				
 				RigidBody2D fireball = FireballScene.Instantiate<RigidBody2D>();
