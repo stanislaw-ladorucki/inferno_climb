@@ -12,7 +12,7 @@ public partial class ItemPickup : Node2D {
 	public override void _Ready() {
 		using RandomNumberGenerator rng = new();
 		Definition = ItemPool[(int)(rng.Randi() % ItemPool.Count)];
-		GetNode<Sprite2D>("Sprite2D").Texture = Definition.Icon;
+		GetNode<Sprite2D>("Node2D/Sprite2D").Texture = Definition.Icon;
 	}
 
 	public static readonly List<ItemDefinition> ItemPool = [
