@@ -8,7 +8,7 @@ namespace InfernoClimb;
 public partial class Satan : Node2D {
 	[Export] public float StartingVerticalSpeed = 50f;
 	[Export] public float FinalVerticalSpeed = 120f;
-	[Export] public float FinalVerticalSpeedHeight = 14_000;
+	[Export] public float FinalVerticalSpeedHeight = 24_000;
 	[Export] public float MaxDistanceFromPlayer = 2_000;
 	[Export] public float MaxDistanceFromCorpse = 800;
 	[Export] public float OpenDistance = 200f;

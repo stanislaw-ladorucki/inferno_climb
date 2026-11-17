@@ -9,7 +9,7 @@ public partial class EnemyManager : Node2D {
     [Signal] public delegate void EnemySpawnedEventHandler(Entity enemy);
     [Signal] public delegate void EnemyDiedEventHandler(Entity enemy);
 
-    [Export] public float FinalEnemyDifficultyHeight = 20_000; 
+    [Export] public float FinalEnemyDifficultyHeight = 40_000; 
     [Export] public int StartingEnemySpawnsPerChunk = 0;
     [Export] public int FinalEnemySpawnsPerChunk = 25;
     
@@ -27,7 +27,7 @@ public partial class EnemyManager : Node2D {
     public List<EnemySpawner> EnemySpawnerPool = new();
     public Stack<KeyValuePair<int, EnemySpawner>> EnemyPoolUpdateThresholds = new([
         // decara (shoots at the player, standing still on a platform)
-        new (14_000, new((manager, platform) => {
+        new (28_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             return [manager.SpawnAtPosition(
                 GD.Load<PackedScene>("res://scenes/enemies/decara.tscn"),
@@ -37,7 +37,7 @@ public partial class EnemyManager : Node2D {
         }, 0.5f)),
         
         // imp (flying and shooting at the player)
-        new (7_000, new((manager, platform) => {
+        new (14_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             LevelChunk chunk = platform.GetParent<LevelChunk>();
             float horizontalPosition = rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2);
@@ -50,7 +50,7 @@ public partial class EnemyManager : Node2D {
         }, 0.5f)),
 		
         // clump of vasago guys
-        new (3_000, new((manager, platform) => {
+        new (7_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             PackedScene scene = GD.Load<PackedScene>("res://scenes/enemies/vasago.tscn");
             List<Entity> enemies = new();
@@ -64,7 +64,7 @@ public partial class EnemyManager : Node2D {
         }, 0.25f)),
         
         // agares
-        new (3_000, new((manager, platform) => {
+        new (6_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             return [manager.SpawnAtPosition(
                 GD.Load<PackedScene>("res://scenes/enemies/agares.tscn"),
@@ -74,7 +74,7 @@ public partial class EnemyManager : Node2D {
         }, 1.0f)),
         
         // buer (falling down at the player)
-        new (2_000, new((manager, platform) => {
+        new (3_000, new((manager, platform) => {
             using RandomNumberGenerator rng = new();
             LevelChunk chunk = platform.GetParent<LevelChunk>();
             float horizontalPosition = rng.RandfRange(-chunk.Size.X / 2, chunk.Size.X / 2);
