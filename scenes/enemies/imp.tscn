@@ -4,12 +4,21 @@
 [ext_resource type="AudioStream" uid="uid://b1x7m6a0vkrnd" path="res://assets/sfx/enemy_death.wav" id="2_b7d7s"]
 [ext_resource type="SpriteFrames" uid="uid://cym3bjpvfwrb3" path="res://assets/sprites/imp.tres" id="3_b7d7s"]
 [ext_resource type="PackedScene" uid="uid://cco3pk2qcpb4l" path="res://scenes/effects/blood.tscn" id="5_i5vaa"]
+[ext_resource type="AudioStream" uid="uid://cslwu0fh33x7u" path="res://assets/sfx/fire_spit.wav" id="6_b7d7s"]
 [ext_resource type="PackedScene" uid="uid://b0obqski7wfqg" path="res://scenes/effects/corpse.tscn" id="6_gmf8o"]
+[ext_resource type="AudioStream" uid="uid://b8xtty2pwkvug" path="res://assets/sfx/hit_satan.wav" id="7_8vdv3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8vdv3"]
 radius = 18.027756
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb4xq"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_8vdv3"]
+stream_count = 2
+stream_0/stream = ExtResource("6_b7d7s")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("7_8vdv3")
+stream_1/volume = 0.0
 
 [node name="Imp" type="CharacterBody2D" unique_id=1459157320]
 collision_layer = 4
@@ -45,6 +54,13 @@ shape = SubResource("CapsuleShape2D_hb4xq")
 [node name="Timer" type="Timer" parent="." unique_id=1612958695]
 wait_time = 2.5
 one_shot = true
+
+[node name="AttackFinishAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1644177506]
+stream = SubResource("AudioStreamSynchronized_8vdv3")
+
+[node name="AttackStartAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=109353473]
+stream = ExtResource("7_8vdv3")
+pitch_scale = 4.7
 
 [connection signal="Died" from="." to="." method="_OnDied"]
 [connection signal="Died" from="." to="Blood" method="_OnParentDied"]

@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b6rc48d0fw8fe"]
+
+[ext_resource type="Texture2D" uid="uid://comjs7kplmne8" path="res://assets/sprites/enemyBeel.png" id="1_pd3hb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deb26"]
+atlas = ExtResource("1_pd3hb")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dflfu"]
+atlas = ExtResource("1_pd3hb")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ividd"]
+atlas = ExtResource("1_pd3hb")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5rkx"]
+atlas = ExtResource("1_pd3hb")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s26es"]
+atlas = ExtResource("1_pd3hb")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd3hb"]
+atlas = ExtResource("1_pd3hb")
+region = Rect2(256, 0, 256, 256)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deb26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dflfu")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ividd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5rkx")
+}],
+"loop": 0,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s26es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd3hb")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]

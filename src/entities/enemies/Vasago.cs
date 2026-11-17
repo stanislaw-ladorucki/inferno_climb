@@ -9,6 +9,12 @@ public partial class Vasago : BaseEnemy {
 	[Export] public float MoveChance = 0.045f;
 	[Export] public float VelocityDampening = 0.0001f;
 	
+	public override void _Ready() {
+		// randomise facing direction on spawn
+		using RandomNumberGenerator rng = new();
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = rng.Randf() < 0.5f;
+	}
+
 	public override void _PhysicsProcess(double delta) {
 		Velocity = Velocity.Lerp(Vector2.Zero, 1 - (float)Math.Pow(VelocityDampening, delta));
 		if (GetTree().Root.GetCamera2D().IsInBounds(GlobalPosition, new Vector2(0, 200))) {

@@ -25,7 +25,8 @@ public partial class VerticallyFollowingCamera : Camera2D {
 		float followLerp = (float)(FollowLerp * delta);
 		Vector2 targetZoom = Zoom;
 		
-		if (IsInstanceValid(Satan)) {
+		// only apply in game, not in the menu stage
+		if (IsInstanceValid(Satan) && !IsInstanceValid(Player) || Player.ProcessMode != ProcessModeEnum.Disabled) {
 			LimitBottom = Math.Min((int)(Satan.GlobalPosition.Y + SatanLimitBottomOffset), MinLimitBottom);
 		}
 		

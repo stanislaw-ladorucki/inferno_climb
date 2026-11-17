@@ -10,9 +10,11 @@ public partial class LevelManager : Node2D {
 	[Export] public float ChunkGenerateMargin = 200;
 	[Export] public float ChunkDiscardMargin = 1000;
 	
-	[Export] public float ItemsOccurrenceInterval = 500;
+	[Export] public float StartingItemsOccurrenceInterval = 1000;
+	[Export] public float FinalItemsOccurrenceInterval = 2000;
+	[Export] public float FinalItemOccurrenceIntervalHeight = 28_000;
 	
-	[Export] public float FinalPlatformDifficultyHeight = 14_000;
+	[Export] public float FinalPlatformDifficultyHeight = 28_000;
 	[Export] public Vector2 StartingPlatformMinDistance = new (10, 50); // horizontal and vertical components
 	[Export] public Vector2 StartingPlatformMaxDistance = new (120, 70); // horizontal and vertical components
 	[Export] public Vector2 FinalPlatformMinDistance = new (50, 50); // horizontal and vertical components
@@ -64,7 +66,7 @@ public partial class LevelManager : Node2D {
 			Mathf.Lerp(StartingPlatformSpawnWeights[3], FinalPlatformSpawnWeights[3], difficulty),
 		];
 
-		chunk.RedundantPlatformRouteChance =
+		chunk.RedundantPlatformRouteChance =chunk.Position.Y == 0 ? 0 : Mathf.Min(chunk.Position.Y / -FinalPlatformDifficultyHeight, 1.0f);
 			Mathf.Lerp(StartingRedundantPlatformRouteChance, FinalRedundantPlatformRouteChance, difficulty);
 		
 		_lastChunk = chunk;
@@ -72,12 +74,17 @@ public partial class LevelManager : Node2D {
 	}
 
 	public void PopulateItems(LevelChunk chunk, Platform[] platforms) {
+		
 		foreach (Platform platform in platforms) {
 			if (-platform.GlobalPosition.Y >= _nextItemHeight) {
 				Node2D item = ItemScene.Instantiate<Node2D>();
 				chunk.AddChild(item);
 				item.GlobalPosition = platform.GlobalPosition;
-				_nextItemHeight += ItemsOccurrenceInterval;
+				// the frequency of the items decreases as the player climbs higher
+				_nextItemHeight += Mathf.Lerp(
+					StartingItemsOccurrenceInterval,
+					FinalItemsOccurrenceInterval,
+					Mathf.Min(chunk.Position.Y / -FinalItemOccurrenceIntervalHeight, 1.0f));
 			}
 		}
 	}
@@ -88,7 +95,7 @@ public partial class LevelManager : Node2D {
 	
 	public override void _Ready() {
 		LevelChunk chunk = AddChunk();
-		_nextItemHeight = ItemsOccurrenceInterval;
+		_nextItemHeight = StartingItemsOccurrenceInterval;
 		// first platform is generated at the origin of the manager node
 		Platform[] platforms = chunk.Populate(GlobalPosition);
 		_lastPlatformPosition = platforms[^1].GlobalPosition;

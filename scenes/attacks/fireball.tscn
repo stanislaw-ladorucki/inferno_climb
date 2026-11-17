@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dn76ygrngxhru" path="res://src/entities/attacks/Fireball.cs" id="1_gp56f"]
 [ext_resource type="PackedScene" uid="uid://dpvggqrygtbnu" path="res://scenes/attacks/attack.tscn" id="1_l5qua"]
 [ext_resource type="PackedScene" uid="uid://4hk1cqb8mlk0" path="res://scenes/effects/dynamic_fire.tscn" id="2_rnpk7"]
+[ext_resource type="PackedScene" uid="uid://conkf37jttagr" path="res://scenes/effects/fire_explosion.tscn" id="4_m68ua"]
+[ext_resource type="AudioStream" uid="uid://sv7t2tp2vu87" path="res://assets/sfx/fire_hit.wav" id="5_tvxfh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gp56f"]
 friction = 0.0
@@ -31,8 +33,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1626055202]
 shape = SubResource("CircleShape2D_hb4xq")
 
-[node name="Dynamic_Fire" parent="." unique_id=419984196 instance=ExtResource("2_rnpk7")]
+[node name="DynamicFire" parent="." unique_id=419984196 instance=ExtResource("2_rnpk7")]
 scale = Vector2(1e-05, 1e-05)
+emitting = false
+
+[node name="FireExplosion" parent="." unique_id=2140721075 instance=ExtResource("4_m68ua")]
+
+[node name="FireHitAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=9088163]
+stream = ExtResource("5_tvxfh")
 
 [node name="Timer" type="Timer" parent="." unique_id=687207581]
 wait_time = 3.0

@@ -4,6 +4,68 @@
 [ext_resource type="Texture2D" uid="uid://clhsjkx11bkrp" path="res://assets/logo.png" id="2_m1kxf"]
 [ext_resource type="Theme" uid="uid://c7e7vbfgy2168" path="res://resources/theme.tres" id="3_x2yvf"]
 
+[sub_resource type="Animation" id="Animation_m1kxf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1g8jr"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1.1892072, 1.1892072, 1.1892072),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset_transform_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(0.6597539, 0.6597539, 0.6597539, 0.6597539, 0.6597539),
+"update": 0,
+"values": [0.08726646259971647, -0.08726646259971647, 0.08726646259971647, -0.08726646259971647, 0.08726646259971647]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1kxf"]
+_data = {
+&"RESET": SubResource("Animation_m1kxf"),
+&"idle": SubResource("Animation_1g8jr")
+}
+
 [sub_resource type="Animation" id="Animation_muem4"]
 length = 0.001
 tracks/0/type = "value"
@@ -16,7 +78,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_dp3eg"]
@@ -60,13 +122,20 @@ offset_right = 256.0
 offset_bottom = -191.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 texture = ExtResource("2_m1kxf")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/TextureRect" unique_id=1039510752]
+libraries/ = SubResource("AnimationLibrary_m1kxf")
+autoplay = &"idle"
+
 [node name="PressAnyLabelControl" type="Control" parent="." unique_id=1124307818]
+visible = false
 layout_mode = 2
 
 [node name="PressAnyLabel" type="Label" parent="PressAnyLabelControl" unique_id=52672686]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://binq563xgauv4"]
+
+[ext_resource type="AudioStream" uid="uid://hln5y2nfkbln" path="res://assets/ost/lincolnpepper - Jade.ogg" id="1_sqd2k"]
+[ext_resource type="Script" uid="uid://timhgepd15kl" path="res://src/ui/BackgroundMusic.cs" id="2_wp5x7"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" unique_id=1168708230]
+stream = ExtResource("1_sqd2k")
+volume_db = -12.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("2_wp5x7")
