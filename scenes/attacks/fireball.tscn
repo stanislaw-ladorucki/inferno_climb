@@ -35,6 +35,7 @@ shape = SubResource("CircleShape2D_hb4xq")
 
 [node name="DynamicFire" parent="." unique_id=419984196 instance=ExtResource("2_rnpk7")]
 scale = Vector2(1e-05, 1e-05)
+emitting = false
 
 [node name="FireExplosion" parent="." unique_id=2140721075 instance=ExtResource("4_m68ua")]
 

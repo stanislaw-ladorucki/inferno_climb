@@ -8,6 +8,8 @@ public partial class Fireball : RigidBody2D {
 			_ActivateFireExplosionEffect();
 			QueueFree();
 		}
+		// not emitting from the start
+		GetNode<GpuParticles2D>("DynamicFire").Emitting = true;
 	}
 
 	public void _OnTimeout() {
@@ -17,9 +19,17 @@ public partial class Fireball : RigidBody2D {
 
 	private void _ActivateFireExplosionEffect() {
 		GpuParticles2D effect = GetNode<GpuParticles2D>("FireExplosion");
+		GpuParticles2D trail = GetNode<GpuParticles2D>("DynamicFire");
+		
 		effect.Reparent(GetParent());
+		trail.Reparent(GetParent());
+		
 		effect.Emitting = true;
-		effect.Finished += effect.QueueFree;
+		trail.Emitting = false;
+		effect.Finished += () => {
+			effect.QueueFree();
+			trail.QueueFree();
+		};
 
 		AudioStreamPlayer2D audio = GetNode<AudioStreamPlayer2D>("FireHitAudioPlayer");
 		audio.Reparent(GetParent());
