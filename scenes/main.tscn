@@ -53,8 +53,21 @@ distance = -60.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
 shader = ExtResource("8_85g3d")
 
+[sub_resource type="Gradient" id="Gradient_yq6so"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yq6so"]
+gradient = SubResource("Gradient_yq6so")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xf4jf"]
 shader = ExtResource("8_85g3d")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hb4xq"]
+gradient = SubResource("Gradient_yq6so")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="Theme" id="Theme_hb4xq"]
 
@@ -117,12 +130,24 @@ position = Vector2(-875, 165)
 scale = Vector2(0.17, 0.18338472)
 texture = ExtResource("9_choun")
 
+[node name="LeftWallGradient" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=1369641082]
+z_index = 1
+position = Vector2(-1170, 164)
+scale = Vector2(8.781, 26.906)
+texture = SubResource("GradientTexture2D_yq6so")
+
 [node name="RightWallSprite" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=27230040]
 z_index = 1
 material = SubResource("ShaderMaterial_xf4jf")
 position = Vector2(875, 187.95744)
 scale = Vector2(0.17, 0.18339379)
 texture = ExtResource("10_ya4ey")
+
+[node name="RightWallGradient" type="Sprite2D" parent="StaticEnvironment/Walls/WallsParalax" unique_id=23365041]
+z_index = 1
+position = Vector2(1170, 164)
+scale = Vector2(8.781, 26.906)
+texture = SubResource("GradientTexture2D_hb4xq")
 
 [node name="Instructions" type="Node2D" parent="StaticEnvironment" unique_id=1918196876]
 
