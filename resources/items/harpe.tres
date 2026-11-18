@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_d8ycl")
 Name = "Harpe"
-Description = "Lobs arching sickles."
+Description = "Lobs arching sickles on a cooldown"
 Icon = ExtResource("1_ch3g3")
 Scene = ExtResource("2_odm27")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

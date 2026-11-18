@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_q6feq")
 Name = "Ignis Fatuus"
-Description = "Increases the damage, velocity and aggro area of all summoned wisps, stacking with subsequent item pickups. Also makes the player sporadically summon a wisp."
+Description = "Increases the damage, velocity and aggro area of all summoned wisps, stacking with subsequent item pickups. Also makes the player sporadically summon a wisp"
 Icon = ExtResource("1_2gnxw")
 Scene = ExtResource("2_ai57p")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

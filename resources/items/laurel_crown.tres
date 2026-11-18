@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_l8m1a")
 Name = "Laurel Crown"
-Description = "Cooldown reduction on kill."
+Description = "Reduce item cooldowns on kill"
 Icon = ExtResource("1_dacil")
 Scene = ExtResource("1_nyyfr")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

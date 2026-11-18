@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_ba1n3")
 Name = "Angel's Light"
-Description = "On kill summon a wisp familiar, that follows the player and homes in on enemies nearby.Stacking adds a chance to summon more wisps."
+Description = "On kill summon a wisp familiar, that follows you and homes in on enemies nearby"
 Icon = ExtResource("1_lmbtj")
 Scene = ExtResource("2_lugpt")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

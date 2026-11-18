@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_ptb2s")
 Name = "Almond Flower"
-Description = "Speeds up all the player’s orbitals. Also spawns an empty plastic water bottle orbital.Stacking increases the orbital speed."
+Description = "Speeds up all the player’s orbitals. Also spawns an empty plastic water bottle orbital"
 Icon = ExtResource("1_lwvmd")
 Scene = ExtResource("2_q0n08")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

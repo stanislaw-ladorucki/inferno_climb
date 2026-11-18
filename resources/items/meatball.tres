@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_micy3")
 Name = "Meatball"
-Description = "Replaces enemies after kill."
+Description = "Summons an inert meatball for you to jump on, when killing enemies"
 Icon = ExtResource("1_46ecl")
 Scene = ExtResource("2_h5i1h")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

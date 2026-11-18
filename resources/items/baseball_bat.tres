@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_ao785")
 Name = "Baseball Bat (signed, Satan)"
-Description = "When a sword item is activated, it has a chance to launch a ball projectile in the direction of the sword.  Also periodically on a cooldown activates a baseball bat swing to the player’s left or right, that always launches a ball. The bat swing also deals damage itself."
+Description = "When a melee item is activated, it has a chance to launch a ball projectile in the direction of the attack.  Also periodically activates a baseball bat swing"
 Icon = ExtResource("1_dhwc7")
 Scene = ExtResource("2_261t4")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

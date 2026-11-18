@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_fhdax")
 Name = "Rosary"
-Description = "Chance of invulnerability."
+Description = "Sporadic chance for temporary invulnerability, that deals contact damage to enemies when active"
 Icon = ExtResource("1_3rmq8")
 Scene = ExtResource("1_hxy70")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

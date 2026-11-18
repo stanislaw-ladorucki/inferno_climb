@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_tmlyx")
 Name = "Apple of Eden"
-Description = "Jump height up."
+Description = "Increases jump height"
 Icon = ExtResource("1_tmlyx")
 Scene = ExtResource("1_4f3m5")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

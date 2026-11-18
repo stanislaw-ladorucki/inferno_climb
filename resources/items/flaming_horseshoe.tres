@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_nbqw0")
 Name = "Flaming Horseshoe"
-Description = "When the player reaches their max base running speed, the player starts leaving a flaming damaging trail behind them. Speed increasing items, do not make the trail appear later, but potentially synergise by increasing the player’s acceleration. "
+Description = "When the player reaches their max base running speed, the player starts leaving a flaming damaging trail behind them. Speed increasing items, do not make the trail appear later, but potentially synergise by increasing the player’s acceleration"
 Icon = ExtResource("1_frl8q")
 Scene = ExtResource("2_bfor3")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

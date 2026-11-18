@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_sui1t")
 Name = "Goliath's Sword"
-Description = "Spawns a damaging longsword centered at the player’s position pointing outwards.Stacking the item increases the damage and length of the sword"
+Description = "Spawns a damaging longsword centered at your position pointing outwards. The sword rotates to a random direction periodically"
 Icon = ExtResource("1_wieip")
 Scene = ExtResource("2_a5hcm")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_btm1k")
 Name = "Hephaestus' shoes"
-Description = "When jumping spawns a damaging fire bursts under the player."
+Description = "When jumping spawns a damaging fire bursts under you"
 Icon = ExtResource("1_3nui8")
 Scene = ExtResource("2_wu1cg")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

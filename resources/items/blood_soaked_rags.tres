@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_lo3oh")
 Name = "Blood Soaked Rags"
-Description = "When an enemy is killed, spawn a floating bubble that explodes after some amount of time, dealing low AOE damage. The bubble can also be jumped off of, for an even bigger bounce.Each stack of the item increases the explosion area and damage."
+Description = "When an enemy is killed, spawn a floating bubble that explodes after some amount of time, dealing low AOE damage. The bubble can also be jumped off of, for an even bigger bounce"
 Icon = ExtResource("1_luoq0")
 Scene = ExtResource("2_c6d77")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

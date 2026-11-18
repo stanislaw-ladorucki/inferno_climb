@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_2n1nn")
 Name = "Nehushtan"
-Description = "Possible invulnerability after the kill."
+Description = "Adds a chance to for temporary invulnerability after killing enemies"
 Icon = ExtResource("1_ulv5c")
 Scene = ExtResource("1_4vxv3")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"

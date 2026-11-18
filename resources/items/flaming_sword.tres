@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_hvt0k")
 Name = "Flaming Sword"
-Description = "Spinning flaming sword."
+Description = "Swing a spinning flaming sword on a cooldown"
 Icon = ExtResource("1_s2642")
 Scene = ExtResource("1_38sas")
 metadata/_custom_type_script = "uid://b3oexm6tsgtva"
