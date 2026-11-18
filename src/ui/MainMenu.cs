@@ -11,7 +11,7 @@ public partial class MainMenu : CenterContainer {
 	
 	public override void _Input(InputEvent @event) {
 		base._Input(@event);
-		if (_isWaitingForInput) {
+		if (_isWaitingForInput && !@event.IsAction("pause")) {
 			if (@event is InputEventKey or InputEventJoypadButton) {
 				Control scoreDisplay = GetNode<Control>("%ScoreDisplay");
 				DummySatan.Release(() => {

@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://ca6pp1pqj8tv2" path="res://resources/001_foreground_gradient.tres" id="26_fv21b"]
 [ext_resource type="Texture2D" uid="uid://bjecburhndrs3" path="res://resources/002_foreground_gradient.tres" id="27_tel4y"]
 [ext_resource type="Script" uid="uid://he772dm6rnfd" path="res://src/level/LevelColorManager.cs" id="28_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://chf8yqwc1t18j" path="res://scenes/ui/pause_menu.tscn" id="29_yq6so"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 shader = ExtResource("1_ya4ey")
@@ -56,9 +57,6 @@ shader = ExtResource("8_85g3d")
 shader = ExtResource("8_85g3d")
 
 [sub_resource type="Theme" id="Theme_hb4xq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb4xq"]
-bg_color = Color(0, 0, 0, 0.62352943)
 
 [node name="Main" type="Node2D" unique_id=1347739713]
 
@@ -253,24 +251,19 @@ alignment = 2
 layout_mode = 2
 
 [node name="MainMenu" parent="HUD/MarginContainer" unique_id=1795579789 node_paths=PackedStringArray("Player", "Satan", "DummySatan") instance=ExtResource("15_jkv2x")]
+unique_name_in_owner = true
 layout_mode = 2
 Player = NodePath("../../../Player")
 Satan = NodePath("../../../Satan")
 DummySatan = NodePath("../../../DummySatan")
 
 [node name="GameOverMenu" parent="HUD/MarginContainer" unique_id=987290385 node_paths=PackedStringArray("Player") instance=ExtResource("16_jbj1t")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 Player = NodePath("../../../Player")
 
-[node name="MenuBackground" type="PanelContainer" parent="HUD" unique_id=102577495]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hb4xq")
+[node name="PauseMenu" parent="HUD" unique_id=118202203 instance=ExtResource("29_yq6so")]
 
 [node name="LevelColorManager" type="ShaderGlobalsOverride" parent="." unique_id=1787702433 node_paths=PackedStringArray("Player")]
 params/background_gradient = ExtResource("24_2f3dj")
