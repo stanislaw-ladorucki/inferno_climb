@@ -289,6 +289,7 @@ layout_mode = 2
 Player = NodePath("../../../Player")
 
 [node name="PauseMenu" parent="HUD" unique_id=118202203 instance=ExtResource("29_yq6so")]
+visible = false
 
 [node name="LevelColorManager" type="ShaderGlobalsOverride" parent="." unique_id=1787702433 node_paths=PackedStringArray("Player")]
 params/background_gradient = ExtResource("24_2f3dj")
