@@ -18,13 +18,11 @@ public partial class PauseMenu : Control {
 	public void Resume() {
 		GetTree().Paused = false;
 		GetNode<AnimationPlayer>("AnimationPlayer").PlayBackwards("blur");
-		GetNode<AnimationPlayer>("AnimationPlayer").AnimationFinished += _ => Hide();
 	}
 
 	public void Pause() {
 		GetTree().Paused = true;
 		GetNode<AnimationPlayer>("AnimationPlayer").Play("blur");
-		GetNode<AnimationPlayer>("AnimationPlayer").AnimationFinished += _ => Show();
 	}
 	
 	public void _OnResumePressed() {
